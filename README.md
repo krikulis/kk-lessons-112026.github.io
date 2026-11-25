@@ -11,7 +11,7 @@
 | Ceļš | Apraksts | Publicēšana GitHub Pages |
 | :--- | :--- | :--- |
 | `site/index.html`, `site/404.html` | Sākuma portāls un pielāgota 404 lapa | Publicēts (`/` un `/404.html`) |
-| `output/kiberdrosibas-risinajumi-2-diena/index.html` | 2. dienas Reveal.js prezentācija (`108 + 29` slaidi) | Publicēts (`/kiberdrosibas-risinajumi-2-diena/`) |
+| `output/kiberdrosibas-risinajumi-2-diena/index.html` | 2. dienas Reveal.js prezentācija (`107 + 29` slaidi) | Publicēts (`/kiberdrosibas-risinajumi-2-diena/`) |
 | `output/kiberdrosibas-risinajumi-2-diena/handouts/dalibnieku-darba-lapas.html` | Interaktīvi aizpildāmas dalībnieku darba lapas (`PD1–PD7`, pārlūka autosaglabāšana, `.json`/`.md` eksports, PDF) | Publicēts (`/kiberdrosibas-risinajumi-2-diena/handouts/dalibnieku-darba-lapas.html`) |
 | `output/kiberdrosibas-risinajumi-2-diena/handouts/pasniedzeja-atslega.html` | **Tikai pasniedzējam:** pilnā atbilžu atslēga un kartītes | **Bloķēts** (`.gitignore` + CI pārbaude) |
 | `output/kiberdrosibas-risinajumi-2-diena/structure/` | Gate 2 moduļi (`manifest.json` un `<section>` daļas) | Nav iekļauts `_site/` |

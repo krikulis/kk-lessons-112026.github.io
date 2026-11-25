@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kiberdrošības risinājumi I — Otrā diena | Mācību materiāli</title>
-  <meta name="description" content="Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I — Otrās dienas prezentācija (108+29 slaidi) un interaktīvi aizpildāmas dalībnieku darba lapas (PD1–PD7). Projekts Nr. 4.2.2.3/1/24/I/001." />
+  <meta name="description" content="Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I — Otrās dienas prezentācija (107+29 slaidi) un interaktīvi aizpildāmas dalībnieku darba lapas (PD1–PD7). Projekts Nr. 4.2.2.3/1/24/I/001." />
   <meta property="og:title" content="Kiberdrošības risinājumi I — Otrā diena | Mācību materiāli" />
-  <meta property="og:description" content="Reveal.js prezentācija (108+29 slaidi) un tiešsaistē aizpildāmas dalībnieku darba lapas PD1–PD7 ar automātisku saglabāšanu pārlūkprogrammā, .json/.md eksportu un PDF druku. Pasniedzējs Kristaps Kūlis." />
+  <meta property="og:description" content="Reveal.js prezentācija (107+29 slaidi) un tiešsaistē aizpildāmas dalībnieku darba lapas PD1–PD7 ar automātisku saglabāšanu pārlūkprogrammā, .json/.md eksportu un PDF druku. Pasniedzējs Kristaps Kūlis." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231F2933'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='13' y='5' width='6' height='6' fill='%23E53F30' opacity='.5'/%3E%3Crect x='21' y='5' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='5' y='13' width='6' height='6' fill='%23E53F30' opacity='.5'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='21' y='13' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='5' y='21' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='13' y='21' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='21' y='21' width='6' height='6' fill='%235B34AD'/%3E%3C/svg%3E" />
 
@@ -88,7 +88,7 @@
       background: var(--bda-dark);
       color: #FFFFFF;
       border-left: 14px solid var(--bda-red);
-      padding: 44px 28px;
+      padding: 24px 28px;
     }
 
     .container {
@@ -123,14 +123,14 @@
 
     main {
       flex: 1;
-      padding: 36px 28px 48px 28px;
+      padding: 28px 28px 48px 28px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
-      align-items: start;
+      align-items: stretch;
     }
 
     @media (max-width: 820px) {
@@ -146,6 +146,78 @@
 
     .card-violet {
       border-left-color: var(--bda-violet);
+    }
+
+    .menu-intro { margin-bottom: 24px; }
+    .menu-intro p { margin-bottom: 0; }
+
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .resource-card h3 {
+      font-size: 26px;
+      line-height: 1.25;
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--bda-dark);
+    }
+
+    .resource-features {
+      margin: 0 0 24px;
+      padding-left: 20px;
+      font-size: 14px;
+      color: var(--bda-muted);
+    }
+
+    .resource-features li + li { margin-top: 6px; }
+
+    .resource-card .cta-group {
+      margin-top: auto;
+      flex-direction: column;
+    }
+
+    .resource-secondary {
+      align-self: center;
+      padding: 4px;
+      color: var(--bda-dark);
+      font-size: 14px;
+      font-weight: 600;
+      text-underline-offset: 3px;
+    }
+
+    .resource-hint {
+      margin: 0;
+      padding: 4px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--bda-violet);
+      outline-offset: 4px;
+    }
+
+    .course-details { margin-top: 24px; }
+
+    .course-details summary {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .course-details[open] summary { margin-bottom: 24px; }
+    .course-details .topics-list { grid-template-columns: 1fr; }
+    .course-details .grid { align-items: start; }
+
+    @media (max-width: 560px) {
+      .bda-topbar { padding: 12px 18px; }
+      .hero { padding: 30px 18px; border-left-width: 6px; }
+      main { padding: 28px 18px 36px; }
+      .card { padding: 22px 18px; }
+      footer { padding: 18px; }
     }
 
     .badge-row {
@@ -332,69 +404,101 @@
 
   <section class="hero">
     <div class="container">
-      <p class="kicker">Pedagogu profesionālās kompetences pilnveides programma (16 stundas)</p>
-      <h1>„Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I”</h1>
+      <p class="kicker">Pedagogu profesionālās kompetences pilnveides programma</p>
+      <h1>Kiberdrošības risinājumi I</h1>
       <p class="hero-sub">Praktiskā darba semināra mācību materiāli profesionālās izglītības pedagogiem, kuri māca moduļus kvalifikācijas „Kiberdrošības tehniķis” ieguvei.</p>
     </div>
   </section>
 
   <main>
-    <div class="container grid">
-      <article class="card">
+    <div class="container">
+      <div class="menu-intro">
         <div class="badge-row">
           <span class="badge badge-dark">Otrā diena</span>
-          <span class="badge">108 + 29 slaidi</span>
           <span class="badge">09:00–16:15</span>
           <span class="badge">8 tēmas · 7 praktiskie darbi</span>
         </div>
+        <h2 id="materials-title">Izvēlieties mācību materiālu</h2>
+        <p>Atveriet semināra slaidus vai dalībnieku darba lapas praktisko uzdevumu izpildei.</p>
+      </div>
 
-        <h2>2. diena: No tehniskās arhitektūras līdz organizācijas drošības plānam</h2>
-        <p>Interaktīva Reveal.js prezentācija ar skaidriem konfigurācijas piemēriem (<code>ufw</code>, <code>OPNsense</code>, <code>ModSecurity</code>, <code>AD/LAPS</code>, <code>sshd</code>, <code>Wazuh</code>, <code>Git</code>) un tiešsaistē interaktīvi aizpildāmām dalībnieku darba lapām (automātiska saglabāšana pārlūkprogrammā, <code>.json</code>/<code>.md</code> eksports un PDF druka).</p>
+      <nav class="grid" aria-labelledby="materials-title">
+        <article class="card resource-card" aria-labelledby="slides-title">
+          <div class="badge-row"><span class="badge">107 + 29 slaidi</span></div>
+          <h3 id="slides-title">Prezentācijas slaidi</h3>
+          <p>No tehniskās arhitektūras līdz organizācijas drošības plānam — sekojiet līdzi semināram savā pārlūkprogrammā.</p>
+          <ul class="resource-features">
+            <li>Astoņas tēmas ar konfigurācijas piemēriem</li>
+            <li>Paškontroles jautājumi un papildu pielikumi</li>
+            <li>Pilnekrāna režīms un PDF druka</li>
+          </ul>
+          <div class="cta-group">
+            <a class="btn btn-primary" href="./kiberdrosibas-risinajumi-2-diena/">Atvērt slaidus</a>
+            <a class="resource-secondary" href="./kiberdrosibas-risinajumi-2-diena/?print-pdf">Sagatavot slaidus PDF drukai</a>
+          </div>
+        </article>
 
-        <ul class="topics-list">
-          <li><strong>Tēma 1:</strong> Arhitektūra, DMZ un MK Nr. 397</li>
-          <li><strong>Tēma 2:</strong> Ugunsmūri, NGFW, DNS un WAF</li>
-          <li><strong>Tēma 3:</strong> Piekļuves kontrole, LAPS un MFA</li>
-          <li><strong>Tēma 4:</strong> Konfigurāciju revīzija (A/B/C)</li>
-          <li><strong>Tēma 5:</strong> Drošības testēšana un žurnāli</li>
-          <li><strong>Tēma 6:</strong> Ielāpi (KEV), kopijas un Git</li>
-          <li><strong>Tēma 7:</strong> Kompleksais grupu darbs „KRM”</li>
-          <li><strong>Tēma 8:</strong> Aizstāvēšana un mācību rīki</li>
-        </ul>
+        <article class="card card-violet resource-card" aria-labelledby="handouts-title">
+          <div class="badge-row"><span class="badge">Praktiskie darbi PD1–PD7</span></div>
+          <h3 id="handouts-title">Dalībnieku darba lapas</h3>
+          <p>Interaktīva darba burtnīca septiņiem praktiskajiem darbiem — aizpildiet atbildes un saglabājiet savu veikumu.</p>
+          <ul class="resource-features">
+            <li>Uzdevumi un aizpildāmi atbilžu lauki</li>
+            <li>Automātiska saglabāšana šajā pārlūkprogrammā</li>
+            <li>JSON un Markdown eksports, PDF druka</li>
+          </ul>
+          <div class="cta-group">
+            <a class="btn btn-secondary" href="./kiberdrosibas-risinajumi-2-diena/handouts/dalibnieku-darba-lapas.html">Atvērt darba lapas</a>
+            <p class="resource-hint">Atbildes tiek saglabātas jūsu ierīcē.</p>
+          </div>
+        </article>
+      </nav>
 
-        <div class="cta-group">
-          <a class="btn btn-primary" href="./kiberdrosibas-risinajumi-2-diena/">Atvērt prezentāciju</a>
-          <a class="btn btn-secondary" href="./kiberdrosibas-risinajumi-2-diena/handouts/dalibnieku-darba-lapas.html">Interaktīvās darba lapas (PD1–PD7)</a>
-          <a class="btn btn-outline" href="./kiberdrosibas-risinajumi-2-diena/?print-pdf">Eksportēt slaidus kā PDF</a>
+      <details class="card course-details">
+        <summary>Semināra tēmas un slaidu navigācija</summary>
+        <div class="grid">
+          <section aria-labelledby="topics-title">
+            <h3 id="topics-title">Semināra tēmas</h3>
+            <ul class="topics-list">
+              <li><strong>Tēma 1:</strong> Arhitektūra, DMZ un MK Nr. 397</li>
+              <li><strong>Tēma 2:</strong> Ugunsmūri, NGFW, DNS un WAF</li>
+              <li><strong>Tēma 3:</strong> Piekļuves kontrole, LAPS un MFA</li>
+              <li><strong>Tēma 4:</strong> Konfigurāciju revīzija (A/B/C)</li>
+              <li><strong>Tēma 5:</strong> Drošības testēšana un žurnāli</li>
+              <li><strong>Tēma 6:</strong> Ielāpi (KEV), kopijas un Git</li>
+              <li><strong>Tēma 7:</strong> Kompleksais grupu darbs „KRM”</li>
+              <li><strong>Tēma 8:</strong> Aizstāvēšana un mācību rīki</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="navigation-title">
+            <h3 id="navigation-title">Navigācija prezentācijā</h3>
+            <p>Prezentācijai ir divu līmeņu uzbūve: galvenā gaita pa horizontāli un papildu paraugi / darba lapas vertikāli.</p>
+            <table class="key-table">
+              <tr>
+                <td><kbd>←</kbd> <kbd>→</kbd></td>
+                <td>107 galvenie slaidi (t.sk. 8 paškontroles)</td>
+              </tr>
+              <tr>
+                <td><kbd>↓</kbd> <kbd>↑</kbd></td>
+                <td>Vertikālie pielikumi, koda paraugi un risinājumu atsauces</td>
+              </tr>
+              <tr>
+                <td><kbd>Esc</kbd></td>
+                <td>Visu slaidu pārskata režīms</td>
+              </tr>
+              <tr>
+                <td><kbd>S</kbd></td>
+                <td>Pasniedzēja runātāja piezīmes (Speaker View)</td>
+              </tr>
+              <tr>
+                <td><kbd>F</kbd></td>
+                <td>Pilnekrāna režīms</td>
+              </tr>
+            </table>
+          </section>
         </div>
-      </article>
-
-      <aside class="card card-violet">
-        <h3>Navigācija prezentācijā</h3>
-        <p>Prezentācijai ir divu līmeņu uzbūve: galvenā gaita pa horizontāli un papildu paraugi / darba lapas vertikāli.</p>
-        <table class="key-table">
-          <tr>
-            <td><kbd>←</kbd> <kbd>→</kbd></td>
-            <td>108 galvenie slaidi (t.sk. 8 paškontroles)</td>
-          </tr>
-          <tr>
-            <td><kbd>↓</kbd> <kbd>↑</kbd></td>
-            <td>Vertikālie pielikumi, koda paraugi un risinājumu atsauces</td>
-          </tr>
-          <tr>
-            <td><kbd>Esc</kbd></td>
-            <td>Visu slaidu pārskata režīms</td>
-          </tr>
-          <tr>
-            <td><kbd>S</kbd></td>
-            <td>Pasniedzēja runātāja piezīmes (Speaker View)</td>
-          </tr>
-          <tr>
-            <td><kbd>F</kbd></td>
-            <td>Pilnekrāna režīms</td>
-          </tr>
-        </table>
-      </aside>
+      </details>
     </div>
   </main>
 

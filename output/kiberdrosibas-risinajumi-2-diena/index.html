@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
   <title>Kiberdrošības risinājumi I — Otrā diena | Kristaps Kūlis</title>
-  <meta name="description" content="Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I — Otrās dienas prezentācija (100+29 slaidi). Projekts Nr. 4.2.2.3/1/24/I/001, pasniedzējs Kristaps Kūlis." />
+  <meta name="description" content="Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I — Otrās dienas prezentācija (107+29 slaidi). Projekts Nr. 4.2.2.3/1/24/I/001, pasniedzējs Kristaps Kūlis." />
   <meta property="og:title" content="Kiberdrošības risinājumi I — Otrā diena | Kristaps Kūlis" />
   <meta property="og:description" content="Praktiskā darba semināra 2. dienas Reveal.js prezentācija ar konfigurāciju piemēriem un testēšanas scenārijiem pedagogiem." />
   <meta property="og:type" content="website" />
@@ -323,6 +323,29 @@
       background: rgba(255, 255, 255, 0.14);
       color: #FFD2CC;
       border-color: transparent;
+    }
+
+    .reveal section.layout-kpi .materials-link {
+      margin: 20px 0 0;
+      font-size: 20px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 2;
+    }
+
+    .reveal section.layout-kpi .materials-link a {
+      color: #FF9B8E;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .reveal section.layout-kpi .materials-link a:hover {
+      color: #FFFFFF;
+    }
+
+    .reveal section.layout-kpi .materials-link a:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
     }
 
     /* =====================================================================
@@ -771,14 +794,17 @@
   <p class="muted slide-kicker">Ievads (09:00–09:05)</p>
   <h2>Kiberdrošība darbojas kā nepārtraukts ieviešanas, kontroles un uzturēšanas cikls</h2>
   <div class="kpi-block">
-    <div class="kpi-value">16 h · 2. diena</div>
-    <p class="kpi-context muted">7 no 8 tēmām ar praktisku darbu · 345 min darbs</p>
+    <div class="kpi-value">2. diena · 8 tēmas</div>
+    <p class="kpi-context muted">7 praktiskie darbi · Vienots „KRM” scenārijs · Paškontrole pēc katras tēmas</p>
   </div>
   <ul>
     <li>Programma: „Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I” — Otrā diena.</li>
     <li>Mērķis: pilnveidot pedagogu prasmes risinājumu ieviešanā, uzturēšanā un novērtēšanā.</li>
     <li>Pasniedzējs: Kristaps Kūlis · Projekts Nr. 4.2.2.3/1/24/I/001.</li>
   </ul>
+  <p class="materials-link">Slaidi un darba lapas:<br />
+    <a href="https://krikulis.github.io/kk-lessons-112026.github.io/" target="_blank" rel="noopener">https://krikulis.github.io/kk-lessons-112026.github.io/</a>
+  </p>
   <aside class="notes">
     Sveicināti semināra otrajā dienā! Šodien iziesim pilnu kiberdrošības risinājumu ciklu no arhitektūras līdz uzturēšanai un kompleksam grupu projektam, izmantojot reālu laboratorijas sintaksi.
   </aside>
@@ -818,12 +844,12 @@
   <h2>Otrā diena ved no tehniskās arhitektūras līdz pilnam organizācijas drošības plānam</h2>
   <figure class="visual-slot" data-asset-type="chartjs" data-asset-id="asset-003-day2-roadmap">
     <canvas id="asset-003-day2-roadmap" aria-label="Otrā diena ved no tehniskās arhitektūras līdz pilnam organizācijas drošības plānam"></canvas>
-    <figcaption class="muted">Otrās dienas laika sadalījums: 181 min teorija/instruktāža un 164 min praktiskie uzdevumi (kopā 345 min).</figcaption>
+    <figcaption class="muted">Otrās dienas uzbūve pa 8 tēmām: 7 praktiskie darbi, paškontroles jautājumi un kopīgs risinājums.</figcaption>
   </figure>
   <ul>
     <li>Rīta bloks (09:05–12:30): arhitektūra, ugunsmūri ar WAF, piekļuves kontrole un revīzija.</li>
     <li>Pēcpusdiena (13:15–15:45): testēšana, uzturēšana un kompleksais grupu projekts.</li>
-    <li>Noslēgums (15:45–16:15): aizstāvēšana, bezmaksas laboratorijas rīki un atgriezeniskā saite.</li>
+    <li>Noslēgums (15:45–16:15): aizstāvēšana, bezmaksas laboratorijas rīki un paškontrole.</li>
   </ul>
     <div class="vertical-hint" aria-label="Pieejami papildu slaidi lejup">↓ Pielikumi / atslēgas</div>
   <aside class="notes">
@@ -4617,15 +4643,15 @@ TC-08 | Drošības | IAM-1 | [Darbība pret IAM-1?]         | [Rezultāts + žur
 </section>
 <section class="layout-chart" data-slide-id="095a" data-topic="Tēma 8 — Laika grafiks (15:45–16:15)" data-parent-id="095" data-orientation="vertical">
   <p class="muted slide-kicker">Tēma 8 — Laika grafiks (15:45–16:15)</p>
-  <h2>Noslēguma 30 minūtes sadala aizstāvēšanu, mācību rīku apskatu un atgriezenisko saiti</h2>
+  <h2>Noslēguma 30 minūtes ietver aizstāvēšanu, mācību rīkus un paškontroli</h2>
   <figure class="visual-slot" data-asset-type="chartjs" data-asset-id="asset-095a-t8-closing-agenda">
-    <canvas id="asset-095a-t8-closing-agenda" aria-label="Noslēguma 30 minūtes sadala aizstāvēšanu, mācību rīku apskatu un atgriezenisko saiti"></canvas>
-    <figcaption class="muted">Noslēguma 30 minūšu laika sadalījums starp komandu aizstāvēšanu, mācību pārnesumu un atgriezenisko saiti.</figcaption>
+    <canvas id="asset-095a-t8-closing-agenda" aria-label="Noslēguma 30 minūtes ietver aizstāvēšanu, mācību rīkus un paškontroli"></canvas>
+    <figcaption class="muted">Noslēguma 30 minūšu laika sadalījums starp komandu aizstāvēšanu, mācību pārnesumu un paškontroli.</figcaption>
   </figure>
   <ul>
     <li><code>15:45–16:01</code> (16 min): 4 grupu aizstāvēšana un savstarpējā izvērtēšana.</li>
     <li><code>16:01–16:11</code> (10 min): kopējā sintēze, mācību moduļu karte un bezmaksas laboratorijas rīki.</li>
-    <li><code>16:11–16:15</code> (4 min): 5 tehniķa paradumi, atgriezeniskās saites anketa un noslēgums.</li>
+    <li><code>16:11–16:15</code> (4 min): 5 tehniķa paradumi, paškontrole un noslēgums.</li>
   </ul>
   <aside class="notes">
     Pielikuma laika grafiks precīzai pēdējo 30 minūšu vadībai.
@@ -4837,36 +4863,7 @@ rubric:     "4 kritēriji x 0..2 punkti (maks. 8 p.)"
     <li>3. Kurā režīmā WAF reāli aptur uzbrukumu? <span class="fragment fade-up quiz-ans">→ Tikai <code>SecRuleEngine On</code> (ar <code>403</code>).</span></li>
   </ul>
   <aside class="notes">
-    Noslēdzošā metodiskā paškontrole pirms atgriezeniskās saites slaida (100). Apvieno dienas galveno mācību atziņu: MI var uzģenerēt konfigurāciju, bet tehniķa kvalifikāciju pierāda pareizs režīms, portu un žurnālu verifikācija un mutiska aizstāvēšana.
-  </aside>
-</section>
-<section class="layout-split" data-slide-id="100" data-topic="Tēma 8 — Noslēgums (16:12–16:15)" data-orientation="horizontal">
-  <p class="muted slide-kicker">Tēma 8 — Noslēgums (16:12–16:15)</p>
-  <h2>Paldies par aktīvu darbu — jūsu atgriezeniskā saite pilnveido nākamo programmu</h2>
-  <div class="split-grid">
-    <div class="card">
-      <ul>
-        <li>Aizpildiet semināra atgriezeniskās saites anketu <code>[TBD: Source Needed — QR/saite]</code>.</li>
-        <li>Visi materiāli, laboratorijas receptes, pakotnes un rubrikas brīvi izmantojami mācību moduļos.</li>
-        <li>Projekts Nr. 4.2.2.3/1/24/I/001 · Pasniedzējs: Kristaps Kūlis · Uz tikšanos!</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Atgriezeniskā saite un kontakti</h3>
-      <div class="vis-vs">
-        <div class="vis-box vis-violet">
-          <span class="vis-badge">ATGRIEZENISKĀS SAITES ANKETA</span>
-          <p>Noskenējiet pasniedzēja ekrānā / izdales materiālā redzamo anketas QR kodu vai atveriet projekta saiti.</p>
-        </div>
-        <div class="vis-box vis-green">
-          <span class="vis-badge">PROJEKTS NR. 4.2.2.3/1/24/I/001</span>
-          <p>„Pedagogu profesionālā atbalsta sistēmas izveide” · Lektors: <strong>Kristaps Kūlis</strong></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <aside class="notes">
-    Pateicieties Saldus tehnikuma un sadarbības partneru pedagogiem par aktīvu darbu, diskusijām un praktiskajiem risinājumiem. Pārliecinieties, ka visi saņēmuši atgriezeniskās saites anketas saiti!
+    Noslēdziet semināru ar metodisko paškontroli. Apvieno dienas galveno mācību atziņu: MI var uzģenerēt konfigurāciju, bet tehniķa kvalifikāciju pierāda pareizs režīms, portu un žurnālu verifikācija un mutiska aizstāvēšana.
   </aside>
 </section>
     </div>
@@ -4927,7 +4924,7 @@ rubric:     "4 kritēriji x 0..2 punkti (maks. 8 p.)"
         const leg = document.createElementNS(svgNS, 'text');
         leg.setAttribute('x', 480); leg.setAttribute('y', 18); leg.setAttribute('text-anchor', 'middle');
         leg.setAttribute('fill', '#1F2933'); leg.setAttribute('font-size', '13'); leg.setAttribute('font-weight', '700');
-        leg.textContent = '■ Tumšais: Teorija / ievads (181 min)   ■ Sarkanais: Praktiskais darbs / aizstāvēšana (164 min)';
+        leg.textContent = '■ Tumšais: Teorija / ievads   ■ Sarkanais: Praktiskais darbs / aizstāvēšana';
         svg.appendChild(leg);
       } else {
         const colors = ['#E53F30', '#1F2933', '#643CBD', '#0F766E'];
@@ -4962,7 +4959,7 @@ rubric:     "4 kritēriji x 0..2 punkti (maks. 8 p.)"
         ], false);
         if (ctxClose) renderOfflineBarFallback(ctxClose, [
           {label:'15:45–16:01 Grupu prezentācijas',v1:16},{label:'16:01–16:03 Kopsavilkums',v1:2},
-          {label:'16:03–16:11 Mācību rīki un MI',v1:8},{label:'16:11–16:15 Atgriezeniskā saite',v1:4}
+          {label:'16:03–16:11 Mācību rīki un MI',v1:8},{label:'16:11–16:15 Paškontrole un noslēgums',v1:4}
         ], true);
         return;
       }
@@ -5001,7 +4998,7 @@ rubric:     "4 kritēriji x 0..2 punkti (maks. 8 p.)"
         new Chart(ctxClose, {
           type: 'bar',
           data: {
-            labels: ['15:45–16:01 Grupu prezentācijas', '16:01–16:03 Kopsavilkums', '16:03–16:11 Mācību rīki un MI', '16:11–16:15 Atgriezeniskā saite'],
+            labels: ['15:45–16:01 Grupu prezentācijas', '16:01–16:03 Kopsavilkums', '16:03–16:11 Mācību rīki un MI', '16:11–16:15 Paškontrole un noslēgums'],
             datasets: [{
               label: 'Minūtes',
               data: [16, 2, 8, 4],
@@ -5028,7 +5025,7 @@ rubric:     "4 kritēriji x 0..2 punkti (maks. 8 p.)"
       initBdaCharts();
     }
 
-    // Optional Gate 3 self-audit (?audit=1): checks scrollHeight <= clientHeight AND WCAG text contrast across all 129 slides
+    // Optional Gate 3 self-audit (?audit=1): checks scrollHeight <= clientHeight AND WCAG text contrast across all slides
     if (new URLSearchParams(window.location.search).get('audit') === '1') {
       function parseRgba(str) {
         if (!str) return null;

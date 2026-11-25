@@ -7,9 +7,9 @@
     "sourceOutline":  "drafts/2026-11-24-kiberdrosibas-risinajumi-2-diena-outline.md",
     "sourceDocument":  "plans.docx",
     "generatedAt":  "2026-11-24",
-    "totalMainSlides":  108,
+    "totalMainSlides":  107,
     "totalVerticalSlides":  29,
-    "totalSlides":  137,
+    "totalSlides":  136,
     "labStack":  [
                      "ufw",
                      "OPNsense",
@@ -1846,7 +1846,7 @@
                                             "slug":  "095a-t8-closing-agenda",
                                             "file":  "slides/095a-t8-closing-agenda.html",
                                             "topic":  "Tēma 8 — Laika grafiks (15:45–16:15)",
-                                            "title":  "Noslēguma 30 minūtes sadala aizstāvēšanu, mācību rīku apskatu un atgriezenisko saiti",
+                                            "title":  "Noslēguma 30 minūtes ietver aizstāvēšanu, mācību rīkus un paškontroli",
                                             "layout":  ".layout-chart",
                                             "dataSource":  "`plans.docx` (Tēma 8: 15:45–16:15).",
                                             "requiredAssets":  [
@@ -1947,21 +1947,6 @@
                        "dataSource":  "`plans.docx` (Tēma 8 self-check).",
                        "requiredAssets":  [
                                               "highlightjs:language-yaml"
-                                          ],
-                       "vertical":  [
-
-                                    ]
-                   },
-                   {
-                       "id":  "100",
-                       "slug":  "100-feedback-closing",
-                       "file":  "slides/100-feedback-closing.html",
-                       "topic":  "Tēma 8 — Noslēgums",
-                       "title":  "Paldies par aktīvu darbu — jūsu atgriezeniskā saite pilnveido nākamo programmu",
-                       "layout":  ".layout-split",
-                       "dataSource":  "`plans.docx` (Tēma 8: „atgriezeniskā saite un semināra noslēgums”).",
-                       "requiredAssets":  [
-
                                           ],
                        "vertical":  [
 
