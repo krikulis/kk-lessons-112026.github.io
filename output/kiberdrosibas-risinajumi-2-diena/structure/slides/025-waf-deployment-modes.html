@@ -1,0 +1,16 @@
+<section class="layout-chart" data-slide-id="025" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>WAF izvieto DMZ zonā kā reverso starpniekserveri caur novērošanas režīmu</h2>
+  <figure class="visual-slot" data-asset-type="inline-svg" data-asset-id="asset-025-waf-deployment-modes">
+    <div class="svg-placeholder" data-svg-target="asset-025-waf-deployment-modes">[SVG diagramma — Gate 3]</div>
+    <figcaption class="muted">DMZ reversā starpniekservera shēma: WAF pārbauda HTTPS pieprasījumus pirms tie sasniedz iekšējo serveri.</figcaption>
+  </figure>
+  <ul>
+    <li>Izvietošana: mākoņa WAF (CDN) vai pašu serveris DMZ zonā (<code>Nginx + ModSecurity</code>).</li>
+    <li>Sākotnēji ieslēdziet novērošanas (<code>DetectionOnly</code>) režīmu, lai atklātu viltus pozitīvos bloķējumus.</li>
+    <li>Pēc pielāgošanas aktivizējiet bloķēšanas (<code>On</code>) režīmu ar <code>OWASP Core Rule Set (CRS)</code>.</li>
+  </ul>
+  <aside class="notes">
+    Nospiediet <code>↓</code>, lai parādītu reālu 8 rindu <code>ModSecurity</code> konfigurācijas piemēru, kuru šodien izmantosim arī 4. tēmas kļūdu revīzijā un 5. tēmas <code>curl</code> testā!
+  </aside>
+</section>

@@ -1,0 +1,1971 @@
+{
+    "schemaVersion":  "1.0",
+    "topic":  "kiberdrosibas-risinajumi-2-diena",
+    "programTitle":  "Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I — Otrā diena",
+    "project":  "Pedagogu profesionālās kompetences pilnveides programma",
+    "instructor":  "Kristaps Kūlis",
+    "sourceOutline":  "drafts/2026-11-24-kiberdrosibas-risinajumi-2-diena-outline.md",
+    "sourceDocument":  "plans.docx",
+    "generatedAt":  "2026-11-24",
+    "totalMainSlides":  108,
+    "totalVerticalSlides":  29,
+    "totalSlides":  137,
+    "labStack":  [
+                     "ufw",
+                     "OPNsense",
+                     "Nginx + ModSecurity (OWASP CRS)",
+                     "OpenSSH + fail2ban",
+                     "Windows AD / PowerShell + LAPS",
+                     "nc / Test-NetConnection / curl / nmap / Lynis",
+                     "Wazuh / rsyslog",
+                     "Git",
+                     "Docker Compose + OWASP Juice Shop"
+                 ],
+    "slides":  [
+                   {
+                       "id":  "001",
+                       "slug":  "001-title",
+                       "file":  "slides/001-title.html",
+                       "topic":  "Ievads",
+                       "title":  "Kiberdrošība darbojas kā nepārtraukts ieviešanas, kontroles un uzturēšanas cikls",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx`",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "002",
+                       "slug":  "002-audience-purpose",
+                       "file":  "slides/002-audience-purpose.html",
+                       "topic":  "Ievads",
+                       "title":  "Seminārs stiprina „Kiberdrošības tehniķa” profesionālo moduļu mācīšanas kvalitāti",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx`",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "003",
+                       "slug":  "003-day2-roadmap",
+                       "file":  "slides/003-day2-roadmap.html",
+                       "topic":  "Ievads",
+                       "title":  "Otrā diena ved no tehniskās arhitektūras līdz pilnam organizācijas drošības plānam",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx`",
+                       "requiredAssets":  [
+                                              "chartjs:asset-003-day2-roadmap"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "003a",
+                                            "slug":  "003a-day1-bridge-norms",
+                                            "file":  "slides/003a-day1-bridge-norms.html",
+                                            "topic":  "Ievads — Pielikums",
+                                            "title":  "Praktiska kļūdu analīze un kopīga diskusija nostiprina pirmās dienas pamatus",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx`; Day 1 carryover `[TBD: Source Needed]`.",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "004",
+                       "slug":  "004-t1-opener",
+                       "file":  "slides/004-t1-opener.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Pirmā tēma izveido drošas arhitektūras un minimālo tiesību pamatu visai dienai",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx`",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "005",
+                       "slug":  "005-single-layer-failure",
+                       "file":  "slides/005-single-layer-failure.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Paļaušanās uz vienu aizsardzības barjeru rada kritisku viena punkta kļūmi",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1 scope).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "006",
+                       "slug":  "006-defense-in-depth",
+                       "file":  "slides/006-defense-in-depth.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Daudzslāņu aizsardzība kombinē perimetra, tīkla, galiekārtu un datu kontroles",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 1: „Tīkla un galiekārtu aizsardzības risinājumi”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-006-defense-in-depth"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "007",
+                       "slug":  "007-network-defense-tools",
+                       "file":  "slides/007-network-defense-tools.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Tīkla drošības risinājumi kontrolē piekļuvi, filtrē plūsmas un atklāj anomālijas",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1: „Tīkla un galiekārtu aizsardzības risinājumi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "008",
+                       "slug":  "008-network-segmentation-dmz",
+                       "file":  "slides/008-network-segmentation-dmz.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Tīkla segmentācija ar VLAN un DMZ ierobežo incidenta izplatīšanās rādiusu",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 1 technical architecture) + DMZ/WAF integration.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-008-network-segmentation-dmz"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "009",
+                       "slug":  "009-endpoint-defense",
+                       "file":  "slides/009-endpoint-defense.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Galiekārtu aizsardzība aptur draudus tur, kur lietotāji mijiedarbojas ar datiem",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1: „galiekārtu aizsardzības risinājumi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "010",
+                       "slug":  "010-telemetry-integration",
+                       "file":  "slides/010-telemetry-integration.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Centralizēta žurnalēšana savieno tīkla un galiekārtu notikumus vienā ainā",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 1 architecture \u0026 infrastructure integration).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-010-telemetry-integration"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "011",
+                       "slug":  "011-infrastructure-inventory",
+                       "file":  "slides/011-infrastructure-inventory.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Nevar droši aizsargāt infrastruktūru, kuras ierīces un servisi nav inventarizēti",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1: „savietojamība ar IT infrastruktūru”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "012",
+                       "slug":  "012-compatibility-risks",
+                       "file":  "slides/012-compatibility-risks.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Nesavietojams drošības risinājums paralizē darbu un mudina lietotājus to apiet",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 1: „to savietojamība ar IT infrastruktūru”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "013",
+                       "slug":  "013-staged-rollout",
+                       "file":  "slides/013-staged-rollout.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Pakāpeniska ieviešana pilotgrupā atklāj savietojamības problēmas bez dīkstāves",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 1: „tehniskā arhitektūra un ieviešana”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-013-staged-rollout"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "014",
+                       "slug":  "014-latvia-nis2-mk397",
+                       "file":  "slides/014-latvia-nis2-mk397.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Nacionālais kiberdrošības likums un MK Nr. 397 nosaka obligāto drošības bāzlīniju",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1 scope) + Nacionālais kiberdrošības likums (NKDL) / MK noteikumi Nr. 397 „Minimālās kiberdrošības prasības”.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "014a",
+                                            "slug":  "014a-mk397-cis-mapping",
+                                            "file":  "slides/014a-mk397-cis-mapping.html",
+                                            "topic":  "Tēma 1 — Pielikums (09:05–09:45)",
+                                            "title":  "Šodienas praktiskie risinājumi tieši izpilda MK Nr. 397 minimālās prasības",
+                                            "layout":  ".layout-chart",
+                                            "dataSource":  "`plans.docx` + MK noteikumi Nr. 397.",
+                                            "requiredAssets":  [
+                                                                   "inline-svg:asset-014a-mk397-cis-mapping"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "015",
+                       "slug":  "015-secure-configuration-code",
+                       "file":  "slides/015-secure-configuration-code.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Droša bāzlīnija pārvērš nostiprināšanu konkrētos sshd un ufw parametros",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 1: „Drošas konfigurēšanas principi”) + VET Lab Stack.",
+                       "requiredAssets":  [
+                                              "highlightjs:language-ini"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "015a",
+                                            "slug":  "015a-default-vs-hardened",
+                                            "file":  "slides/015a-default-vs-hardened.html",
+                                            "topic":  "Tēma 1 — Pielikums (09:05–09:45)",
+                                            "title":  "Sistēmas nostiprināšana sistemātiski likvidē noklusējuma konfigurācijas caurumus",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 1 hardening).",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "016",
+                       "slug":  "016-least-privilege",
+                       "file":  "slides/016-least-privilege.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Minimālo tiesību princips ierobežo kaitējumu konta kompromitēšanas gadījumā",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1: „minimālo piekļuves tiesību principi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "017",
+                       "slug":  "017-zero-trust-sod",
+                       "file":  "slides/017-zero-trust-sod.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Pienākumu dalīšana un „neuzticies, pārbaudi” novērš iekšējos un ārējos riskus",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 1 architectural principles).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-017-zero-trust-sod"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "018",
+                       "slug":  "018-architecture-before-after",
+                       "file":  "slides/018-architecture-before-after.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Pat vienkārša mazā biroja pārprojektēšana novērš kritiskākos ieviešanas riskus",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 1 synthesis).",
+                       "requiredAssets":  [
+                                              "highlightjs:language-diff"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "019",
+                       "slug":  "019-t1-synthesis",
+                       "file":  "slides/019-t1-synthesis.html",
+                       "topic":  "Tēma 1 (09:05–09:45)",
+                       "title":  "Arhitektūras lēmumi nosaka visu nākamo drošības noteikumu vienkāršību",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1 wrap-up).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "019q",
+                       "slug":  "019q-t1-selfcheck",
+                       "file":  "slides/019q-t1-selfcheck.html",
+                       "topic":  "Tēma 1 — Paškontrole (09:42–09:45)",
+                       "title":  "Paškontrole (1. tēma): pārbaudiet arhitektūras, DMZ un ieviešanas lēmumus",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 1 self-check).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "020",
+                       "slug":  "020-t2-opener",
+                       "file":  "slides/020-t2-opener.html",
+                       "topic":  "Tēma 2 (09:45–10:30)",
+                       "title":  "Otrā tēma pārvērš drošības politiku precīzos tīkla, DNS un WAF noteikumos",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` + WAF \u0026 CERT.LV DNS additions.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "021",
+                       "slug":  "021-firewall-osi-layers",
+                       "file":  "slides/021-firewall-osi-layers.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Ugunsmūra filtrēšanas dziļums nosaka, vai tas redz paketes, lietotnes vai HTTP saturu",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 2: „Ugunsmūru darbības principi”) + WAF integration.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-021-firewall-osi-layers"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "022",
+                       "slug":  "022-stateless-vs-stateful",
+                       "file":  "slides/022-stateless-vs-stateful.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Stāvokļa ugunsmūris seko aktīvajiem savienojumiem un automātiski atļauj derīgas atbildes",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 2: „Ugunsmūru darbības principi un datu plūsmas filtrēšana”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "023",
+                       "slug":  "023-ngfw-dns-firewall",
+                       "file":  "slides/023-ngfw-dns-firewall.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "NGFW un CERT.LV DNS ugunsmūris bloķē draudus lietotņu un domēnu līmenī",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 2 scope) + CERT.LV / NIC.LV DNS ugunsmūris (`dnsmuris.lv`).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-023-ngfw-dns-firewall"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "024",
+                       "slug":  "024-waf-purpose-vs-ngfw",
+                       "file":  "slides/024-waf-purpose-vs-ngfw.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Tīmekļa lietotņu ugunsmūris (WAF) bloķē uzbrukumus, kas slēpjas atļautajā HTTPS trafikā",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 2 scope) + WAF integration.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "025",
+                       "slug":  "025-waf-deployment-modes",
+                       "file":  "slides/025-waf-deployment-modes.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "WAF izvieto DMZ zonā kā reverso starpniekserveri caur novērošanas režīmu",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 2 scope) + WAF integration.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-025-waf-deployment-modes"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "025a",
+                                            "slug":  "025a-modsecurity-config-code",
+                                            "file":  "slides/025a-modsecurity-config-code.html",
+                                            "topic":  "Tēma 2 — Pielikums (09:45–10:10)",
+                                            "title":  "Sešas ModSecurity konfigurācijas rindas ieslēdz OWASP CRS aizsardzību laboratorijā",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "VET Lab Stack (`Nginx` + `ModSecurity` + `OWASP CRS`).",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-apache"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "026",
+                       "slug":  "026-traffic-directions-egress",
+                       "file":  "slides/026-traffic-directions-egress.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Ienākošās, izejošās un starpzonu plūsmas jāfiltrē pret iekļūšanu un datu noplūdi",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 2: „datu plūsmas filtrēšana”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "027",
+                       "slug":  "027-rule-order-top-down",
+                       "file":  "slides/027-rule-order-top-down.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Ugunsmūra noteikumi tiek pārbaudīti no augšas uz leju līdz pirmajai sakritībai",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 2: „Ugunsmūra noteikumu veidi, atļautie un bloķētie savienojumi”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-027-rule-order-top-down"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "028",
+                       "slug":  "028-shadowed-rules-bug",
+                       "file":  "slides/028-shadowed-rules-bug.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Viens plašs atļaujas noteikums pilnībā apklusina zemākos aizliegumus",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 2 rule logic) + VET Lab Stack (`ufw`).",
+                       "requiredAssets":  [
+                                              "highlightjs:language-bash"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "029",
+                       "slug":  "029-default-deny-vs-allow",
+                       "file":  "slides/029-default-deny-vs-allow.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "„Viss, kas nav skaidri atļauts, ir aizliegts” ir vienīgā prognozējamā drošības politika",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 2: „atļautie un bloķētie savienojumi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "030",
+                       "slug":  "030-rule-anatomy-ufw",
+                       "file":  "slides/030-rule-anatomy-ufw.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Pilnvērtīgs ugunsmūra noteikums definē sešus parametrus, žurnalēšanu un pamatojumu",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 2: „Ugunsmūra noteikumu veidi”) + VET Lab Stack (`ufw`).",
+                       "requiredAssets":  [
+                                              "highlightjs:language-bash"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "031",
+                       "slug":  "031-allow-drop-reject",
+                       "file":  "slides/031-allow-drop-reject.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Izvēle starp DROP un REJECT ietekmē ārējo slēpšanos un iekšējo diagnostiku",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 2: „atļautie un bloķētie savienojumi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "032",
+                       "slug":  "032-essential-vs-risky-ports",
+                       "file":  "slides/032-essential-vs-risky-ports.html",
+                       "topic":  "Tēma 2 (09:45–10:10)",
+                       "title":  "Kritiskie pārvaldības un failu porti nekad nedrīkst būt atvērti internetam",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 2: „atļautie un bloķētie savienojumi”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-032-essential-vs-risky-ports"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "032a",
+                                            "slug":  "032a-clean-ufw-reference",
+                                            "file":  "slides/032a-clean-ufw-reference.html",
+                                            "topic":  "Tēma 2 — Pielikums (09:45–10:10)",
+                                            "title":  "Septiņas ufw komandas nostiprina atsevišķu Linux serveri bez ēnošanas",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 2 example) + VET Lab Stack.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-bash"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "033",
+                       "slug":  "033-task1-firewall-table",
+                       "file":  "slides/033-task1-firewall-table.html",
+                       "topic":  "Tēma 2 — PD1: Ugunsmūra noteikumu tabula (10:10–10:25)",
+                       "title":  "PD1: izstrādājiet „KRM” biroja secīgo ugunsmūra noteikumu tabulu un pārbaudiet plūsmas",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 2: „Praktiskais uzdevums: vienkāršas ugunsmūra noteikumu tabulas sagatavošana”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "034",
+                       "slug":  "034-task1-debrief-break",
+                       "file":  "slides/034-task1-debrief-break.html",
+                       "topic":  "Tēma 2 — PD1 kopsavilkums un pauze (10:25–11:00)",
+                       "title":  "Skaidra secība bez ēnošanas un Default Deny novērš caurumus — kafijas pauze līdz 11:00",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 2 debrief + Coffee break 10:30–11:00).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "034a",
+                                            "slug":  "034a-task1-solution-key",
+                                            "file":  "slides/034a-task1-solution-key.html",
+                                            "topic":  "Tēma 2 — PD1 parauga risinājums (10:25–10:30)",
+                                            "title":  "PD1 parauga risinājums: 10 secīgi noteikumi bez ēnošanas ar DMZ/WAF, egress un DENY ALL",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 2 task solution) + DMZ/WAF integration.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-text"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "034q",
+                       "slug":  "034q-t2-selfcheck",
+                       "file":  "slides/034q-t2-selfcheck.html",
+                       "topic":  "Tēma 2 — Paškontrole (10:28–10:30)",
+                       "title":  "Paškontrole (2. tēma): pārbaudiet ugunsmūra secību, stāvokli un WAF lomu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 2 self-check).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "035",
+                       "slug":  "035-t3-opener",
+                       "file":  "slides/035-t3-opener.html",
+                       "topic":  "Tēma 3 (11:00–11:45)",
+                       "title":  "Trešā tēma stiprina identitātes slāni — tiesības, mākoņa piekļuvi un autentifikāciju",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` + Cloud IAM \u0026 LAPS additions.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "036",
+                       "slug":  "036-aaa-framework",
+                       "file":  "slides/036-aaa-framework.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "AAA modelis nodala, kas lietotājs ir, ko viņš drīkst un ko izdarīja",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 3: „Lietotāju piekļuves kontrole un autentifikācijas iestatījumi”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-036-aaa-framework"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "037",
+                       "slug":  "037-access-control-models",
+                       "file":  "slides/037-access-control-models.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Izvēlētais piekļuves modelis nosaka tiesību pārvaldības stingrību un mērogojamību",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 3: „Lietotāju tiesību pārvaldība, piekļuves līmeņi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "038",
+                       "slug":  "038-rbac-design",
+                       "file":  "slides/038-rbac-design.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Lomu bāzēta piekļuves kontrole novērš haotisku tiesību piešķiršanu personām",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 3: „Lietotāju tiesību pārvaldība”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-038-rbac-design"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "039",
+                       "slug":  "039-privilege-levels-laps",
+                       "file":  "slides/039-privilege-levels-laps.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Piekļuves līmeņu hierarhija un Windows LAPS aptur horizontālo izplatīšanos",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 3: „piekļuves līmeņi”) + Windows LAPS addition.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "040",
+                       "slug":  "040-admin-account-separation",
+                       "file":  "slides/040-admin-account-separation.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Administratīvais konts nekad nedrīkst tikt izmantots e-pastam un pārlūkošanai",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 3 privilege management) + VET Lab Stack (`PowerShell/AD`).",
+                       "requiredAssets":  [
+                                              "highlightjs:language-powershell"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "040a",
+                                            "slug":  "040a-windows-laps-powershell",
+                                            "file":  "slides/040a-windows-laps-powershell.html",
+                                            "topic":  "Tēma 3 — Pielikums (11:00–11:25)",
+                                            "title":  "Windows LAPS pārvaldība prasa tikai četras PowerShell komandas laboratorijā",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "VET Lab Stack (`Windows Server AD` + `LAPS`).",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-powershell"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "041",
+                       "slug":  "041-user-lifecycle-jml",
+                       "file":  "slides/041-user-lifecycle-jml.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Sakārtots konta dzīves cikls novērš tiesību uzkrāšanos un pamestus kontus",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 3: „Lietotāju tiesību pārvaldība”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-041-user-lifecycle-jml"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "042",
+                       "slug":  "042-authentication-factors",
+                       "file":  "slides/042-authentication-factors.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Spēcīga autentifikācija apvieno vismaz divus neatkarīgus identitātes faktorus",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 3: „autentifikācijas iestatījumi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "043",
+                       "slug":  "043-mfa-aitm-strength",
+                       "file":  "slides/043-mfa-aitm-strength.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Tikai pikšķerēšanas noturīga MFA (FIDO2/Passkeys) pasargā pret sesiju nolaupīšanu",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 3: „autentifikācijas iestatījumi”) + AiTM/Passkeys addition.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-043-mfa-aitm-strength"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "044",
+                       "slug":  "044-cloud-iam-conditional-access",
+                       "file":  "slides/044-cloud-iam-conditional-access.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Mākoņa SSO un nosacītā piekļuve aizsargā skolas un uzņēmuma mākoņservisus",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 3 scope) + Cloud IAM / Conditional Access addition.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "045",
+                       "slug":  "045-bruteforce-ssh-code",
+                       "file":  "slides/045-bruteforce-ssh-code.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Pieteikšanās ierobežošana un SSH atslēgas aptur automatizētu paroļu minēšanu",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 3: „autentifikācijas iestatījumi”) + VET Lab Stack.",
+                       "requiredAssets":  [
+                                              "highlightjs:language-ini"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "046",
+                       "slug":  "046-password-shared-accounts",
+                       "file":  "slides/046-password-shared-accounts.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Garās paroles frāzes un individuāli konti novērš paredzamas paroles un anonimitāti",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 3: „autentifikācijas iestatījumi”, „biežākās konfigurācijas kļūdas”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "047",
+                       "slug":  "047-top5-auth-misconfigs",
+                       "file":  "slides/047-top5-auth-misconfigs.html",
+                       "topic":  "Tēma 3 (11:00–11:25)",
+                       "title":  "Piecas atkārtotas identitātes kļūdas rada augstākos piekļuves riskus",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 3: „biežākās konfigurācijas kļūdas”) + VET Lab Stack.",
+                       "requiredAssets":  [
+                                              "highlightjs:language-powershell"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "048",
+                       "slug":  "048-task2-brief",
+                       "file":  "slides/048-task2-brief.html",
+                       "topic":  "Tēma 3 — PD2: Piekļuves tiesību izvērtēšana (11:25–11:40)",
+                       "title":  "PD2: izvērtējiet piecu „KRM” kontu piekļuves tiesības, LAPS, MFA un prioritātes",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 3: „Praktiskais uzdevums: lietotāju piekļuves tiesību izvērtēšana”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "048a",
+                                            "slug":  "048a-task2-dataset",
+                                            "file":  "slides/048a-task2-dataset.html",
+                                            "topic":  "Tēma 3 — PD2 dati (11:25–11:40)",
+                                            "title":  "Piecu „KRM” kontu eksportā slēpjas 9 tiesību, LAPS, MFA un dzīves cikla pārkāpumi",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 3 practical task) + VET Lab Stack.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-text"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "049",
+                       "slug":  "049-task2-debrief",
+                       "file":  "slides/049-task2-debrief.html",
+                       "topic":  "Tēma 3 — PD2 kopsavilkums (11:40–11:45)",
+                       "title":  "Prioritizēta piekļuves revīzija slēdz visus 9 identitātes caurumus piecos „KRM” kontos",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 3 debrief).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "049a",
+                                            "slug":  "049a-task2-remediation-commands",
+                                            "file":  "slides/049a-task2-remediation-commands.html",
+                                            "topic":  "Tēma 3 — PD2 parauga labojumi (11:40–11:45)",
+                                            "title":  "Visus piecus „KRM” kontu pārkāpumus AD vidē novērš izpildāmas PowerShell komandas",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "VET Lab Stack (`PowerShell/AD`).",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-powershell"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "049q",
+                       "slug":  "049q-t3-selfcheck",
+                       "file":  "slides/049q-t3-selfcheck.html",
+                       "topic":  "Tēma 3 — Paškontrole (11:43–11:45)",
+                       "title":  "Paškontrole (3. tēma): pārbaudiet LAPS, MFA noturību un kontu dzīves ciklu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 3 self-check).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "050",
+                       "slug":  "050-t4-opener",
+                       "file":  "slides/050-t4-opener.html",
+                       "topic":  "Tēma 4 (11:45–12:30)",
+                       "title":  "Sistemātiska konfigurāciju revīzija atklāj kļūdas pirms tās izmanto uzbrucēji",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx`",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "051",
+                       "slug":  "051-why-misconfigs-dominate",
+                       "file":  "slides/051-why-misconfigs-dominate.html",
+                       "topic":  "Tēma 4 (11:45–12:00)",
+                       "title":  "Cilvēka konfigurācijas kļūdas rada bīstamākus caurumus nekā nulles dienas uzbrukumi",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 4 rationale).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "052",
+                       "slug":  "052-audit-methodology",
+                       "file":  "slides/052-audit-methodology.html",
+                       "topic":  "Tēma 4 (11:45–12:00)",
+                       "title":  "Četru soļu revīzijas metode pārvērš failu lasīšanu precīzā diagnostikā",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 4: „Kiberdrošības risinājumu konfigurāciju analīze”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-052-audit-methodology"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "053",
+                       "slug":  "053-risk-severity-scoring",
+                       "file":  "slides/053-risk-severity-scoring.html",
+                       "topic":  "Tēma 4 (11:45–12:00)",
+                       "title":  "Vienota trīs līmeņu riska skala nodrošina, ka kritiskākās kļūdas labo vispirms",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 4 audit prioritization).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "054",
+                       "slug":  "054-three-domain-checklists",
+                       "file":  "slides/054-three-domain-checklists.html",
+                       "topic":  "Tēma 4 (11:45–12:00)",
+                       "title":  "Trīs jomu revīzijas kontrolpunkti ļauj minūtē pamanīt rupjākās kļūdas",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 4: „ugunsmūra, piekļuves kontroles un autentifikācijas konfigurācijas piemēros”) + WAF integration.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-054-three-domain-checklists"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "055",
+                       "slug":  "055-live-warmup-audit",
+                       "file":  "slides/055-live-warmup-audit.html",
+                       "topic":  "Tēma 4 — PD3 treniņš (11:53–11:57)",
+                       "title":  "Kopīgais treniņš: atrodiet četras kļūdas (un vienu korektu rindu) ufw un sshd fragmentā",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 4 warm-up) + VET Lab Stack.",
+                       "requiredAssets":  [
+                                              "highlightjs:language-ini"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "055a",
+                                            "slug":  "055a-warmup-access-matrix",
+                                            "file":  "slides/055a-warmup-access-matrix.html",
+                                            "topic":  "Tēma 4 — Papildu treniņš (11:55–11:57)",
+                                            "title":  "Papildu treniņš: atrodiet divus minimālo tiesību pārkāpumus piekļuves matricā",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 4 warm-up).",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "056",
+                       "slug":  "056-ai-safe-config-audit",
+                       "file":  "slides/056-ai-safe-config-audit.html",
+                       "topic":  "Tēma 4 (11:57–12:00)",
+                       "title":  "Mākslīgais intelekts palīdz mācīties, bet rada datu noplūdes un kļūdu riskus",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 4 audit mindset) + AI safety addition.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "057",
+                       "slug":  "057-group-audit-brief",
+                       "file":  "slides/057-group-audit-brief.html",
+                       "topic":  "Tēma 4 — PD3: Konfigurāciju revīzija (12:00–12:30)",
+                       "title":  "PD3 (Jigsaw): katra grupa padziļināti revidē vienu pakotni un māca kolēģiem",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 4: „Praktiskais grupu darbs: kļūdu identificēšana sagatavotos ugunsmūra, piekļuves kontroles un autentifikācijas konfigurācijas piemēros”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "058",
+                       "slug":  "058-group-packets-overview",
+                       "file":  "slides/058-group-packets-overview.html",
+                       "topic":  "Tēma 4 — PD3 pakotnes (12:00–12:15)",
+                       "title":  "Trīs pakotnes satur kopā 12 kļūdainas rindas (4+4+4) un 6 korektas ēsmas",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 4 group audit packets) + WAF integration.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-058-group-packets-overview"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "058a",
+                                            "slug":  "058a-packet-a-ufw-waf",
+                                            "file":  "slides/058a-packet-a-ufw-waf.html",
+                                            "topic":  "Tēma 4 — PD3 Pakotne A (12:00–12:15)",
+                                            "title":  "Pakotne A: atrodiet 4 kļūdainas rindas un 2 korektas ēsmas ufw/WAF konfigurācijā",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 4 Packet A) + WAF + VET Lab Stack.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-ini"
+                                                               ]
+                                        },
+                                        {
+                                            "id":  "058b",
+                                            "slug":  "058b-packet-b-ad-access",
+                                            "file":  "slides/058b-packet-b-ad-access.html",
+                                            "topic":  "Tēma 4 — PD3 Pakotne B (12:00–12:15)",
+                                            "title":  "Pakotne B: atrodiet 4 kļūdainus kontus un 2 korektas ēsmas „KRM” AD eksportā",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 4 Packet B) + VET Lab Stack.",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        },
+                                        {
+                                            "id":  "058c",
+                                            "slug":  "058c-packet-c-ssh-auth",
+                                            "file":  "slides/058c-packet-c-ssh-auth.html",
+                                            "topic":  "Tēma 4 — PD3 Pakotne C (12:00–12:15)",
+                                            "title":  "Pakotne C: atrodiet 4 kļūdainas rindas un 2 korektas ēsmas sshd/IAM politikā",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 4 Packet C) + Cloud IAM + VET Lab Stack.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-ini"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "059",
+                       "slug":  "059-audit-report-format",
+                       "file":  "slides/059-audit-report-format.html",
+                       "topic":  "Tēma 4 — PD3 darba forma (12:00–12:25)",
+                       "title":  "Vienota četru lauku revīzijas forma ļauj ātri apmainīties ar secinājumiem trio",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 4 group work).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "059a",
+                                            "slug":  "059a-audit-card-template",
+                                            "file":  "slides/059a-audit-card-template.html",
+                                            "topic":  "Tēma 4 — Pielikums (12:00–12:25)",
+                                            "title":  "Revīzijas kartīte un riska matrica standartizē drošības audita atskaites",
+                                            "layout":  ".layout-chart",
+                                            "dataSource":  "`plans.docx` (Tēma 4 group work).",
+                                            "requiredAssets":  [
+                                                                   "inline-svg:asset-059a-audit-card-template"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "060",
+                       "slug":  "060-t4-debrief-lunch",
+                       "file":  "slides/060-t4-debrief-lunch.html",
+                       "topic":  "Tēma 4 — PD3 atslēga un pusdienas (12:25–13:15)",
+                       "title":  "12 kļūdu revīzijas atslēga apstiprina atradumus — pusdienas 12:30–13:15",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 4 wrap-up + Lunch break 12:30–13:15, 45 min).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "060a",
+                                            "slug":  "060a-master-flaw-key",
+                                            "file":  "slides/060a-master-flaw-key.html",
+                                            "topic":  "Tēma 4 — PD3 pilnā atslēga (12:25–12:30)",
+                                            "title":  "Pilnā revīzijas atslēga: 12 kļūdainas rindas (4+4+4) un 6 ēsmas pakotnēs A, B un C",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 4 debrief).",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "060q",
+                       "slug":  "060q-t4-selfcheck",
+                       "file":  "slides/060q-t4-selfcheck.html",
+                       "topic":  "Tēma 4 — Paškontrole (12:28–12:30)",
+                       "title":  "Paškontrole (4. tēma): pārbaudiet riska prioritizāciju un „ēsmu” atpazīšanu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 4 self-check).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "061",
+                       "slug":  "061-t5-opener",
+                       "file":  "slides/061-t5-opener.html",
+                       "topic":  "Tēma 5 (13:15–14:00)",
+                       "title":  "Nepārbaudīta drošības konfigurācija ir pieņēmums, nevis pierādīta aizsardzība",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx`",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "062",
+                       "slug":  "062-functional-vs-security",
+                       "file":  "slides/062-functional-vs-security.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Funkcionālā pārbaude apliecina darba nepārtrauktību, bet drošības pārbaude — bloķēšanu",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 5: „Funkcionālās un drošības pārbaudes”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-062-functional-vs-security"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "063",
+                       "slug":  "063-positive-vs-negative",
+                       "file":  "slides/063-positive-vs-negative.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Katram drošības noteikumam izstrādā gan pozitīvo, gan negatīvo testa gadījumu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 5: „Funkcionālās un drošības pārbaudes”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "064",
+                       "slug":  "064-testing-methods-vulnscan",
+                       "file":  "slides/064-testing-methods-vulnscan.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Konfigurācijas audits, ievainojamību skenēšana un aktīvie testi papildina viens otru",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 5: „testēšanas principi un metodes”) + Vulnerability Scanning addition.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-064-testing-methods-vulnscan"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "065",
+                       "slug":  "065-safe-testing-boundaries",
+                       "file":  "slides/065-safe-testing-boundaries.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Droša testēšana vienmēr notiek ar rakstisku atļauju un skaidri noteiktām robežām",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 5: „testēšanas principi”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "066",
+                       "slug":  "066-test-scenario-anatomy",
+                       "file":  "slides/066-test-scenario-anatomy.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Atkārtojams testēšanas scenārijs sastāv no sešiem obligātiem dokumentācijas laukiem",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 5: „testēšanas scenāriju izstrāde un rezultātu dokumentēšana”).",
+                       "requiredAssets":  [
+                                              "highlightjs:language-yaml"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "067",
+                       "slug":  "067-testing-firewalls-waf",
+                       "file":  "slides/067-testing-firewalls-waf.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Ugunsmūra un WAF testēšana pārbauda portu izolāciju un HTTP uzbrukumu bloķēšanu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 5 testing methods) + WAF \u0026 VET Lab Stack.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "067a",
+                                            "slug":  "067a-cli-firewall-waf-tests",
+                                            "file":  "slides/067a-cli-firewall-waf-tests.html",
+                                            "topic":  "Tēma 5 — Pielikums (13:15–13:40)",
+                                            "title":  "Gatavas laboratorijas pārbaudes komandas: nc, Test-NetConnection, nmap un WAF curl",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "VET Lab Stack (`nc`, `PowerShell`, `nmap`, `curl`, `ModSecurity`).",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-bash"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "068",
+                       "slug":  "068-testing-access-control",
+                       "file":  "slides/068-testing-access-control.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Piekļuves kontroles testi pārbauda vertikālās un horizontālās tiesību robežas",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 5 testing methods applied to Tēma 3).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-068-testing-access-control"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "069",
+                       "slug":  "069-testing-authentication",
+                       "file":  "slides/069-testing-authentication.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Autentifikācijas testi apstiprina MFA, konta bloķēšanu un sesijas termiņu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 5 testing methods).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "070",
+                       "slug":  "070-log-verification",
+                       "file":  "slides/070-log-verification.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Drošības pārbaude ir pabeigta tikai tad, kad bloķētais mēģinājums redzams žurnālos",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 5: „rezultātu dokumentēšana”) + VET Lab Stack.",
+                       "requiredAssets":  [
+                                              "highlightjs:language-log"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "071",
+                       "slug":  "071-documenting-results",
+                       "file":  "slides/071-documenting-results.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Objektīva testēšanas dokumentācija aizstāj „viss strādā” ar pārbaudāmiem pierādījumiem",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 5: „rezultātu dokumentēšana”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "072",
+                       "slug":  "072-handling-failed-tests",
+                       "file":  "slides/072-handling-failed-tests.html",
+                       "topic":  "Tēma 5 (13:15–13:40)",
+                       "title":  "Neveiksmīgs tests iedarbina kontrolētu labošanas un regresijas pārbaudes ciklu",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 5 testing lifecycle).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-072-handling-failed-tests"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "073",
+                       "slug":  "073-task3-brief",
+                       "file":  "slides/073-task3-brief.html",
+                       "topic":  "Tēma 5 — PD4: Testēšanas scenāriju pāris (13:40–13:55)",
+                       "title":  "PD4: izstrādājiet funkcionālo un drošības testu pāri ar reāliem žurnāla pierādījumiem",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 5: „Praktiskais uzdevums: vienkārša testēšanas scenārija sagatavošana”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "073a",
+                                            "slug":  "073a-task3-template-code",
+                                            "file":  "slides/073a-task3-template-code.html",
+                                            "topic":  "Tēma 5 — PD4 veidlapa (13:40–13:55)",
+                                            "title":  "Aizpildiet sešus projektēšanas laukus — pārējos četrus fiksē testa izpildes brīdī",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 5 practical task).",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-yaml"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "074",
+                       "slug":  "074-task3-debrief",
+                       "file":  "slides/074-task3-debrief.html",
+                       "topic":  "Tēma 5 — PD4 kopsavilkums (13:55–14:00)",
+                       "title":  "Savstarpējā scenāriju pārbaude atklāj neskaidrus soļus vēl pirms testa izpildes",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 5 wrap-up).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "074a",
+                                            "slug":  "074a-sample-test-case-code",
+                                            "file":  "slides/074a-sample-test-case-code.html",
+                                            "topic":  "Tēma 5 — PD4 parauga scenārijs (13:55–14:00)",
+                                            "title":  "Parauga testa gadījums TC-FW-02 pierāda GUEST bloku uz SMB/445 ar nc un OPNsense",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 5 reference example) + VET Lab Stack.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-yaml"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "074q",
+                       "slug":  "074q-t5-selfcheck",
+                       "file":  "slides/074q-t5-selfcheck.html",
+                       "topic":  "Tēma 5 — Paškontrole (13:58–14:00)",
+                       "title":  "Paškontrole (5. tēma): pārbaudiet pozitīvos, negatīvos testus un žurnālu pierādījumus",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 5 self-check).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "075",
+                       "slug":  "075-t6-opener",
+                       "file":  "slides/075-t6-opener.html",
+                       "topic":  "Tēma 6 (14:00–14:45)",
+                       "title":  "Bez regulāras uzturēšanas jebkurš kiberdrošības risinājums ātri noveco",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` + CVE/KEV \u0026 Git additions.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "076",
+                       "slug":  "076-maintenance-lifecycle",
+                       "file":  "slides/076-maintenance-lifecycle.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Četri uzturēšanas procesi notur sistēmas drošību mainīgā apdraudējumu vidē",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 6: „Drošības atjauninājumi, konfigurāciju pārskatīšana, rezerves kopijas un izmaiņu pārvaldība”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-076-maintenance-lifecycle"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "077",
+                       "slug":  "077-cve-cvss-kev-patching",
+                       "file":  "slides/077-cve-cvss-kev-patching.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Ielāpus prioritizē pēc CVE, CVSS, CISA KEV un sistēmas pieejamības",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 6: „Drošības atjauninājumi”) + CVE/CVSS/CISA KEV \u0026 CERT.LV advisories.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "077a",
+                                            "slug":  "077a-patch-priority-matrix",
+                                            "file":  "slides/077a-patch-priority-matrix.html",
+                                            "topic":  "Tēma 6 — Pielikums (14:00–14:25)",
+                                            "title":  "Ielāpu prioritāšu matrica apvieno aktīvu izmantošanu un tīkla eksponētību",
+                                            "layout":  ".layout-chart",
+                                            "dataSource":  "`plans.docx` (Tēma 6) + CISA KEV / CERT.LV triage principles.",
+                                            "requiredAssets":  [
+                                                                   "inline-svg:asset-077a-patch-priority-matrix"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "078",
+                       "slug":  "078-safe-patching-workflow",
+                       "file":  "slides/078-safe-patching-workflow.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Droša atjaunināšana ietver kopiju, testa grupu un pārbaudi pēc restartēšanas",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 6: „Drošības atjauninājumi”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-078-safe-patching-workflow"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "079",
+                       "slug":  "079-periodic-config-waf-reviews",
+                       "file":  "slides/079-periodic-config-waf-reviews.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Periodiska revīzija attīra ugunsmūra noteikumus, WAF OWASP CRS un kontus",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 6: „konfigurāciju pārskatīšana”) + WAF maintenance integration.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "080",
+                       "slug":  "080-log-monitoring-baseline",
+                       "file":  "slides/080-log-monitoring-baseline.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Automātiski brīdinājumi par kritiskiem notikumiem aizstāj manuālu žurnālu lasīšanu",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 6 operational maintenance) + VET Lab Stack (`Wazuh`).",
+                       "requiredAssets":  [
+                                              "highlightjs:language-yaml"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "081",
+                       "slug":  "081-backup-321-rule",
+                       "file":  "slides/081-backup-321-rule.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "3-2-1-1 kopiju princips pasargā datus un konfigurācijas arī pret izspiedējvīrusiem",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 6: „rezerves kopijas”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-081-backup-321-rule"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "082",
+                       "slug":  "082-restore-testing",
+                       "file":  "slides/082-restore-testing.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Nepārbaudīta rezerves kopija ir pieņēmums — regulāri trenējiet datu atjaunošanu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 6: „rezerves kopijas”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "083",
+                       "slug":  "083-change-management",
+                       "file":  "slides/083-change-management.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Kontrolēta izmaiņu pārvaldība novērš neplānotu dīkstāvi un nedokumentētus caurumus",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 6: „izmaiņu pārvaldība”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-083-change-management"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "084",
+                       "slug":  "084-config-drift-git",
+                       "file":  "slides/084-config-drift-git.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Konfigurāciju versiju kontrole (Git / Oxidized) uzreiz atklāj nesankcionētas novirzes",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 6: „uzturēšana un pilnveide”) + Configuration-as-Code (`Git`/`Oxidized`) addition.",
+                       "requiredAssets":  [
+                                              "highlightjs:language-diff"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "084a",
+                                            "slug":  "084a-emergency-vs-standard-changes",
+                                            "file":  "slides/084a-emergency-vs-standard-changes.html",
+                                            "topic":  "Tēma 6 — Pielikums (14:00–14:25)",
+                                            "title":  "Standarta un ārkārtas izmaiņām ir atšķirīgs ātrums, bet vienāda dokumentācijas disciplīna",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 6: „izmaiņu pārvaldība”).",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "085",
+                       "slug":  "085-maintenance-cadence",
+                       "file":  "slides/085-maintenance-cadence.html",
+                       "topic":  "Tēma 6 (14:00–14:25)",
+                       "title":  "Skaidrs uzturēšanas kalendārs sadala pienākumus nedēļas, mēneša un ceturkšņa ritmā",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 6 synthesis).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-085-maintenance-cadence"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "086",
+                       "slug":  "086-task4-brief",
+                       "file":  "slides/086-task4-brief.html",
+                       "topic":  "Tēma 6 — PD5: Uzturēšanas kontrolsaraksts (14:25–14:40)",
+                       "title":  "PD5: izveidojiet „KRM” uzturēšanas kontrolsarakstu 1 IT darbiniekam (2 h/nedēļā)",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 6: „Praktiskais uzdevums: uzturēšanas kontrolsaraksta izstrāde”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "087",
+                       "slug":  "087-task4-guidance",
+                       "file":  "slides/087-task4-guidance.html",
+                       "topic":  "Tēma 6 — PD5 vadlīnijas (14:25–14:40)",
+                       "title":  "Darbīgam kontrolsarakstam vienmēr ir termiņš, rīks, MK 397 saite un pierādījums",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 6 practical task).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "087a",
+                                            "slug":  "087a-task4-checklist-template",
+                                            "file":  "slides/087a-task4-checklist-template.html",
+                                            "topic":  "Tēma 6 — PD5 tukšā veidne (14:25–14:40)",
+                                            "title":  "PD5 veidne: piecu kolonnu uzturēšanas kontrolsaraksts (2 paraugi + tukšās rindas)",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 6 practical task) + VET Lab Stack.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-text"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "088",
+                       "slug":  "088-task4-debrief-break",
+                       "file":  "slides/088-task4-debrief-break.html",
+                       "topic":  "Tēma 6 — PD5 kopsavilkums un pārtraukums (14:40–15:00)",
+                       "title":  "Uzturēšanas kontrolsaraksts noslēdz tehnisko ciklu — pārtraukums 14:45–15:00",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 6 wrap-up + Break 14:45–15:00).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "088q",
+                       "slug":  "088q-t6-selfcheck",
+                       "file":  "slides/088q-t6-selfcheck.html",
+                       "topic":  "Tēma 6 — Paškontrole (14:43–14:45)",
+                       "title":  "Paškontrole (6. tēma): pārbaudiet KEV prioritātes, kopijas un noviržu kontroli",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 6 self-check).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "089",
+                       "slug":  "089-t7-opener",
+                       "file":  "slides/089-t7-opener.html",
+                       "topic":  "Tēma 7 (15:00–15:45)",
+                       "title":  "Kompleksais darbs apvieno visas otrās dienas prasmes vienā organizācijas risinājumā",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 7: „Kompleksais praktiskais darbs: organizācijas kiberdrošības risinājuma ieviešana”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "090",
+                       "slug":  "090-case-study-overview",
+                       "file":  "slides/090-case-study-overview.html",
+                       "topic":  "Tēma 7 — PD6: Kompleksais darbs (15:00–15:10)",
+                       "title":  "Situācija: „KRM” mācību centram jāintegrē un jāsalāgo visas dienas drošības uzlabojumi",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 7: „Darbs grupās ar situācijas aprakstu”); scenario parameters `[TBD: Source Needed]`.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "091",
+                       "slug":  "091-case-study-topology-dmz",
+                       "file":  "slides/091-case-study-topology-dmz.html",
+                       "topic":  "Tēma 7 — PD6 topoloģija (15:00–15:10)",
+                       "title":  "„KRM” tīkla topoloģija definē sešas filtrējamas zonas, tostarp DMZ ar WAF",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 7 scenario design) + DMZ/WAF integration.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-091-case-study-topology-dmz"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "092",
+                       "slug":  "092-inherited-flaws-code",
+                       "file":  "slides/092-inherited-flaws-code.html",
+                       "topic":  "Tēma 7 — PD6 mantotās kļūdas (15:00–15:10)",
+                       "title":  "Esošajā „KRM” konfigurācijā mantotas sešas bīstamas drošības nepilnības",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 7: „konfigurācijas kļūdu izvērtēšana”) + WAF \u0026 LAPS additions.",
+                       "requiredAssets":  [
+                                              "highlightjs:language-ini"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "093",
+                       "slug":  "093-four-deliverables-roles",
+                       "file":  "slides/093-four-deliverables-roles.html",
+                       "topic":  "Tēma 7 — PD6 lomas un nodevumi (15:00–15:10)",
+                       "title":  "Četras grupas lomas 35 minūtēs integrē četrus savstarpēji saskaņotus artefaktus",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 7: all 4 required deliverables).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-093-four-deliverables-roles"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "093a",
+                                            "slug":  "093a-deliverable1-firewall-waf",
+                                            "file":  "slides/093a-deliverable1-firewall-waf.html",
+                                            "topic":  "Tēma 7 — PD6 1. nodevums (Atsauce)",
+                                            "title":  "1. nodevums: pielāgojiet PD1 ugunsmūra tabulu un slēdziet FW-1, FW-2 un WAF-1",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 7: „ugunsmūra noteikumu izstrāde”) + WAF.",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        },
+                                        {
+                                            "id":  "093b",
+                                            "slug":  "093b-deliverable2-access-iam",
+                                            "file":  "slides/093b-deliverable2-access-iam.html",
+                                            "topic":  "Tēma 7 — PD6 2. nodevums (Tukšā veidne)",
+                                            "title":  "2. nodevums: aizpildiet RBAC, LAPS un MFA veidni, slēdzot AD-1, AD-2 un IAM-1",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 7: „piekļuves tiesību noteikšana”) + LAPS/Cloud IAM.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-yaml"
+                                                               ]
+                                        },
+                                        {
+                                            "id":  "093c",
+                                            "slug":  "093c-deliverable3-audit",
+                                            "file":  "slides/093c-deliverable3-audit.html",
+                                            "topic":  "Tēma 7 — PD6 3. nodevums (Izsekojamības veidne)",
+                                            "title":  "3. nodevums: prioritizējiet visas 6 mantotās kļūdas pēc 053. skalas un sasaistiet ar testiem",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 7: „konfigurācijas kļūdu izvērtēšana”).",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        },
+                                        {
+                                            "id":  "093d",
+                                            "slug":  "093d-deliverable4-testplan",
+                                            "file":  "slides/093d-deliverable4-testplan.html",
+                                            "topic":  "Tēma 7 — PD6 4. nodevums (Testēšanas veidne)",
+                                            "title":  "4. nodevums: sagatavojiet atsevišķus testus visām 6 kļūdām + 2 funkcionālās pārbaudes",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "`plans.docx` (Tēma 7: „testēšanas plāna sagatavošana”) + VET Lab Stack.",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-text"
+                                                               ]
+                                        },
+                                        {
+                                            "id":  "093e",
+                                            "slug":  "093e-capstone-rubric-matrix",
+                                            "file":  "slides/093e-capstone-rubric-matrix.html",
+                                            "topic":  "Tēma 7 — PD6/PD7 vērtēšanas rubrika (4×3)",
+                                            "title":  "Četru kritēriju × trīs līmeņu (0/1/2) rubrika nodrošina objektīvu vērtēšanu",
+                                            "layout":  ".layout-chart",
+                                            "dataSource":  "`plans.docx` (Tēma 7–8 evaluation focus).",
+                                            "requiredAssets":  [
+                                                                   "inline-svg:asset-093e-capstone-rubric-matrix"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "094",
+                       "slug":  "094-capstone-work-timer",
+                       "file":  "slides/094-capstone-work-timer.html",
+                       "topic":  "Tēma 7 — PD6 darba izpilde (15:10–15:45)",
+                       "title":  "Darbs grupās (15:10–15:45): integrējiet četrus „KRM” artefaktus aizstāvēšanai 15:45",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 7–8 schedule).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "094q",
+                       "slug":  "094q-t7-selfcheck",
+                       "file":  "slides/094q-t7-selfcheck.html",
+                       "topic":  "Tēma 7 — Paškontrole (15:43–15:45)",
+                       "title":  "Paškontrole (7. tēma): trīs saskaņotības jautājumi pirms risinājuma aizstāvēšanas",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 7 self-check).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "095",
+                       "slug":  "095-t8-presentations-format",
+                       "file":  "slides/095-t8-presentations-format.html",
+                       "topic":  "Tēma 8 — PD7: Aizstāvēšana (15:45–16:01)",
+                       "title":  "PD7 aizstāvēšana (15:45–16:01): 3 min prezentācija + izlozēta 1 min auditora kartīte",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 8: „Praktisko darbu rezultātu prezentēšana, izvērtēšana un diskusija”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "095a",
+                                            "slug":  "095a-t8-closing-agenda",
+                                            "file":  "slides/095a-t8-closing-agenda.html",
+                                            "topic":  "Tēma 8 — Laika grafiks (15:45–16:15)",
+                                            "title":  "Noslēguma 30 minūtes sadala aizstāvēšanu, mācību rīku apskatu un atgriezenisko saiti",
+                                            "layout":  ".layout-chart",
+                                            "dataSource":  "`plans.docx` (Tēma 8: 15:45–16:15).",
+                                            "requiredAssets":  [
+                                                                   "chartjs:asset-095a-t8-closing-agenda"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "096",
+                       "slug":  "096-cross-group-synthesis",
+                       "file":  "slides/096-cross-group-synthesis.html",
+                       "topic":  "Tēma 8 (16:01–16:03)",
+                       "title":  "Grupu risinājumu salīdzinājums izceļ gan stiprās puses, gan kopīgos aklos punktus",
+                       "layout":  ".layout-kpi",
+                       "dataSource":  "`plans.docx` (Tēma 8 evaluation synthesis).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "097",
+                       "slug":  "097-curriculum-mapping",
+                       "file":  "slides/097-curriculum-mapping.html",
+                       "topic":  "Tēma 8 (16:03–16:06)",
+                       "title":  "Visi šodienas praktiskie uzdevumi tieši atbilst „Kiberdrošības tehniķa” moduļiem",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Tēma 8: „Iegūto zināšanu izmantošana profesionālās izglītības mācību procesā”).",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-097-curriculum-mapping"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "098",
+                       "slug":  "098-vet-free-lab-toolkit",
+                       "file":  "slides/098-vet-free-lab-toolkit.html",
+                       "topic":  "Tēma 8 (16:06–16:09)",
+                       "title":  "Bezmaksas atvērtā koda rīki ļauj izveidot pilnvērtīgu kiberdrošības laboratoriju skolā",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 8 pedagogical transfer) + VET Free Lab Toolkit addition.",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "098a",
+                                            "slug":  "098a-lab-docker-compose-recipe",
+                                            "file":  "slides/098a-lab-docker-compose-recipe.html",
+                                            "topic":  "Tēma 8 — Laboratorijas recepte (16:06–16:09)",
+                                            "title":  "Desmit rindu docker-compose.yml recepte palaiž gatavu WAF mācību laboratoriju",
+                                            "layout":  ".layout-code",
+                                            "dataSource":  "VET Lab Stack (`Docker Compose` + `OWASP Juice Shop` + `OWASP ModSecurity CRS`).",
+                                            "requiredAssets":  [
+                                                                   "highlightjs:language-yaml"
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "099",
+                       "slug":  "099-ai-era-assessment-habits",
+                       "file":  "slides/099-ai-era-assessment-habits.html",
+                       "topic":  "Tēma 8 (16:09–16:12)",
+                       "title":  "Pieci tehniķa paradumi un mutiska aizstāvēšana pārbauda patieso izpratni MI laikmetā",
+                       "layout":  ".layout-chart",
+                       "dataSource":  "`plans.docx` (Full Day 2 synthesis) + AI-era assessment addition.",
+                       "requiredAssets":  [
+                                              "inline-svg:asset-099-ai-era-assessment-habits"
+                                          ],
+                       "vertical":  [
+                                        {
+                                            "id":  "099a",
+                                            "slug":  "099a-classroom-scaling-guide",
+                                            "file":  "slides/099a-classroom-scaling-guide.html",
+                                            "topic":  "Tēma 8 — Metodiskais pielikums (16:09–16:12)",
+                                            "title":  "Tos pašus uzdevumus var mērogot gan iesācēju, gan padziļinātu grupu līmenim",
+                                            "layout":  ".layout-split",
+                                            "dataSource":  "`plans.docx` (Tēma 8 pedagogical transfer).",
+                                            "requiredAssets":  [
+
+                                                               ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "id":  "099q",
+                       "slug":  "099q-t8-selfcheck",
+                       "file":  "slides/099q-t8-selfcheck.html",
+                       "topic":  "Tēma 8 — Paškontrole (16:11–16:13)",
+                       "title":  "Paškontrole (8. tēma): kā novērtēt audzēkņa darba patieso izpratni MI laikmetā",
+                       "layout":  ".layout-code",
+                       "dataSource":  "`plans.docx` (Tēma 8 self-check).",
+                       "requiredAssets":  [
+                                              "highlightjs:language-yaml"
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   },
+                   {
+                       "id":  "100",
+                       "slug":  "100-feedback-closing",
+                       "file":  "slides/100-feedback-closing.html",
+                       "topic":  "Tēma 8 — Noslēgums",
+                       "title":  "Paldies par aktīvu darbu — jūsu atgriezeniskā saite pilnveido nākamo programmu",
+                       "layout":  ".layout-split",
+                       "dataSource":  "`plans.docx` (Tēma 8: „atgriezeniskā saite un semināra noslēgums”).",
+                       "requiredAssets":  [
+
+                                          ],
+                       "vertical":  [
+
+                                    ]
+                   }
+               ]
+}

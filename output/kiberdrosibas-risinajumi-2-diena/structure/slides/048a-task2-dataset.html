@@ -1,0 +1,21 @@
+<section class="layout-code" data-slide-id="048a" data-topic="Tēma 3 — PD2 dati (11:25–11:40)" data-parent-id="048" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 3 — PD2 dati (11:25–11:40)</p>
+  <h2>Piecu „KRM” kontu eksportā slēpjas 9 tiesību, LAPS, MFA un dzīves cikla pārkāpumi</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-8">
+USER         | NEEDS (Darbs)          | GROUPS              | LOC_ADM | MFA   | LAST_LOG
+anna.k       | Grāmatvedība (Fin_RW)  | Finance_RW, IT_RW   | No      | False | 1d ago
+markuss.p    | IT prakse (IT_RO)      | Domain Admins       | Yes     | False | 2d ago
+ilze.ex      | NAV (atlaista 160d)    | Finance_RW,VPN_User | No      | True  | 160d ago
+adm_kristaps | IT sistēmu pārvaldība  | Domain Admins       | Static  | False | 0d ago
+birojs_kase  | 4 darbin. (Sales_RW)   | Sales_RW, Finance_R | No      | False | 0d ago
+# UZDEVUMS: atrodiet visus 9 pārkāpumus, piešķiriet prioritāti un minimālo korekciju!
+  </code></pre>
+  <ul>
+    <li>Salīdziniet <code>GROUPS</code>, <code>LOC_ADM</code> un <code>MFA</code> ar reālo vajadzību slejā <code>NEEDS</code>.</li>
+    <li>Novērtējiet, kā attālinātā piekļuve (<code>VPN</code>) un koplietošana ietekmē pārkāpuma prioritāti.</li>
+    <li>Fiksējiet katram kontam: pārkāpumi · prioritāte (<code>Kritisks</code>/<code>Vidējs</code>) · tūlītējs labojums.</li>
+  </ul>
+  <aside class="notes">
+    Atstājiet šo vertikālo slaidu ekrānā <code>11:25–11:40</code>. Kopā 9 pārkāpumi: <code>ilze.ex</code> (1: aktīva bijusī + VPN), <code>adm_kristaps</code> (2: nav MFA, 3: statisks lokālais admins bez LAPS), <code>markuss.p</code> (4: Domain Admins, 5: Local Admin, 6: nav MFA), <code>anna.k</code> (7: lieka IT_RW, 8: nav MFA), <code>birojs_kase</code> (9: koplietots konts ar lieku Finance_R bez MFA).
+  </aside>
+</section>

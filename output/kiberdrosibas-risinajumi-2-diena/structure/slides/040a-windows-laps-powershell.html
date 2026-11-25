@@ -1,0 +1,22 @@
+<section class="layout-code" data-slide-id="040a" data-topic="Tēma 3 — Pielikums (11:00–11:25)" data-parent-id="040" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 3 — Pielikums (11:00–11:25)</p>
+  <h2>Windows LAPS pārvaldība prasa tikai četras PowerShell komandas laboratorijā</h2>
+  <pre><code class="language-powershell" data-trim data-line-numbers="1-3|4-6|7-8">
+# 1. Sagatavot Active Directory shēmu Windows LAPS
+Update-LapsADSchema
+# 2. Piešķirt darbstaciju OU tiesības saglabāt paroli AD
+Set-LapsADComputerSelfPermission -Identity "OU=Workstations,DC=skola,DC=lv"
+# 3. Iegūt unikālo lokālā admina paroli konkrētam datoram
+Get-LapsADPassword -Identity "PC-LAB05" -AsPlainText
+# Auditēts AD Event ID 4662 par katru paroles nolasīšanu
+# Parole automātiski rotējas pēc politikas (piem., 30 dienas)
+  </code></pre>
+  <ul>
+    <li>Paroles tiek šifrēti glabātas Active Directory un automātiski rotētas pēc lietošanas.</li>
+    <li>Tikai pilnvaroti IT administratori drīkst nolasīt konkrētas darbstacijas paroli ar žurnalēšanu.</li>
+    <li>Lielisks 30 minūšu laboratorijas darbs Windows Server modulī.</li>
+  </ul>
+  <aside class="notes">
+    Parādiet kolēģiem, ka LAPS ieviešana skolas virtuālajā AD laboratorijā ir īsa, skaidra un audzēkņiem ļoti uzskatāma.
+  </aside>
+</section>

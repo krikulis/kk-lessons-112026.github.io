@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="029" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>„Viss, kas nav skaidri atļauts, ir aizliegts” ir vienīgā prognozējamā drošības politika</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Noklusējuma aizliegums (<code>Default Deny</code>) bloķē neparedzētus portus un jaunus draudus.</li>
+        <li>Noklusējuma atļauja (<code>Default Allow</code>) liek bezgalīgi minēt un bloķēt riskus.</li>
+        <li>Eksplicīta <code>DENY ALL + LOG</code> rinda apakšā padara blokus redzamus žurnālos.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Divas pretējas filtrēšanas filozofijas</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-red">
+          <span class="vis-badge">DEFAULT ALLOW (MELNAIS SARAKSTS)</span>
+          <p>Atļauj visu, bloķē tikai zināmos sliktos portus — jauni servisi kļūst tūlītēji atvērti</p>
+        </div>
+        <div class="vis-box vis-green">
+          <span class="vis-badge">DEFAULT DENY (BALTAIS SARAKSTS)</span>
+          <p>Bloķē un logo visu (<code>ufw default deny</code>), atļauj tikai dokumentētus biznesa portus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Pat ja ugunsmūrim ir iebūvēts neredzams <code>Implicit Deny</code>, pievienojam skaidru <code>DENY ALL + LOG</code> rindu — tā nodrošina pierādījumus diagnostikai un incidentu analīzei.
+  </aside>
+</section>

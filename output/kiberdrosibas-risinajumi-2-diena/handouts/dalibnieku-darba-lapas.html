@@ -1,0 +1,3114 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Interaktīvās dalībnieku darba lapas (PD1–PD7) — Kiberdrošības risinājumi I (2. diena)</title>
+  <meta name="description" content="Tiešsaistē aizpildāmas dalībnieku darba lapas (PD1–PD7) „KRM” kiberdrošības praktiskajiem darbiem ar automātisku saglabāšanu pārlūkā, JSON/Markdown eksportu un PDF druku." />
+  <meta property="og:title" content="Interaktīvās dalībnieku darba lapas (PD1–PD7) — Kiberdrošības risinājumi I" />
+  <meta property="og:description" content="Praktiskā darba semināra 2. dienas interaktīvā darba burtnīca („KRM” scenārijs, PD1–PD7) profesionālās izglītības pedagogiem." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231F2933'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='13' y='5' width='6' height='6' fill='%23E53F30' opacity='.5'/%3E%3Crect x='21' y='5' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='5' y='13' width='6' height='6' fill='%23E53F30' opacity='.5'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='21' y='13' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='5' y='21' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='13' y='21' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='21' y='21' width='6' height='6' fill='%235B34AD'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bda-dark: #1F2933;
+      --bda-darker: #192129;
+      --bda-red: #E53F30;
+      --bda-red-dark: #C92819;
+      --bda-violet: #5B34AD;
+      --bda-surface: #F8FAFC;
+      --bda-border: #CBD5E1;
+      --bda-muted: #475569;
+      --ink: #0F172A;
+      --red: #B91C1C;
+      --amber: #B45309;
+      --green: #15803D;
+      --accent: #1E3A8A;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 126px;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #F1F5F9;
+      color: var(--ink);
+      font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    code, pre, .code-input {
+      font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+    }
+
+    code {
+      background: #EEF2F6;
+      color: #0F172A;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    pre {
+      background: #F8FAFC;
+      border: 1px solid var(--bda-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 11.5px;
+      overflow-x: auto;
+      margin: 8px 0;
+      line-height: 1.45;
+    }
+
+    /* Top BDA Bar */
+    .bda-topbar {
+      background: var(--bda-dark);
+      color: #FFFFFF;
+      border-bottom: 3px solid var(--bda-red);
+      padding: 10px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .bda-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+    }
+
+    .bda-cubes {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 5px);
+      gap: 2px;
+    }
+
+    .bda-cubes span {
+      width: 5px;
+      height: 5px;
+      background: var(--bda-red);
+      display: block;
+    }
+
+    .bda-cubes span:nth-child(2),
+    .bda-cubes span:nth-child(4) {
+      opacity: 0.45;
+    }
+
+    .bda-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-weight: 600;
+    }
+
+    .bda-nav-links a {
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.09);
+      transition: background-color 0.15s ease;
+    }
+
+    .bda-nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .bda-meta-text {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* Hero Header */
+    .hero {
+      background: var(--bda-dark);
+      color: #FFFFFF;
+      border-left: 10px solid var(--bda-red);
+      padding: 24px 24px 26px 24px;
+    }
+
+    .hero-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #FF9B8E;
+      margin: 0 0 6px 0;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px 0;
+      font-size: clamp(20px, 2.7vw, 28px);
+      line-height: 1.2;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .hero-sub {
+      margin: 0;
+      color: #E2E8F0;
+      font-size: 14px;
+      max-width: 820px;
+    }
+
+    /* Sticky Toolbar */
+    .sticky-bar {
+      position: sticky;
+      top: 0;
+      z-index: 45;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--bda-border);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+      padding: 8px 16px;
+    }
+
+    .sticky-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .section-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--bda-border);
+      background: #FFFFFF;
+      color: var(--bda-dark);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pill-link:hover {
+      border-color: var(--bda-dark);
+      background: #F8FAFC;
+    }
+
+    .pill-link.is-active {
+      background: var(--bda-dark);
+      color: #FFFFFF;
+      border-color: var(--bda-dark);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #CBD5E1;
+      display: inline-block;
+    }
+
+    .pill-link[data-state="partial"] .pill-dot {
+      background: #F59E0B;
+    }
+
+    .pill-link[data-state="done"] .pill-dot {
+      background: #16A34A;
+    }
+
+    .toolbar-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .progress-bar-track {
+      width: 120px;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--bda-red) 0%, var(--bda-violet) 100%);
+      transition: width 0.25s ease;
+    }
+
+    .save-status {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--green);
+      background: #DCFCE7;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .save-status.is-warn {
+      color: var(--amber);
+      background: #FEF3C7;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid var(--bda-border);
+      background: #FFFFFF;
+      color: var(--bda-dark);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      background: #F1F5F9;
+      border-color: #94A3B8;
+    }
+
+    .btn-primary {
+      background: var(--bda-red-dark);
+      border-color: var(--bda-red-dark);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: #A81F12;
+      border-color: #A81F12;
+    }
+
+    .btn-dark {
+      background: var(--bda-dark);
+      border-color: var(--bda-dark);
+      color: #FFFFFF;
+    }
+
+    .btn-dark:hover {
+      background: #111820;
+    }
+
+    .btn-violet {
+      background: var(--bda-violet);
+      border-color: var(--bda-violet);
+      color: #FFFFFF;
+    }
+
+    .btn-violet:hover {
+      background: #4A2892;
+    }
+
+    .btn-toggle.is-on {
+      background: #EDE9FE;
+      border-color: var(--bda-violet);
+      color: var(--bda-violet);
+    }
+
+    .btn-danger {
+      color: var(--red);
+      border-color: #FECACA;
+      background: #FEF2F2;
+    }
+
+    .btn-danger:hover {
+      background: #FEE2E2;
+    }
+
+    .btn-xs {
+      padding: 2px 6px;
+      font-size: 11px;
+      border-radius: 4px;
+    }
+
+    /* Reference Drawer */
+    .ref-drawer {
+      max-width: 1060px;
+      margin: 8px auto 0 auto;
+      background: #F8FAFC;
+      border: 1px solid var(--bda-border);
+      border-left: 4px solid var(--bda-violet);
+      border-radius: 6px;
+      padding: 12px 14px;
+      display: none;
+    }
+
+    .ref-drawer.is-open {
+      display: block;
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 14px;
+      font-size: 12px;
+    }
+
+    .ref-grid ul {
+      margin: 4px 0 0 0;
+      padding-left: 18px;
+    }
+
+    /* Main Container & Sheets */
+    main.workbook {
+      max-width: 1060px;
+      margin: 18px auto 40px auto;
+      padding: 0 16px;
+    }
+
+    .sheet {
+      background: #FFFFFF;
+      border: 1px solid var(--bda-border);
+      border-top: 4px solid var(--bda-dark);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .sheet.is-accent-red {
+      border-top-color: var(--bda-red);
+    }
+
+    .sheet.is-accent-violet {
+      border-top-color: var(--bda-violet);
+    }
+
+    body.focus-mode .sheet {
+      display: none;
+    }
+
+    body.focus-mode .sheet.is-focus-active {
+      display: block;
+    }
+
+    .sheet-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 2px solid var(--bda-dark);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .sheet-head h2 {
+      font-size: 17px;
+      font-weight: 800;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 14px 0 6px 0;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 4px 0 9px 0;
+    }
+
+    .meta {
+      color: var(--bda-muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      background: #E2E8F0;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .badge-red { background: #FEE2E2; color: var(--red); }
+    .badge-amber { background: #FEF3C7; color: var(--amber); }
+    .badge-green { background: #DCFCE7; color: var(--green); }
+    .badge-violet { background: #EDE9FE; color: var(--bda-violet); }
+
+    .box {
+      background: var(--bda-surface);
+      border: 1px solid var(--bda-border);
+      border-radius: 6px;
+      padding: 11px 14px;
+      margin: 10px 0;
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field-group label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--bda-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* Tables & Form Controls */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 8px 0 12px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--bda-border);
+      padding: 6px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #F1F5F9;
+      font-weight: 700;
+      color: var(--bda-dark);
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 12.5px;
+      color: var(--ink);
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      padding: 5px 7px;
+      line-height: 1.4;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 44px;
+      overflow: hidden;
+    }
+
+    .code-input {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 11.5px;
+      background: #FAFCFF;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--bda-violet);
+      box-shadow: 0 0 0 2px rgba(91, 52, 173, 0.16);
+    }
+
+    .print-mirror {
+      display: none;
+    }
+
+    /* Semantic Tints */
+    select.state-allow {
+      background: #F0FDF4;
+      border-color: #86EFAC;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    select.state-block {
+      background: #FEF2F2;
+      border-color: #FCA5A5;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    select.sev-critical {
+      background: #FEF2F2;
+      border-color: #FCA5A5;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    select.sev-medium {
+      background: #FFFBEB;
+      border-color: #FCD34D;
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    select.sev-low {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+      color: var(--bda-muted);
+      font-weight: 700;
+    }
+
+    /* Row Controls (PD1) */
+    .row-num-cell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .btn-row-move {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .btn-move {
+      border: 1px solid var(--bda-border);
+      background: #F8FAFC;
+      color: var(--bda-dark);
+      border-radius: 3px;
+      font-size: 10px;
+      line-height: 1;
+      padding: 2px 4px;
+      cursor: pointer;
+    }
+
+    .btn-move:hover:not(:disabled) {
+      background: #E2E8F0;
+    }
+
+    .btn-move:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    /* Stretch & Integration Details */
+    details.stretch-box,
+    details.integration-panel {
+      background: #F8FAFC;
+      border: 1px dashed #94A3B8;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-top: 10px;
+    }
+
+    details.stretch-box summary,
+    details.integration-panel summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 12.5px;
+      color: var(--bda-violet);
+      user-select: none;
+    }
+
+    details.stretch-box[open] summary,
+    details.integration-panel[open] summary {
+      margin-bottom: 8px;
+    }
+
+    /* PD3 Jigsaw */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tab-btn {
+      padding: 5px 11px;
+      border-radius: 5px;
+      border: 1px solid var(--bda-border);
+      background: #FFFFFF;
+      color: var(--bda-dark);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab-btn.is-active {
+      background: var(--bda-dark);
+      border-color: var(--bda-dark);
+      color: #FFFFFF;
+    }
+
+    .packet-box {
+      position: relative;
+    }
+
+    .packet-box.is-hidden {
+      display: none;
+    }
+
+    .packet-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .packet-header h3 {
+      margin: 0;
+    }
+
+    .code-line-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .code-line-row {
+      display: grid;
+      grid-template-columns: 1fr 165px;
+      gap: 10px;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 5px;
+      padding: 5px 8px;
+    }
+
+    .code-line-text {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 11.5px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-comment-line {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 11.5px;
+      color: var(--bda-muted);
+      padding: 2px 8px;
+      font-weight: 600;
+    }
+
+    .pd3-tab-panel {
+      display: none;
+    }
+
+    .pd3-tab-panel.is-active {
+      display: block;
+    }
+
+    /* PD4 Logs */
+    .log-card {
+      background: #F8FAFC;
+      border: 1px solid var(--bda-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin: 8px 0 12px 0;
+    }
+
+    .log-entry {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 7px 9px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 5px;
+      margin-top: 6px;
+    }
+
+    .log-entry-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .log-entry-code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 11.5px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: var(--ink);
+    }
+
+    .log-insert-bar {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    /* PD5 Hidden Rows */
+    tr.pd5-extra-row.is-hidden {
+      display: none;
+    }
+
+    /* PD6 Policy Row */
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 14px 0;
+      background: #F8FAFC;
+      border: 1px solid var(--bda-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .preview-card {
+      background: #FFFFFF;
+      border: 1px solid var(--bda-border);
+      border-radius: 5px;
+      padding: 8px 10px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .preview-card h4 {
+      margin: 0 0 6px 0;
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    .preview-card ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    /* PD7 Interactive Rubric */
+    .rubric-score-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+    }
+
+    .rubric-total-badge {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    td.rubric-cell {
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    td.rubric-cell:hover {
+      background: #F8FAFC;
+    }
+
+    td.rubric-cell:focus-visible {
+      outline: 2px solid var(--bda-violet);
+      outline-offset: -2px;
+    }
+
+    td.rubric-cell.is-selected {
+      background: #EFF6FF;
+      box-shadow: inset 0 0 0 2px var(--accent);
+    }
+
+    .rubric-check {
+      display: none;
+      margin-top: 5px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    td.rubric-cell.is-selected .rubric-check {
+      display: inline-block;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .grid2, .ref-grid, .preview-grid { grid-template-columns: 1fr; }
+      .meta-grid, .policy-grid { grid-template-columns: 1fr 1fr; }
+      .code-line-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .meta-grid, .policy-grid { grid-template-columns: 1fr; }
+      .sheet { padding: 16px 14px; }
+    }
+
+    /* Print / PDF */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm 11mm;
+      }
+
+      body {
+        background: #FFFFFF;
+        padding: 0;
+        font-size: 11px;
+      }
+
+      .no-print,
+      .bda-topbar,
+      .sticky-bar,
+      #krm-ref-drawer,
+      .btn-row-move,
+      .log-insert-bar,
+      .filter-bar,
+      #pd6-integration,
+      #workbook-audit-report {
+        display: none !important;
+      }
+
+      .hero {
+        background: #FFFFFF !important;
+        color: var(--ink) !important;
+        border-left: 6px solid var(--bda-red);
+        border-bottom: 1px solid var(--bda-border);
+        padding: 8px 12px;
+        margin-bottom: 10px;
+      }
+
+      .hero-kicker {
+        color: var(--bda-red-dark) !important;
+      }
+
+      .hero h1 {
+        color: var(--ink) !important;
+        font-size: 17px;
+      }
+
+      .hero-sub {
+        color: var(--bda-muted) !important;
+        font-size: 11.5px;
+      }
+
+      main.workbook {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      body.focus-mode .sheet,
+      .sheet {
+        display: block !important;
+        border: none;
+        border-top: none;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+
+      .packet-box.is-hidden {
+        display: block !important;
+      }
+
+      .pd3-tab-panel.has-content,
+      .pd3-tab-panel.is-active {
+        display: block !important;
+        margin-top: 8px;
+      }
+
+      details.stretch-box:not(.has-content) {
+        display: none !important;
+      }
+
+      details.stretch-box.has-content {
+        display: block !important;
+      }
+
+      textarea {
+        display: none !important;
+      }
+
+      .print-mirror {
+        display: block !important;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 11px;
+        line-height: 1.35;
+        min-height: 1.2em;
+      }
+
+      .print-mirror.is-code {
+        font-family: 'JetBrains Mono', Consolas, monospace;
+        font-size: 10.5px;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      select {
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        font-size: 11px !important;
+        box-shadow: none !important;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      input::placeholder {
+        color: transparent !important;
+      }
+
+      td.rubric-cell.is-selected {
+        background: #EFF6FF !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      table {
+        font-size: 10.5px;
+      }
+
+      th, td {
+        padding: 4px 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="bda-topbar no-print">
+    <div class="bda-brand">
+      <span class="bda-cubes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></span>
+      <span>Kiberdrošības risinājumi I · Interaktīvās darba lapas (PD1–PD7)</span>
+    </div>
+    <div class="bda-nav-links">
+      <a href="../../">Sākumlapa</a>
+      <a href="../index.html">← Prezentācija</a>
+      <span class="bda-meta-text">Projekts Nr. 4.2.2.3/1/24/I/001 · Kristaps Kūlis</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">Kurzemes Reģionālais mācību centrs „KRM” (krm.lv) · 2. diena</p>
+      <h1>Kiberdrošības risinājumi (uzstādīšana, uzturēšana, novērtēšana) I — Dalībnieku darba lapas (PD1–PD7)</h1>
+      <p class="hero-sub">Tiešsaistē aizpildāma praktisko darbu burtnīca: dati automātiski saglabājas jūsu pārlūkprogrammā, tos var eksportēt kā <code>.md</code> vai <code>.json</code> un izdrukāt kā A4 PDF.</p>
+    </div>
+  </section>
+
+  <nav class="sticky-bar no-print" aria-label="Darba lapu navigācija un rīki">
+    <div class="sticky-inner">
+      <div class="toolbar-row">
+        <div class="section-pills" id="section-pills">
+          <a class="pill-link is-active" href="#scenarijs" data-target="scenarijs"><span class="pill-dot"></span>Scenārijs</a>
+          <a class="pill-link" href="#pd1" data-target="pd1"><span class="pill-dot"></span>PD1</a>
+          <a class="pill-link" href="#pd2" data-target="pd2"><span class="pill-dot"></span>PD2</a>
+          <a class="pill-link" href="#pd3" data-target="pd3"><span class="pill-dot"></span>PD3</a>
+          <a class="pill-link" href="#pd4" data-target="pd4"><span class="pill-dot"></span>PD4</a>
+          <a class="pill-link" href="#pd5" data-target="pd5"><span class="pill-dot"></span>PD5</a>
+          <a class="pill-link" href="#pd6" data-target="pd6"><span class="pill-dot"></span>PD6</a>
+          <a class="pill-link" href="#pd7" data-target="pd7"><span class="pill-dot"></span>PD7</a>
+        </div>
+        <div class="toolbar-toggles">
+          <button type="button" class="btn btn-toggle" id="btn-focus-mode" aria-pressed="false">Fokusa režīms (pa 1 uzdevumam)</button>
+          <button type="button" class="btn btn-violet" id="btn-ref-drawer" aria-expanded="false">📌 KRM atsauce &amp; 053 skala</button>
+        </div>
+      </div>
+
+      <div class="toolbar-row">
+        <div class="progress-wrap">
+          <div class="progress-bar-track" aria-hidden="true">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+          </div>
+          <strong id="progress-label">Aizpildīts: 0%</strong>
+          <span class="save-status" id="save-status">Gatavs darbam (pārlūka saglabāšana)</span>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="btn btn-dark" id="btn-export-md">Eksportēt .md</button>
+          <button type="button" class="btn" id="btn-export-json">Saglabāt .json</button>
+          <button type="button" class="btn" id="btn-import-json">Ielādēt .json</button>
+          <input type="file" id="file-import-json" accept=".json,application/json" hidden />
+          <button type="button" class="btn btn-primary" id="btn-print">Drukāt / PDF</button>
+          <button type="button" class="btn btn-danger" id="btn-reset">Notīrīt</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ref-drawer" id="krm-ref-drawer" aria-label="KRM tīkla zonu un 053 riska skalas atsauce">
+      <div class="ref-grid">
+        <div>
+          <strong>6 tīkla zonas (centrālais <code>OPNsense</code>, stateful)</strong>
+          <ul>
+            <li><code>LAN</code> (<code>10.0.10.0/24</code>) — 30 darbinieki</li>
+            <li><code>SRV</code> (<code>10.0.20.0/24</code>) — AD/Faili (<code>.10</code>), <code>SRV_WEB:8080</code> (<code>.20</code>)</li>
+            <li><code>MGMT</code> (<code>10.0.30.0/24</code>) — IT administratori un VPN</li>
+            <li><code>GUEST</code> (<code>10.0.40.0/24</code>) — Viesu Wi-Fi</li>
+            <li><code>DMZ</code> (<code>10.0.50.0/24</code>) — Publiskais portāls <code>DMZ_WAF:443</code> (<code>.10</code>)</li>
+            <li><code>WAN</code> — Internets + <code>CERT.LV DNS</code> (<code>dnsmuris.lv</code>)</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Vienotā 3 līmeņu riska skala (Slaids 053)</strong>
+          <p><span class="badge badge-red">KRITISKS (&lt; 24 h)</span> Tieša ārēja piekļuve (<code>WAN→RDP/SSH</code>), admins bez MFA <strong>vai bijušā darbinieka aktīvs konts ar <code>VPN</code>/mākoni</strong>.</p>
+          <p><span class="badge badge-amber">VIDĒJS (šonedēļ)</span> Iekšēja piekļuve, ēnots noteikums, WAF <code>DetectionOnly</code>, iekšējs neaktīvs konts <code>90d+</code> bez VPN, lokālais admins bez LAPS.</p>
+          <p><span class="badge">ZEMS (mēneša apkopē)</span> Komentāru, žurnalēšanas vai konfigurācijas higiēnas trūkumi.</p>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Scenario & Datalists -->
+  <datalist id="dl-krm-zones">
+    <option value="ANY"></option>
+    <option value="LAN"></option>
+    <option value="SRV"></option>
+    <option value="SRV_WEB"></option>
+    <option value="MGMT"></option>
+    <option value="GUEST"></option>
+    <option value="DMZ"></option>
+    <option value="DMZ_WAF"></option>
+    <option value="WAN"></option>
+    <option value="CERT.LV DNS"></option>
+  </datalist>
+
+  <datalist id="dl-krm-ports">
+    <option value="ANY"></option>
+    <option value="22/tcp"></option>
+    <option value="53/udp,tcp"></option>
+    <option value="443/tcp"></option>
+    <option value="445/tcp"></option>
+    <option value="8080/tcp"></option>
+  </datalist>
+
+  <main class="workbook">
+
+    <!-- SCENARIO & PARTICIPANT METADATA -->
+    <section class="sheet is-accent-red is-focus-active" id="scenarijs">
+      <div class="sheet-head">
+        <h2>Vienotais organizācijas scenārijs: Kurzemes Reģionālais mācību centrs „KRM” (<code>krm.lv</code>)</h2>
+        <span class="badge badge-violet">PD1–PD7 pamats</span>
+      </div>
+
+      <div class="box">
+        <strong>Dalībnieka / komandas informācija</strong> (tiek iekļauta eksportā un PDF izdrukā)
+        <div class="meta-grid">
+          <div class="field-group">
+            <label for="meta-participant">Dalībnieks / Komanda</label>
+            <input type="text" id="meta-participant" data-field="meta.participant" placeholder="Vārds Uzvārds vai komandas nosaukums" />
+          </div>
+          <div class="field-group">
+            <label for="meta-institution">Izglītības iestāde</label>
+            <input type="text" id="meta-institution" data-field="meta.institution" placeholder="piem., Saldus tehnikums" />
+          </div>
+          <div class="field-group">
+            <label for="meta-date">Datums</label>
+            <input type="date" id="meta-date" data-field="meta.date" />
+          </div>
+          <div class="field-group">
+            <label for="meta-mode">Darba forma</label>
+            <select id="meta-mode" data-field="meta.mode">
+              <option value="">— Izvēlieties —</option>
+              <option value="Individuāli">Individuāli</option>
+              <option value="Pārī">Pārī</option>
+              <option value="Grupā (3–4 dalībnieki)">Grupā (3–4 dalībnieki)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <p>Visi otrās dienas praktiskie darbi (<code>PD1</code>–<code>PD7</code>) risina vienas organizācijas infrastruktūru. Jūsu aizpildītie <code>PD1</code>–<code>PD4</code> dati būs ērti pieejami pēcpusdienas integrācijas darbā (<code>PD6</code>)!</p>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>6 tīkla zonas (centrālais <code>OPNsense</code>, stateful)</h3>
+          <ul>
+            <li><code>LAN</code> (<code>10.0.10.0/24</code>) — 30 darbinieki</li>
+            <li><code>SRV</code> (<code>10.0.20.0/24</code>) — AD/Faili (<code>.10</code>), <code>SRV_WEB:8080</code> (<code>.20</code>)</li>
+            <li><code>MGMT</code> (<code>10.0.30.0/24</code>) — IT administratori un VPN</li>
+            <li><code>GUEST</code> (<code>10.0.40.0/24</code>) — Viesu Wi-Fi</li>
+            <li><code>DMZ</code> (<code>10.0.50.0/24</code>) — Publiskais portāls <code>DMZ_WAF:443</code> (<code>.10</code>)</li>
+            <li><code>WAN</code> — Internets + <code>CERT.LV DNS</code> (<code>dnsmuris.lv</code>)</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Vienotā 3 līmeņu riska skala (Slaids 053)</h3>
+          <p><span class="badge badge-red">KRITISKS (&lt; 24 h)</span> Tieša ārēja piekļuve (<code>WAN→RDP/SSH</code>), admins bez MFA <strong>vai bijušā darbinieka aktīvs konts ar <code>VPN</code>/mākoni</strong>.</p>
+          <p><span class="badge badge-amber">VIDĒJS (šonedēļ)</span> Iekšēja piekļuve, ēnots noteikums, WAF <code>DetectionOnly</code>, iekšējs neaktīvs konts <code>90d+</code> bez VPN, lokālais admins bez LAPS.</p>
+          <p><span class="badge">ZEMS (mēneša apkopē)</span> Komentāru, žurnalēšanas vai konfigurācijas higiēnas trūkumi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PD1 -->
+    <section class="sheet page-break" id="pd1">
+      <div class="sheet-head">
+        <h2>PD1 · Ugunsmūra noteikumu tabula un pakešu ceļu pārbaude</h2>
+        <span class="badge">10:10–10:25 · 15 min</span>
+      </div>
+      <p><strong>Uzdevums:</strong> Izstrādājiet „KRM” <code>OPNsense</code> ugunsmūra minimālo secīgo noteikumu tabulu ar <code>DENY ALL + LOG</code> beigās. <em>Atcerieties:</em> ugunsmūris ir <strong>stateful</strong> — atbildes trafiks atļautajiem savienojumiem tiek ielaists automātiski (nevajag rakstīt pretējā virziena noteikumus).</p>
+      <div class="box">
+        <strong>Plūsmu prasības:</strong>
+        <code>MGMT → SRV,DMZ :22</code> ·
+        <code>LAN → SRV:445</code> un <code>WAN:443,53 (CERT.LV DNS)</code> ·
+        <code>GUEST → tikai WAN:443,53 (CERT.LV DNS)</code> ·
+        <code>WAN → DMZ_WAF:443</code> → <code>DMZ_WAF → SRV_WEB:8080</code> ·
+        <code>SRV → WAN:443</code> (tikai OS drošības atjauninājumiem) ·
+        <code>GUEST</code> un <code>DMZ</code> nedrīkst sasniegt iekšējos tīklus!
+      </div>
+
+      <div class="table-wrap">
+        <table id="pd1-rules-table">
+          <thead>
+            <tr>
+              <th style="width:6%">#</th>
+              <th style="width:14%">SRC (Avots)</th>
+              <th style="width:17%">DST (Mērķis)</th>
+              <th style="width:13%">PORT / PROTO</th>
+              <th style="width:11%">ACTION</th>
+              <th style="width:9%">LOG</th>
+              <th>PAMATOJUMS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-pd1-row="1">
+              <td><div class="row-num-cell"><span>1</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="1" disabled title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="1" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r1.src" placeholder="piem., MGMT" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r1.dst" placeholder="piem., SRV" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r1.port" placeholder="22/tcp" /></td>
+              <td><select data-field="pd1.r1.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r1.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r1.reason" placeholder="Īss pamatojums" /></td>
+            </tr>
+            <tr data-pd1-row="2">
+              <td><div class="row-num-cell"><span>2</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="2" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="2" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r2.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r2.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r2.port" /></td>
+              <td><select data-field="pd1.r2.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r2.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r2.reason" /></td>
+            </tr>
+            <tr data-pd1-row="3">
+              <td><div class="row-num-cell"><span>3</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="3" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="3" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r3.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r3.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r3.port" /></td>
+              <td><select data-field="pd1.r3.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r3.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r3.reason" /></td>
+            </tr>
+            <tr data-pd1-row="4">
+              <td><div class="row-num-cell"><span>4</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="4" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="4" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r4.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r4.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r4.port" /></td>
+              <td><select data-field="pd1.r4.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r4.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r4.reason" /></td>
+            </tr>
+            <tr data-pd1-row="5">
+              <td><div class="row-num-cell"><span>5</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="5" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="5" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r5.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r5.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r5.port" /></td>
+              <td><select data-field="pd1.r5.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r5.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r5.reason" /></td>
+            </tr>
+            <tr data-pd1-row="6">
+              <td><div class="row-num-cell"><span>6</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="6" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="6" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r6.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r6.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r6.port" /></td>
+              <td><select data-field="pd1.r6.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r6.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r6.reason" /></td>
+            </tr>
+            <tr data-pd1-row="7">
+              <td><div class="row-num-cell"><span>7</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="7" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="7" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r7.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r7.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r7.port" /></td>
+              <td><select data-field="pd1.r7.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r7.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r7.reason" /></td>
+            </tr>
+            <tr data-pd1-row="8">
+              <td><div class="row-num-cell"><span>8</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="8" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="8" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r8.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r8.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r8.port" /></td>
+              <td><select data-field="pd1.r8.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r8.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r8.reason" /></td>
+            </tr>
+            <tr data-pd1-row="9">
+              <td><div class="row-num-cell"><span>9</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="9" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="9" title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r9.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r9.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r9.port" /></td>
+              <td><select data-field="pd1.r9.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r9.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r9.reason" /></td>
+            </tr>
+            <tr data-pd1-row="10">
+              <td><div class="row-num-cell"><span>10</span><span class="btn-row-move no-print"><button type="button" class="btn-move" data-move="up" data-row="10" title="Pārvietot augšup">▲</button><button type="button" class="btn-move" data-move="down" data-row="10" disabled title="Pārvietot lejup">▼</button></span></div></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r10.src" /></td>
+              <td><input type="text" list="dl-krm-zones" data-field="pd1.r10.dst" /></td>
+              <td><input type="text" list="dl-krm-ports" data-field="pd1.r10.port" /></td>
+              <td><select data-field="pd1.r10.action" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="DROP">DROP</option><option value="REJECT">REJECT</option></select></td>
+              <td><select data-field="pd1.r10.log"><option value="">—</option><option value="YES">YES</option><option value="NO">NO</option></select></td>
+              <td><input type="text" data-field="pd1.r10.reason" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Pašpārbaude: izsekojiet 4 testa paketes cauri savai tabulai no #1 uz leju</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Testa pakete</th>
+              <th style="width:18%">Pirmais atbilstošais noteikums (#)</th>
+              <th style="width:17%">Rezultāts (ALLOW/DROP)</th>
+              <th style="width:22%">Vai atbilst prasībām?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. <code>GUEST 10.0.40.7 → SRV 10.0.20.10:445</code></td>
+              <td><select data-field="pd1.t1.rule"><option value="">—</option><option value="#1">#1</option><option value="#2">#2</option><option value="#3">#3</option><option value="#4">#4</option><option value="#5">#5</option><option value="#6">#6</option><option value="#7">#7</option><option value="#8">#8</option><option value="#9">#9</option><option value="#10">#10</option></select></td>
+              <td><select data-field="pd1.t1.result" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="ALLOW + LOG">ALLOW + LOG</option><option value="DROP">DROP</option><option value="DROP + LOG">DROP + LOG</option><option value="REJECT">REJECT</option></select></td>
+              <td><div style="display:flex;gap:6px;align-items:center;"><select data-field="pd1.t1.ok" style="width:70px;"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select><span class="meta" style="margin:0;">(jābūt DROP)</span></div></td>
+            </tr>
+            <tr>
+              <td>2. <code>GUEST 10.0.40.7 → CERT.LV DNS:53/udp</code></td>
+              <td><select data-field="pd1.t2.rule"><option value="">—</option><option value="#1">#1</option><option value="#2">#2</option><option value="#3">#3</option><option value="#4">#4</option><option value="#5">#5</option><option value="#6">#6</option><option value="#7">#7</option><option value="#8">#8</option><option value="#9">#9</option><option value="#10">#10</option></select></td>
+              <td><select data-field="pd1.t2.result" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="ALLOW + LOG">ALLOW + LOG</option><option value="DROP">DROP</option><option value="DROP + LOG">DROP + LOG</option><option value="REJECT">REJECT</option></select></td>
+              <td><div style="display:flex;gap:6px;align-items:center;"><select data-field="pd1.t2.ok" style="width:70px;"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select><span class="meta" style="margin:0;">(jābūt ALLOW)</span></div></td>
+            </tr>
+            <tr>
+              <td>3. <code>DMZ_WAF 10.0.50.10 → SRV_WEB 10.0.20.20:8080</code></td>
+              <td><select data-field="pd1.t3.rule"><option value="">—</option><option value="#1">#1</option><option value="#2">#2</option><option value="#3">#3</option><option value="#4">#4</option><option value="#5">#5</option><option value="#6">#6</option><option value="#7">#7</option><option value="#8">#8</option><option value="#9">#9</option><option value="#10">#10</option></select></td>
+              <td><select data-field="pd1.t3.result" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="ALLOW + LOG">ALLOW + LOG</option><option value="DROP">DROP</option><option value="DROP + LOG">DROP + LOG</option><option value="REJECT">REJECT</option></select></td>
+              <td><div style="display:flex;gap:6px;align-items:center;"><select data-field="pd1.t3.ok" style="width:70px;"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select><span class="meta" style="margin:0;">(jābūt ALLOW)</span></div></td>
+            </tr>
+            <tr>
+              <td>4. <code>SRV 10.0.20.10 → apt mirror (WAN):443</code></td>
+              <td><select data-field="pd1.t4.rule"><option value="">—</option><option value="#1">#1</option><option value="#2">#2</option><option value="#3">#3</option><option value="#4">#4</option><option value="#5">#5</option><option value="#6">#6</option><option value="#7">#7</option><option value="#8">#8</option><option value="#9">#9</option><option value="#10">#10</option></select></td>
+              <td><select data-field="pd1.t4.result" class="action-select"><option value="">—</option><option value="ALLOW">ALLOW</option><option value="ALLOW + LOG">ALLOW + LOG</option><option value="DROP">DROP</option><option value="DROP + LOG">DROP + LOG</option><option value="REJECT">REJECT</option></select></td>
+              <td><div style="display:flex;gap:6px;align-items:center;"><select data-field="pd1.t4.ok" style="width:70px;"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select><span class="meta" style="margin:0;">(jābūt ALLOW)</span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="stretch-box" id="pd1-stretch-details">
+        <summary>Ātrākajiem (izvēles paplašinājums): pierakstiet 2 <code>ufw route</code> komandas noteikumiem #1 un #2</summary>
+        <textarea class="code-input" rows="3" data-field="pd1.stretch" placeholder="sudo ufw route allow ..."></textarea>
+        <div class="print-mirror is-code" aria-hidden="true"></div>
+      </details>
+    </section>
+
+    <!-- PD2 -->
+    <section class="sheet page-break" id="pd2">
+      <div class="sheet-head">
+        <h2>PD2 · „KRM” lietotāju piekļuves tiesību, LAPS un MFA izvērtēšana</h2>
+        <span class="badge">11:25–11:40 · 15 min</span>
+      </div>
+      <p><strong>Uzdevums:</strong> Salīdziniet piecu „KRM” kontu faktiskās tiesības ar sleju <code>NEEDS</code>. Identificējiet visus <strong>9 pārkāpumus</strong>, piešķiriet prioritāti (<code>Kritisks</code> / <code>Vidējs</code> pēc 053. skalas) un uzrakstiet minimālo korekciju, nesagraujot darbinieka darbu.</p>
+
+      <pre>USER         | NEEDS (Reālais darbs)  | GROUPS              | LOC_ADM | MFA   | LAST_LOGIN
+anna.k       | Grāmatvedība (Fin_RW)  | Finance_RW, IT_RW   | No      | False | 1d ago
+markuss.p    | IT prakse (IT_RO)      | Domain Admins       | Yes     | False | 2d ago
+ilze.ex      | NAV (atlaista 160d)    | Finance_RW,VPN_User | No      | True  | 160d ago
+adm_kristaps | IT sistēmu pārvaldība  | Domain Admins       | Static  | False | 0d ago
+birojs_kase  | 4 darbin. (Sales_RW)   | Sales_RW, Finance_R | No      | False | 0d ago</pre>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:14%">Konts</th>
+              <th style="width:17%">Prioritāte (053)</th>
+              <th style="width:34%">Konstatētie pārkāpumi (kopā 9)</th>
+              <th>Minimālā korekcija (nesalaužot darbu)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>anna.k</code></td>
+              <td><select data-field="pd2.anna_k.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd2.anna_k.issues" placeholder="Pārkāpumi..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd2.anna_k.fix" placeholder="Korekcija..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>markuss.p</code></td>
+              <td><select data-field="pd2.markuss_p.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd2.markuss_p.issues" placeholder="Pārkāpumi..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd2.markuss_p.fix" placeholder="Korekcija..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>ilze.ex</code></td>
+              <td><select data-field="pd2.ilze_ex.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd2.ilze_ex.issues" placeholder="Pārkāpumi..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd2.ilze_ex.fix" placeholder="Korekcija..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>adm_kristaps</code></td>
+              <td><select data-field="pd2.adm_kristaps.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd2.adm_kristaps.issues" placeholder="Pārkāpumi..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd2.adm_kristaps.fix" placeholder="Korekcija..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>birojs_kase</code></td>
+              <td><select data-field="pd2.birojs_kase.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd2.birojs_kase.issues" placeholder="Pārkāpumi..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd2.birojs_kase.fix" placeholder="Korekcija..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="stretch-box" id="pd2-stretch-details">
+        <summary>Ātrākajiem (izvēles paplašinājums): uzrakstiet PowerShell <code>Get-ADUser</code> komandu neaktīvo kontu (90d+) atrašanai</summary>
+        <textarea class="code-input" rows="3" data-field="pd2.stretch" placeholder="Get-ADUser -Filter ..."></textarea>
+        <div class="print-mirror is-code" aria-hidden="true"></div>
+      </details>
+    </section>
+
+    <!-- PD3 JIGSAW -->
+    <section class="sheet page-break" id="pd3">
+      <div class="sheet-head">
+        <h2>PD3 · Konfigurāciju revīzija (Jigsaw A / B / C)</h2>
+        <span class="badge">12:00–12:25 · 15 min eksperti + 10 min trio</span>
+      </div>
+      <p><strong>Instrukcija:</strong> Katra ekspertu grupa analizē <strong>vienu</strong> pakotni (A, B vai C). Katrā pakotnē ir tieši <strong>4 kļūdainas rindas/konti</strong> un <strong>2 korektas „ēsmas”</strong>, kuras nevajag mainīt! Plkst. <code>12:15</code> pārsēžaties jauktajos trio (<code>A+B+C</code>) un pierakstāt arī pārējo pakotņu atradumus.</p>
+
+      <div class="box no-print" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <label for="pd3-expert-select" style="font-weight:700;">Mana ekspertu pakotne (12:00–12:15):</label>
+          <select id="pd3-expert-select" data-field="pd3.expert_packet" style="width:auto;min-width:250px;">
+            <option value="">— Izvēlieties pakotni —</option>
+            <option value="A">Pakotne A — DMZ / Perimetrs (ufw + ModSecurity)</option>
+            <option value="B">Pakotne B — Active Directory eksports (6 konti)</option>
+            <option value="C">Pakotne C — SSH &amp; Mākoņa IAM politika</option>
+          </select>
+        </div>
+        <div class="tab-buttons" id="pd3-stimulus-filter">
+          <button type="button" class="tab-btn is-active" data-pd3-filter="ALL">Visas pakotnes</button>
+          <button type="button" class="tab-btn" data-pd3-filter="A">Tikai A</button>
+          <button type="button" class="tab-btn" data-pd3-filter="B">Tikai B</button>
+          <button type="button" class="tab-btn" data-pd3-filter="C">Tikai C</button>
+        </div>
+      </div>
+
+      <!-- Packet A -->
+      <div class="box packet-box" data-packet="A">
+        <div class="packet-header">
+          <h3>Pakotne A — „KRM” DMZ / Perimetrs (<code>ufw</code> + <code>ModSecurity</code>) · 4 kļūdas + 2 korektas ēsmas</h3>
+          <span class="badge badge-violet no-print" id="pd3-tally-A">Atzīmēts: 0/4 kļūdas · 0/2 ēsmas</span>
+        </div>
+        <div class="code-line-list">
+          <div class="code-line-row">
+            <span class="code-line-text">[1] 22/tcp       ALLOW IN    Anywhere             # SSH uz DMZ serveri</span>
+            <select data-field="pd3.tag.a1" class="pd3-tag" data-packet-tag="A"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[2] 8080/tcp     ALLOW IN    Anywhere             # SRV_WEB lietotnes ports</span>
+            <select data-field="pd3.tag.a2" class="pd3-tag" data-packet-tag="A"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[3] 443/tcp      ALLOW IN    Anywhere             # Publiskais HTTPS uz DMZ WAF</span>
+            <select data-field="pd3.tag.a3" class="pd3-tag" data-packet-tag="A"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text"># [4] Default incoming: allow; logging: off</span>
+            <select data-field="pd3.tag.a4" class="pd3-tag" data-packet-tag="A"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-comment-line"># DMZ Web WAF (/etc/modsecurity/modsecurity.conf)</div>
+          <div class="code-line-row">
+            <span class="code-line-text">[5] SecRuleEngine DetectionOnly</span>
+            <select data-field="pd3.tag.a5" class="pd3-tag" data-packet-tag="A"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[6] SecAuditEngine RelevantOnly</span>
+            <select data-field="pd3.tag.a6" class="pd3-tag" data-packet-tag="A"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Packet B -->
+      <div class="box packet-box" data-packet="B">
+        <div class="packet-header">
+          <h3>Pakotne B — „KRM” Active Directory eksports (6 konti) · 4 kļūdaini konti + 2 korektas ēsmas</h3>
+          <span class="badge badge-violet no-print" id="pd3-tally-B">Atzīmēts: 0/4 kļūdas · 0/2 ēsmas</span>
+        </div>
+        <div class="table-wrap" style="margin-bottom:0;">
+          <table>
+            <thead><tr><th>Konts</th><th>Amats / Grupas</th><th>MFA / Logon</th><th>Pēdējā piesl.</th><th style="width:165px">Atzīme</th></tr></thead>
+            <tbody>
+              <tr><td><code>ilze.ex</code></td><td>Bij. grāmatvede · <code>VPN_Users</code></td><td>MFA: Jā</td><td>160 dienas</td><td><select data-field="pd3.tag.b1" class="pd3-tag" data-packet-tag="B"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select></td></tr>
+              <tr><td><code>adm_kristaps</code></td><td>IT admins · <code>Domain Admins</code></td><td>MFA: Nē</td><td>Šodien</td><td><select data-field="pd3.tag.b2" class="pd3-tag" data-packet-tag="B"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select></td></tr>
+              <tr><td><code>svc_backup</code></td><td>Serviss · <code>Domain Admins</code></td><td>Interactive: Jā</td><td>Vakar</td><td><select data-field="pd3.tag.b3" class="pd3-tag" data-packet-tag="B"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select></td></tr>
+              <tr><td><code>helpdesk</code></td><td>Koplietots (4 cilv.) · <code>IT_RW</code></td><td>MFA: Nē</td><td>Šodien</td><td><select data-field="pd3.tag.b4" class="pd3-tag" data-packet-tag="B"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select></td></tr>
+              <tr><td><code>liga.b</code></td><td>Grāmatvede · <code>Finance_RW</code></td><td>MFA: Jā</td><td>Šodien</td><td><select data-field="pd3.tag.b5" class="pd3-tag" data-packet-tag="B"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select></td></tr>
+              <tr><td><code>janis.m</code></td><td>Koordinators · <code>Public_RW</code></td><td>MFA: Jā</td><td>Vakar</td><td><select data-field="pd3.tag.b6" class="pd3-tag" data-packet-tag="B"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Packet C -->
+      <div class="box packet-box" data-packet="C">
+        <div class="packet-header">
+          <h3>Pakotne C — „KRM” SSH &amp; Mākoņa IAM politika · 4 kļūdainas rindas + 2 korektas ēsmas</h3>
+          <span class="badge badge-violet no-print" id="pd3-tally-C">Atzīmēts: 0/4 kļūdas · 0/2 ēsmas</span>
+        </div>
+        <div class="code-line-list">
+          <div class="code-line-row">
+            <span class="code-line-text">[1] PermitRootLogin yes</span>
+            <select data-field="pd3.tag.c1" class="pd3-tag" data-packet-tag="C"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[2] PubkeyAuthentication yes</span>
+            <select data-field="pd3.tag.c2" class="pd3-tag" data-packet-tag="C"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[3] mfa_admins: false</span>
+            <select data-field="pd3.tag.c3" class="pd3-tag" data-packet-tag="C"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[4] block_legacy_auth: true</span>
+            <select data-field="pd3.tag.c4" class="pd3-tag" data-packet-tag="C"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[5] lockout_threshold: 0</span>
+            <select data-field="pd3.tag.c5" class="pd3-tag" data-packet-tag="C"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+          <div class="code-line-row">
+            <span class="code-line-text">[6] session_timeout_hours: 720</span>
+            <select data-field="pd3.tag.c6" class="pd3-tag" data-packet-tag="C"><option value="">— Atzīmēt —</option><option value="bug">⚠️ Kļūda</option><option value="decoy">✅ Korekta ēsma</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <h3 style="margin:0;">Revīzijas atradumu tabulas (ekspertu fāzei un trio pierakstiem)</h3>
+        <div class="tab-buttons no-print" id="pd3-findings-tabs">
+          <button type="button" class="tab-btn is-active" data-pd3-tab="A">Atradumi: Pakotne A</button>
+          <button type="button" class="tab-btn" data-pd3-tab="B">Atradumi: Pakotne B</button>
+          <button type="button" class="tab-btn" data-pd3-tab="C">Atradumi: Pakotne C</button>
+        </div>
+      </div>
+
+      <!-- Findings Panel A -->
+      <div class="pd3-tab-panel is-active" data-pd3-panel="A">
+        <p class="meta"><strong>Pakotne A — DMZ / Perimetrs (<code>ufw</code> + <code>ModSecurity</code>)</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:14%">Rinda</th><th style="width:30%">Drošības risks</th><th style="width:17%">Kritiskums (053)</th><th>Minimālais labojums (komanda / iestatījums)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><input type="text" data-field="pd3.a.r1.item" placeholder="piem., [1]" /></td>
+                <td><textarea rows="2" data-field="pd3.a.r1.risk" placeholder="Drošības risks..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.a.r1.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.a.r1.fix" placeholder="Labojums..."></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.a.r2.item" /></td>
+                <td><textarea rows="2" data-field="pd3.a.r2.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.a.r2.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.a.r2.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.a.r3.item" /></td>
+                <td><textarea rows="2" data-field="pd3.a.r3.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.a.r3.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.a.r3.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.a.r4.item" /></td>
+                <td><textarea rows="2" data-field="pd3.a.r4.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.a.r4.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.a.r4.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><strong>Korektās ēsmas (2)</strong></td>
+                <td colspan="3"><textarea rows="2" data-field="pd3.a.decoys" placeholder="Kuras 2 rindas pakotnē A ir korektas un kāpēc?"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Findings Panel B -->
+      <div class="pd3-tab-panel" data-pd3-panel="B">
+        <p class="meta"><strong>Pakotne B — Active Directory eksports (6 konti)</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:14%">Konts</th><th style="width:30%">Drošības risks</th><th style="width:17%">Kritiskums (053)</th><th>Minimālais labojums (komanda / iestatījums)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><input type="text" data-field="pd3.b.r1.item" placeholder="piem., ilze.ex" /></td>
+                <td><textarea rows="2" data-field="pd3.b.r1.risk" placeholder="Drošības risks..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.b.r1.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.b.r1.fix" placeholder="Labojums..."></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.b.r2.item" /></td>
+                <td><textarea rows="2" data-field="pd3.b.r2.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.b.r2.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.b.r2.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.b.r3.item" /></td>
+                <td><textarea rows="2" data-field="pd3.b.r3.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.b.r3.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.b.r3.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.b.r4.item" /></td>
+                <td><textarea rows="2" data-field="pd3.b.r4.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.b.r4.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.b.r4.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><strong>Korektās ēsmas (2)</strong></td>
+                <td colspan="3"><textarea rows="2" data-field="pd3.b.decoys" placeholder="Kuri 2 konti pakotnē B ir korekti un kāpēc?"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Findings Panel C -->
+      <div class="pd3-tab-panel" data-pd3-panel="C">
+        <p class="meta"><strong>Pakotne C — SSH &amp; Mākoņa IAM politika</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:14%">Rinda</th><th style="width:30%">Drošības risks</th><th style="width:17%">Kritiskums (053)</th><th>Minimālais labojums (komanda / iestatījums)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><input type="text" data-field="pd3.c.r1.item" placeholder="piem., [1]" /></td>
+                <td><textarea rows="2" data-field="pd3.c.r1.risk" placeholder="Drošības risks..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.c.r1.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.c.r1.fix" placeholder="Labojums..."></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.c.r2.item" /></td>
+                <td><textarea rows="2" data-field="pd3.c.r2.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.c.r2.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.c.r2.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.c.r3.item" /></td>
+                <td><textarea rows="2" data-field="pd3.c.r3.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.c.r3.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.c.r3.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><input type="text" data-field="pd3.c.r4.item" /></td>
+                <td><textarea rows="2" data-field="pd3.c.r4.risk"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><select data-field="pd3.c.r4.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+                <td><textarea class="code-input" rows="2" data-field="pd3.c.r4.fix"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><strong>Korektās ēsmas (2)</strong></td>
+                <td colspan="3"><textarea rows="2" data-field="pd3.c.decoys" placeholder="Kuras 2 rindas pakotnē C ir korektas un kāpēc?"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PD4 -->
+    <section class="sheet page-break" id="pd4">
+      <div class="sheet-head">
+        <h2>PD4 · Funkcionālā un drošības testēšanas scenāriju pāris</h2>
+        <span class="badge">13:40–13:55 · 15 min</span>
+      </div>
+      <p><strong>Uzdevums:</strong> Izvēlieties mērķi — <strong>(A)</strong> <code>GUEST/SMB</code> vai WAF <code>403</code> bloks, vai <strong>(B)</strong> <code>adm_kristaps</code> MFA pieslēgšanās. Aizpildiet <strong>6 obligātos projektēšanas laukus</strong> 1 pozitīvajam un 1 negatīvajam testam, piesaistot atbilstošo žurnāla izrakstu zemāk!</p>
+
+      <div class="box" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <label for="pd4-target-select" style="font-weight:700;">Izvēlētais testēšanas mērķis:</label>
+        <select id="pd4-target-select" data-field="pd4.target" style="width:auto;min-width:300px;">
+          <option value="">— Izvēlieties mērķi —</option>
+          <option value="(A) GUEST/SMB vai WAF 403 bloks">(A) GUEST/SMB vai WAF 403 bloks</option>
+          <option value="(B) adm_kristaps MFA pieslēgšanās">(B) adm_kristaps MFA pieslēgšanās</option>
+        </select>
+      </div>
+
+      <h3>Sagatavotie „KRM” žurnāla izraksti (nospiediet pogu, lai pievienotu laukam <code>log_evidence</code>)</h3>
+      <div class="log-card">
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <strong>[LOG-1] OPNsense filterlog (starpzonu ugunsmūris)</strong>
+            <div class="log-insert-bar no-print">
+              <button type="button" class="btn btn-xs" data-insert-log="pos" data-log-text="[LOG-1] 2026-11-24T13:42:11 filterlog: 42,,,1000000103,vlan40,match,block,in,4,0x0,,64,12911,0,DF,6,tcp,60,10.0.40.55,10.0.20.10,51842,445,0,S">→ Pozitīvais</button>
+              <button type="button" class="btn btn-xs" data-insert-log="neg" data-log-text="[LOG-1] 2026-11-24T13:42:11 filterlog: 42,,,1000000103,vlan40,match,block,in,4,0x0,,64,12911,0,DF,6,tcp,60,10.0.40.55,10.0.20.10,51842,445,0,S">→ Negatīvais</button>
+            </div>
+          </div>
+          <div class="log-entry-code">2026-11-24T13:42:11 filterlog: 42,,,1000000103,vlan40,match,block,in,4,0x0,,64,12911,0,DF,6,tcp,60,10.0.40.55,10.0.20.10,51842,445,0,S</div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <strong>[LOG-2] Nginx + ModSecurity WAF (/var/log/modsec_audit.log)</strong>
+            <div class="log-insert-bar no-print">
+              <button type="button" class="btn btn-xs" data-insert-log="pos" data-log-text="[LOG-2] [24/Nov/2026:13:43:05 +0200] ModSecurity: Access denied with code 403 (phase 2). Matched &quot;SQL Injection Attack (942100)&quot; [uri &quot;/login?id=1' OR 1=1--&quot;]">→ Pozitīvais</button>
+              <button type="button" class="btn btn-xs" data-insert-log="neg" data-log-text="[LOG-2] [24/Nov/2026:13:43:05 +0200] ModSecurity: Access denied with code 403 (phase 2). Matched &quot;SQL Injection Attack (942100)&quot; [uri &quot;/login?id=1' OR 1=1--&quot;]">→ Negatīvais</button>
+            </div>
+          </div>
+          <div class="log-entry-code">[24/Nov/2026:13:43:05 +0200] ModSecurity: Access denied with code 403 (phase 2). Matched "SQL Injection Attack (942100)" [uri "/login?id=1' OR 1=1--"]</div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-entry-head">
+            <strong>[LOG-3] Windows AD / Entra ID (Security Event Log)</strong>
+          </div>
+          <div class="log-entry-head" style="margin-top:4px;">
+            <span class="log-entry-code">EventID=4624 AccountName=anna.k LogonType=3 SourceIP=10.0.10.22 Status=Success (MFA=Passed)</span>
+            <div class="log-insert-bar no-print">
+              <button type="button" class="btn btn-xs" data-insert-log="pos" data-log-text="[LOG-3] EventID=4624 AccountName=anna.k LogonType=3 SourceIP=10.0.10.22 Status=Success (MFA=Passed)">→ Pozitīvais</button>
+              <button type="button" class="btn btn-xs" data-insert-log="neg" data-log-text="[LOG-3] EventID=4624 AccountName=anna.k LogonType=3 SourceIP=10.0.10.22 Status=Success (MFA=Passed)">→ Negatīvais</button>
+            </div>
+          </div>
+          <div class="log-entry-head">
+            <span class="log-entry-code">EventID=4625 AccountName=ilze.ex LogonType=10 SourceIP=198.51.100.44 SubStatus=0xC0000072 (Account Disabled)</span>
+            <div class="log-insert-bar no-print">
+              <button type="button" class="btn btn-xs" data-insert-log="pos" data-log-text="[LOG-3] EventID=4625 AccountName=ilze.ex LogonType=10 SourceIP=198.51.100.44 SubStatus=0xC0000072 (Account Disabled)">→ Pozitīvais</button>
+              <button type="button" class="btn btn-xs" data-insert-log="neg" data-log-text="[LOG-3] EventID=4625 AccountName=ilze.ex LogonType=10 SourceIP=198.51.100.44 SubStatus=0xC0000072 (Account Disabled)">→ Negatīvais</button>
+            </div>
+          </div>
+          <div class="log-entry-head">
+            <span class="log-entry-code">EventID=4740 AccountName=adm_kristaps CallerComputer=VPN-GW (Account Locked Out after 5 failed attempts)</span>
+            <div class="log-insert-bar no-print">
+              <button type="button" class="btn btn-xs" data-insert-log="pos" data-log-text="[LOG-3] EventID=4740 AccountName=adm_kristaps CallerComputer=VPN-GW (Account Locked Out after 5 failed attempts)">→ Pozitīvais</button>
+              <button type="button" class="btn btn-xs" data-insert-log="neg" data-log-text="[LOG-3] EventID=4740 AccountName=adm_kristaps CallerComputer=VPN-GW (Account Locked Out after 5 failed attempts)">→ Negatīvais</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width:20%">Projektēšanas lauks (6)</th><th style="width:40%">1. Pozitīvais tests (Functional)</th><th style="width:40%">2. Negatīvais tests (Security)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>id</code></td>
+              <td><input type="text" data-field="pd4.pos.id" placeholder="piem., TC-01" /></td>
+              <td><input type="text" data-field="pd4.neg.id" placeholder="piem., TC-02" /></td>
+            </tr>
+            <tr>
+              <td><code>type</code></td>
+              <td><strong>Functional (Positive)</strong></td>
+              <td><strong>Security (Negative)</strong></td>
+            </tr>
+            <tr>
+              <td><code>precondition</code></td>
+              <td><textarea rows="2" data-field="pd4.pos.precondition" placeholder="Avota zona, lietotāja sesija vai sākotnējais stāvoklis..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd4.neg.precondition" placeholder="Avota zona, bloķētā plūsma vai nepilnvarotais konts..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>command</code></td>
+              <td><textarea class="code-input" rows="2" data-field="pd4.pos.command" placeholder="nc / curl / ssh / smbclient ..."></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea class="code-input" rows="2" data-field="pd4.neg.command" placeholder="nc / curl / ssh / pieteikšanās mēģinājums..."></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>expected_output</code></td>
+              <td><textarea rows="2" data-field="pd4.pos.expected_output" placeholder="piem., HTTP 200 OK / atvērts savienojums..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd4.neg.expected_output" placeholder="piem., Timeout / HTTP 403 Forbidden..."></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>log_evidence</code></td>
+              <td><textarea class="code-input" rows="2" data-field="pd4.pos.log_evidence" placeholder="Piesaistītais žurnāla izraksts vai gaidītais ieraksts..."></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea class="code-input" rows="2" data-field="pd4.neg.log_evidence" placeholder="Piesaistītais žurnāla izraksts ([LOG-1]/[LOG-2]/[LOG-3])..."></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="stretch-box" id="pd4-exec-details">
+        <summary>Izpildes brīdī pievienojamie 4 lauki: <code>actual_output</code> · <code>tester_and_date</code> · <code>status (PASS/FAIL)</code> · <code>remediation_if_fail</code></summary>
+        <div class="table-wrap" style="margin-bottom:0;">
+          <table>
+            <thead><tr><th style="width:20%">Izpildes lauks</th><th style="width:40%">1. Pozitīvais tests</th><th style="width:40%">2. Negatīvais tests</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>actual_output</code></td>
+                <td><textarea rows="2" data-field="pd4.pos.actual_output"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><textarea rows="2" data-field="pd4.neg.actual_output"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              </tr>
+              <tr>
+                <td><code>tester_and_date</code></td>
+                <td><input type="text" data-field="pd4.pos.tester_and_date" placeholder="Vārds, YYYY-MM-DD" /></td>
+                <td><input type="text" data-field="pd4.neg.tester_and_date" placeholder="Vārds, YYYY-MM-DD" /></td>
+              </tr>
+              <tr>
+                <td><code>status</code></td>
+                <td><select data-field="pd4.pos.status"><option value="">—</option><option value="PASS">PASS</option><option value="FAIL">FAIL</option></select></td>
+                <td><select data-field="pd4.neg.status"><option value="">—</option><option value="PASS">PASS</option><option value="FAIL">FAIL</option></select></td>
+              </tr>
+              <tr>
+                <td><code>remediation_if_fail</code></td>
+                <td><textarea rows="2" data-field="pd4.pos.remediation_if_fail"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+                <td><textarea rows="2" data-field="pd4.neg.remediation_if_fail"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="box" style="margin-top:10px;">
+        <label for="pd4-reject-q" style="font-weight:700;display:block;margin-bottom:5px;">Papildu jautājums: kā mainītos <code>expected_output</code>, ja ugunsmūra noteikums būtu <code>REJECT</code>, nevis <code>DROP</code>?</label>
+        <textarea id="pd4-reject-q" rows="2" data-field="pd4.reject_question" placeholder="Aprakstiet atšķirību klienta atbildē un reakcijas laikā..."></textarea>
+        <div class="print-mirror" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- PD5 -->
+    <section class="sheet page-break" id="pd5">
+      <div class="sheet-head">
+        <h2>PD5 · „KRM” kiberdrošības uzturēšanas kontrolsaraksts</h2>
+        <span class="badge">14:25–14:40 · 15 min</span>
+      </div>
+      <p><strong>Reālais ierobežojums:</strong> „KRM” ir <strong>1 IT darbinieks</strong>, kuram drošības uzturēšanai ir <strong>2 stundas nedēļā</strong>. Izveidojiet praktisku 5 kolonnu kontrolsarakstu (vismaz 9 punkti kopā ar 2 paraugiem), iekļaujot gan periodiskos uzdevumus (nedēļa / mēnesis / ceturksnis), gan <strong>notikumu trigerus</strong> (jauns <code>KEV</code>, darbinieka aiziešana, WAF viltus pozitīvs).</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:16%">Periods / Notikums</th>
+              <th style="width:31%">Uzdevums (2 h/ned. budžets)</th>
+              <th style="width:17%">Rīks / Avots</th>
+              <th style="width:9%">MK 397</th>
+              <th>Izpildes pierādījums</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Nedēļa <em>(paraugs)</em></td><td>Kritiskie CISA KEV / CERT.LV ielāpi</td><td>CERT.LV / KEV</td><td>Jā</td><td>Biļete + ielāpa ID</td></tr>
+            <tr><td>Notikums <em>(paraugs)</em></td><td>Darbinieka aiziešana (&lt;1 h SLA)</td><td>AD + Entra ID</td><td>Jā</td><td>Disable + Revoke žurnāls</td></tr>
+
+            <tr>
+              <td><select data-field="pd5.r1.period" data-default="Nedēļa" data-count-progress="false"><option value="">—</option><option value="Nedēļa" selected>Nedēļa</option><option value="Mēnesis">Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r1.task" placeholder="Iknedēļas drošības uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r1.tool" /></td>
+              <td><select data-field="pd5.r1.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r1.evidence" /></td>
+            </tr>
+            <tr>
+              <td><select data-field="pd5.r2.period" data-default="Nedēļa" data-count-progress="false"><option value="">—</option><option value="Nedēļa" selected>Nedēļa</option><option value="Mēnesis">Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r2.task" placeholder="Iknedēļas drošības uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r2.tool" /></td>
+              <td><select data-field="pd5.r2.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r2.evidence" /></td>
+            </tr>
+            <tr>
+              <td><select data-field="pd5.r3.period" data-default="Mēnesis" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis" selected>Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r3.task" placeholder="Ikmēneša uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r3.tool" /></td>
+              <td><select data-field="pd5.r3.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r3.evidence" /></td>
+            </tr>
+            <tr>
+              <td><select data-field="pd5.r4.period" data-default="Mēnesis" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis" selected>Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r4.task" placeholder="Ikmēneša uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r4.tool" /></td>
+              <td><select data-field="pd5.r4.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r4.evidence" /></td>
+            </tr>
+            <tr>
+              <td><select data-field="pd5.r5.period" data-default="Mēnesis" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis" selected>Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r5.task" placeholder="Ikmēneša uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r5.tool" /></td>
+              <td><select data-field="pd5.r5.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r5.evidence" /></td>
+            </tr>
+            <tr>
+              <td><select data-field="pd5.r6.period" data-default="Ceturksnis" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis">Mēnesis</option><option value="Ceturksnis" selected>Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r6.task" placeholder="Ceturkšņa uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r6.tool" /></td>
+              <td><select data-field="pd5.r6.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r6.evidence" /></td>
+            </tr>
+            <tr>
+              <td><select data-field="pd5.r7.period" data-default="Ceturksnis" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis">Mēnesis</option><option value="Ceturksnis" selected>Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r7.task" placeholder="Ceturkšņa uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r7.tool" /></td>
+              <td><select data-field="pd5.r7.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r7.evidence" /></td>
+            </tr>
+            <tr>
+              <td><select data-field="pd5.r8.period" data-default="Notikums" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis">Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums" selected>Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r8.task" placeholder="Notikuma trigeris..." /></td>
+              <td><input type="text" data-field="pd5.r8.tool" /></td>
+              <td><select data-field="pd5.r8.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r8.evidence" /></td>
+            </tr>
+
+            <tr class="pd5-extra-row is-hidden" data-pd5-extra="9">
+              <td><select data-field="pd5.r9.period" data-default="" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis">Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r9.task" placeholder="Papildu uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r9.tool" /></td>
+              <td><select data-field="pd5.r9.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r9.evidence" /></td>
+            </tr>
+            <tr class="pd5-extra-row is-hidden" data-pd5-extra="10">
+              <td><select data-field="pd5.r10.period" data-default="" data-count-progress="false"><option value="">—</option><option value="Nedēļa">Nedēļa</option><option value="Mēnesis">Mēnesis</option><option value="Ceturksnis">Ceturksnis</option><option value="Notikums">Notikums</option></select></td>
+              <td><input type="text" data-field="pd5.r10.task" placeholder="Papildu uzdevums..." /></td>
+              <td><input type="text" data-field="pd5.r10.tool" /></td>
+              <td><select data-field="pd5.r10.mk397"><option value="">—</option><option value="Jā">Jā</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd5.r10.evidence" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="no-print">
+        <button type="button" class="btn" id="btn-pd5-add-row">+ Pievienot rindu</button>
+      </div>
+    </section>
+
+    <!-- PD6 -->
+    <section class="sheet page-break" id="pd6">
+      <div class="sheet-head">
+        <h2>PD6 · Kompleksais grupu darbs: „KRM” risinājuma integrācija</h2>
+        <span class="badge">15:10–15:45 · 35 min</span>
+      </div>
+      <p><strong>Lomas (35 min):</strong> (1) Tīkls/WAF (pielāgo <code>PD1</code> → D1), (2) Piekļuves/LAPS/MFA (pielāgo <code>PD2</code> → D2), (3) Auditors (D3 izsekojamība), (4) Testēšanas vadītājs (pielāgo <code>PD4</code> → D4). <em>3 cilvēku grupā apvienojiet 3. un 4. lomu!</em></p>
+
+      <div class="meta-grid" style="margin-bottom:12px;">
+        <div class="field-group">
+          <label for="pd6-r1">1. Tīkls / WAF (D1)</label>
+          <input type="text" id="pd6-r1" data-field="pd6.role1" placeholder="Dalībnieka vārds" />
+        </div>
+        <div class="field-group">
+          <label for="pd6-r2">2. Piekļuves / LAPS / MFA (D2)</label>
+          <input type="text" id="pd6-r2" data-field="pd6.role2" placeholder="Dalībnieka vārds" />
+        </div>
+        <div class="field-group">
+          <label for="pd6-r3">3. Auditors (D3)</label>
+          <input type="text" id="pd6-r3" data-field="pd6.role3" placeholder="Dalībnieka vārds" />
+        </div>
+        <div class="field-group">
+          <label for="pd6-r4">4. Testēšanas vadītājs (D4)</label>
+          <input type="text" id="pd6-r4" data-field="pd6.role4" placeholder="Dalībnieka vārds" />
+        </div>
+      </div>
+
+      <details class="integration-panel no-print" id="pd6-integration">
+        <summary>Skatīt iepriekš aizpildītos PD1, PD2 un PD4 datus (automātiska integrācijas atsauce)</summary>
+        <div class="preview-grid" id="pd6-preview-grid"></div>
+      </details>
+
+      <div class="box">
+        <h3>6 mantotās „KRM” kļūdas (Slaids 092)</h3>
+        <pre>[FW-1]  3389/tcp  ALLOW IN  Anywhere            # RDP no interneta
+[FW-2]  Anywhere  ALLOW IN  10.0.40.0/24        # GUEST redz SRV un LAN
+[WAF-1] SecRuleEngine DetectionOnly             # Publiskais portāls nav bloķēts
+[AD-1]  Group "Local Admins": ALL_STAFF (no LAPS)
+[AD-2]  User "ilze.ex" (bijušā grāmatvede): Enabled=True, VPN_Users, LastLogon=160d
+[IAM-1] adm_kristaps VPN &amp; M365: MFA=False, LegacyAuth=Allow, Lockout=0</pre>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px;">
+        <h3 style="margin:0;">D1 · Gala tīkla un WAF risinājuma kopsavilkums / korekcijas</h3>
+        <button type="button" class="btn btn-xs no-print" id="btn-copy-pd1">Iekopēt no PD1 tabulas</button>
+      </div>
+      <textarea class="code-input" rows="3" data-field="pd6.d1_summary" placeholder="Ugunsmūra noteikumu kopsavilkums + WAF (SecRuleEngine On)..."></textarea>
+      <div class="print-mirror is-code" aria-hidden="true"></div>
+
+      <h3>D2 · RBAC, LAPS un MFA matrica</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Loma</th><th>Atļautās mapes / konti</th><th style="width:18%">MFA</th><th>Lokālais admins / LAPS</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Vadība (4)</td>
+              <td><input type="text" data-field="pd6.d2.vadiba.shares" placeholder="piem., Public_RW, Mgmt_RW" /></td>
+              <td><select data-field="pd6.d2.vadiba.mfa"><option value="">—</option><option value="Jā (TOTP / App)">Jā (TOTP / App)</option><option value="Jā (FIDO2)">Jā (FIDO2)</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd6.d2.vadiba.laps" placeholder="piem., Nē (standarta lietotājs)" /></td>
+            </tr>
+            <tr>
+              <td>Grāmatvedība (6)</td>
+              <td><input type="text" data-field="pd6.d2.gramatvediba.shares" placeholder="piem., Public_R, Finance_RW" /></td>
+              <td><select data-field="pd6.d2.gramatvediba.mfa"><option value="">—</option><option value="Jā (TOTP / App)">Jā (TOTP / App)</option><option value="Jā (FIDO2)">Jā (FIDO2)</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd6.d2.gramatvediba.laps" /></td>
+            </tr>
+            <tr>
+              <td>Praktikants (1)</td>
+              <td><input type="text" data-field="pd6.d2.praktikants.shares" /></td>
+              <td><select data-field="pd6.d2.praktikants.mfa"><option value="">—</option><option value="Jā (TOTP / App)">Jā (TOTP / App)</option><option value="Jā (FIDO2)">Jā (FIDO2)</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd6.d2.praktikants.laps" /></td>
+            </tr>
+            <tr>
+              <td>IT admins (2)</td>
+              <td><input type="text" data-field="pd6.d2.it_admins.shares" /></td>
+              <td><select data-field="pd6.d2.it_admins.mfa"><option value="">—</option><option value="Jā (TOTP / App)">Jā (TOTP / App)</option><option value="Jā (FIDO2)">Jā (FIDO2)</option><option value="Nē">Nē</option></select></td>
+              <td><input type="text" data-field="pd6.d2.it_admins.laps" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="policy-grid">
+        <div class="field-group">
+          <label for="pol-legacy"><code>block_legacy_auth</code></label>
+          <select id="pol-legacy" data-field="pd6.pol.block_legacy_auth">
+            <option value="">—</option>
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="pol-lockout"><code>lockout_threshold</code></label>
+          <input type="text" id="pol-lockout" data-field="pd6.pol.lockout_threshold" placeholder="piem., 5" />
+        </div>
+        <div class="field-group">
+          <label for="pol-timeout"><code>session_timeout_h</code></label>
+          <input type="text" id="pol-timeout" data-field="pd6.pol.session_timeout_h" placeholder="piem., 8" />
+        </div>
+        <div class="field-group">
+          <label for="pol-leaver"><code>leaver_revoke_sla</code></label>
+          <input type="text" id="pol-leaver" data-field="pd6.pol.leaver_revoke_sla" placeholder="piem., &lt; 1 h" />
+        </div>
+      </div>
+
+      <h3>D3 + D4 · 6 kļūdu izsekojamības un testēšanas matrica (1 kļūda = 1 atsevišķs tests!)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:9%">Kļūda</th>
+              <th style="width:16%">Kritiskums (053)</th>
+              <th style="width:23%">Labojums (D1 vai D2)</th>
+              <th style="width:9%">Testa ID</th>
+              <th style="width:22%">Pārbaudes komanda / darbība</th>
+              <th>Gaidītais rezultāts + Žurnāls</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>FW-1</code></td>
+              <td><select data-field="pd6.d3.fw1.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd6.d3.fw1.fix"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><input type="text" data-field="pd6.d3.fw1.testid" value="TC-03" data-default="TC-03" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.fw1.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.fw1.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>FW-2</code></td>
+              <td><select data-field="pd6.d3.fw2.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd6.d3.fw2.fix"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><input type="text" data-field="pd6.d3.fw2.testid" value="TC-04" data-default="TC-04" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.fw2.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.fw2.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>WAF-1</code></td>
+              <td><select data-field="pd6.d3.waf1.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd6.d3.waf1.fix"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><input type="text" data-field="pd6.d3.waf1.testid" value="TC-05" data-default="TC-05" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.waf1.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.waf1.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>AD-1</code></td>
+              <td><select data-field="pd6.d3.ad1.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd6.d3.ad1.fix"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><input type="text" data-field="pd6.d3.ad1.testid" value="TC-06" data-default="TC-06" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.ad1.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.ad1.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>AD-2</code></td>
+              <td><select data-field="pd6.d3.ad2.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd6.d3.ad2.fix"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><input type="text" data-field="pd6.d3.ad2.testid" value="TC-07" data-default="TC-07" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.ad2.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.ad2.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><code>IAM-1</code></td>
+              <td><select data-field="pd6.d3.iam1.prio" class="sev-select"><option value="">—</option><option value="Kritisks (< 24 h)">Kritisks (&lt; 24 h)</option><option value="Vidējs (šonedēļ)">Vidējs (šonedēļ)</option><option value="Zems (mēneša apkopē)">Zems (mēneša apkopē)</option></select></td>
+              <td><textarea rows="2" data-field="pd6.d3.iam1.fix"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+              <td><input type="text" data-field="pd6.d3.iam1.testid" value="TC-08" data-default="TC-08" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.iam1.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.iam1.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><em>Funkc.</em></td>
+              <td>—</td>
+              <td><code>LAN → SRV:445</code> (<code>anna.k</code>)</td>
+              <td><input type="text" data-field="pd6.d3.func1.testid" value="TC-01" data-default="TC-01" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.func1.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.func1.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+            <tr>
+              <td><em>Funkc.</em></td>
+              <td>—</td>
+              <td><code>WAN → DMZ_WAF:443</code></td>
+              <td><input type="text" data-field="pd6.d3.func2.testid" value="TC-02" data-default="TC-02" data-count-progress="false" /></td>
+              <td><textarea class="code-input" rows="2" data-field="pd6.d3.func2.cmd"></textarea><div class="print-mirror is-code" aria-hidden="true"></div></td>
+              <td><textarea rows="2" data-field="pd6.d3.func2.expected"></textarea><div class="print-mirror" aria-hidden="true"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PD7 -->
+    <section class="sheet page-break" id="pd7">
+      <div class="sheet-head">
+        <h2>PD7 · Aizstāvēšana un vērtēšanas rubrika (4 kritēriji × 0/1/2 punkti)</h2>
+        <span class="badge badge-green">Maks. 8 punkti</span>
+      </div>
+
+      <div class="rubric-score-bar">
+        <span>Noklikšķiniet uz attiecīgā līmeņa šūnas katrā kritērijā, lai veiktu pašnovērtējumu vai fiksētu grupas vērtējumu.</span>
+        <span class="rubric-total-badge" id="pd7-total-badge">Pašnovērtējums / Grupas vērtējums: 0 / 8 punkti</span>
+      </div>
+
+      <input type="hidden" data-field="pd7.crit1" data-rubric-input="1" value="" />
+      <input type="hidden" data-field="pd7.crit2" data-rubric-input="2" value="" />
+      <input type="hidden" data-field="pd7.crit3" data-rubric-input="3" value="" />
+      <input type="hidden" data-field="pd7.crit4" data-rubric-input="4" value="" />
+
+      <div class="table-wrap">
+        <table id="pd7-rubric-table">
+          <thead>
+            <tr>
+              <th style="width:19%">Kritērijs (25%)</th>
+              <th style="width:27%">0 punkti (Nepilnīgi)</th>
+              <th style="width:27%">1 punkts (Atbilstoši)</th>
+              <th style="width:27%">2 punkti (Izcili)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Tīkls &amp; WAF (D1)</strong></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="1" data-score="0">Ēnoti noteikumi, atvērts RDP vai WAF <code>DetectionOnly</code>.<div class="rubric-check">✓ Izvēlēts (0 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="1" data-score="1">Pamatnoteikumi pareizi, bet trūkst <code>SRV</code> egress vai DMZ bloka.<div class="rubric-check">✓ Izvēlēts (1 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="1" data-score="2">0 ēnotu noteikumu, <code>WAF→SRV_WEB</code> pirms <code>DMZ DROP</code>, <code>SRV</code> egress, <code>DENY+LOG</code>.<div class="rubric-check">✓ Izvēlēts (2 p.)</div></td>
+            </tr>
+            <tr>
+              <td><strong>2. Identitāte (D2)</strong></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="2" data-score="0">Aktīva <code>ilze.ex</code> vai nav MFA administratoram.<div class="rubric-check">✓ Izvēlēts (0 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="2" data-score="1">RBAC pareizs, bet trūkst <code>LAPS</code>, <code>Legacy Auth</code> vai <code>Lockout</code>.<div class="rubric-check">✓ Izvēlēts (1 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="2" data-score="2">Pilns RBAC, <code>LAPS</code>, nodalīts <code>adm_</code> ar <code>FIDO2</code>, bloķēta <code>ilze.ex</code>, <code>&lt;1h</code> SLA.<div class="rubric-check">✓ Izvēlēts (2 p.)</div></td>
+            </tr>
+            <tr>
+              <td><strong>3. Audits (D3)</strong></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="3" data-score="0">Atrastas &lt;4 kļūdas vai nav sasaistes ar labojumiem.<div class="rubric-check">✓ Izvēlēts (0 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="3" data-score="1">4–5 kļūdas vai izmantota jaukta kritiskuma skala.<div class="rubric-check">✓ Izvēlēts (1 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="3" data-score="2">Visas 6 kļūdas pēc 053. skalas (3 līmeņi) sasaistītas ar D1/D2 un testa ID.<div class="rubric-check">✓ Izvēlēts (2 p.)</div></td>
+            </tr>
+            <tr>
+              <td><strong>4. Testi &amp; Q&amp;A (D4/PD7)</strong></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="4" data-score="0">Apvienoti vai neatkārtojami testi bez žurnāla pierādījuma.<div class="rubric-check">✓ Izvēlēts (0 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="4" data-score="1">6+2 testi ir, bet trūkst konkrēta žurnāla vai nepilnīga Q&amp;A atbilde.<div class="rubric-check">✓ Izvēlēts (1 p.)</div></td>
+              <td class="rubric-cell" role="button" tabindex="0" aria-pressed="false" data-criterion="4" data-score="2">Visi 6+2 atsevišķi testi ar komandu + žurnālu un pārliecinoša atbilde uz izlozēto kartīti.<div class="rubric-check">✓ Izvēlēts (2 p.)</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box">
+        <label for="pd7-notes" style="font-weight:700;display:block;margin-bottom:5px;">Aizstāvēšanas sagatavošanās un Q&amp;A piezīmes (3 min prezentācijas plāns + atbildes uz auditora jautājumu)</label>
+        <textarea id="pd7-notes" rows="4" data-field="pd7.notes" placeholder="Galvenie argumenti aizstāvēšanai, komandas secība un atbildes uz izlozēto jautājumu..."></textarea>
+        <div class="print-mirror" aria-hidden="true"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var STORAGE_KEY = 'krm_2diena_darba_lapas_v1';
+      var storageAvailable = true;
+      var fields = Array.prototype.slice.call(document.querySelectorAll('[data-field]'));
+      var fieldMap = Object.create(null);
+      fields.forEach(function (el) {
+        fieldMap[el.getAttribute('data-field')] = el;
+      });
+
+      var saveStatusEl = document.getElementById('save-status');
+      var progressFillEl = document.getElementById('progress-fill');
+      var progressLabelEl = document.getElementById('progress-label');
+
+      function safeGetStorage(key) {
+        try {
+          return window.localStorage.getItem(key);
+        } catch (e) {
+          storageAvailable = false;
+          return null;
+        }
+      }
+
+      function safeSetStorage(key, val) {
+        try {
+          window.localStorage.setItem(key, val);
+          storageAvailable = true;
+          return true;
+        } catch (e) {
+          storageAvailable = false;
+          return false;
+        }
+      }
+
+      function safeRemoveStorage(key) {
+        try {
+          window.localStorage.removeItem(key);
+          return true;
+        } catch (e) {
+          storageAvailable = false;
+          return false;
+        }
+      }
+
+      function formatTimeHHMM(date) {
+        var hh = String(date.getHours()).padStart(2, '0');
+        var mm = String(date.getMinutes()).padStart(2, '0');
+        return hh + ':' + mm;
+      }
+
+      function autoResizeTextarea(ta) {
+        ta.style.height = 'auto';
+        ta.style.height = Math.max(44, ta.scrollHeight + 2) + 'px';
+        var mirror = ta.nextElementSibling;
+        if (mirror && mirror.classList.contains('print-mirror')) {
+          mirror.textContent = ta.value;
+        }
+      }
+
+      function updateSelectTints() {
+        document.querySelectorAll('select.action-select').forEach(function (sel) {
+          sel.classList.remove('state-allow', 'state-block');
+          if (sel.value.indexOf('ALLOW') === 0) {
+            sel.classList.add('state-allow');
+          } else if (sel.value.indexOf('DROP') === 0 || sel.value.indexOf('REJECT') === 0) {
+            sel.classList.add('state-block');
+          }
+        });
+
+        document.querySelectorAll('select.sev-select').forEach(function (sel) {
+          sel.classList.remove('sev-critical', 'sev-medium', 'sev-low');
+          if (sel.value.indexOf('Kritisks') === 0) {
+            sel.classList.add('sev-critical');
+          } else if (sel.value.indexOf('Vidējs') === 0) {
+            sel.classList.add('sev-medium');
+          } else if (sel.value.indexOf('Zems') === 0) {
+            sel.classList.add('sev-low');
+          }
+        });
+      }
+
+      function updateStretchDetailsState() {
+        document.querySelectorAll('details.stretch-box').forEach(function (det) {
+          var hasVal = false;
+          det.querySelectorAll('[data-field]').forEach(function (el) {
+            if (el.value && el.value.trim() !== '') {
+              hasVal = true;
+            }
+          });
+          det.classList.toggle('has-content', hasVal);
+        });
+      }
+
+      function updatePD3TalliesAndPanels() {
+        ['A', 'B', 'C'].forEach(function (pkt) {
+          var bugs = 0;
+          var decoys = 0;
+          document.querySelectorAll('select.pd3-tag[data-packet-tag="' + pkt + '"]').forEach(function (sel) {
+            if (sel.value === 'bug') bugs += 1;
+            else if (sel.value === 'decoy') decoys += 1;
+          });
+          var badge = document.getElementById('pd3-tally-' + pkt);
+          if (badge) {
+            badge.textContent = 'Atzīmēts: ' + bugs + '/4 kļūdas · ' + decoys + '/2 ēsmas';
+          }
+
+          var panel = document.querySelector('.pd3-tab-panel[data-pd3-panel="' + pkt + '"]');
+          if (panel) {
+            var hasContent = false;
+            panel.querySelectorAll('[data-field]').forEach(function (el) {
+              if (el.value && el.value.trim() !== '') {
+                hasContent = true;
+              }
+            });
+            panel.classList.toggle('has-content', hasContent);
+          }
+        });
+      }
+
+      function updatePD5ExtraRowsVisibility() {
+        [9, 10].forEach(function (rowNum) {
+          var row = document.querySelector('tr[data-pd5-extra="' + rowNum + '"]');
+          if (!row) return;
+          var hasVal = false;
+          row.querySelectorAll('[data-field]').forEach(function (el) {
+            if (el.value && el.value.trim() !== '') hasVal = true;
+          });
+          if (hasVal) row.classList.remove('is-hidden');
+        });
+        var hiddenRows = document.querySelectorAll('tr.pd5-extra-row.is-hidden');
+        var addBtn = document.getElementById('btn-pd5-add-row');
+        if (addBtn) {
+          addBtn.style.display = hiddenRows.length === 0 ? 'none' : 'inline-flex';
+        }
+      }
+
+      function updatePD7RubricUI() {
+        var total = 0;
+        for (var c = 1; c <= 4; c++) {
+          var hidden = fieldMap['pd7.crit' + c];
+          var val = hidden ? hidden.value : '';
+          if (val !== '') {
+            total += parseInt(val, 10) || 0;
+          }
+          document.querySelectorAll('#pd7-rubric-table td.rubric-cell[data-criterion="' + c + '"]').forEach(function (cell) {
+            var selected = val !== '' && cell.getAttribute('data-score') === val;
+            cell.classList.toggle('is-selected', selected);
+            cell.setAttribute('aria-pressed', selected ? 'true' : 'false');
+          });
+        }
+        var totalBadge = document.getElementById('pd7-total-badge');
+        if (totalBadge) {
+          totalBadge.textContent = 'Pašnovērtējums / Grupas vērtējums: ' + total + ' / 8 punkti';
+        }
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+
+      function getPD1SummaryLines() {
+        var lines = [];
+        for (var i = 1; i <= 10; i++) {
+          var src = (fieldMap['pd1.r' + i + '.src'] && fieldMap['pd1.r' + i + '.src'].value.trim()) || '';
+          var dst = (fieldMap['pd1.r' + i + '.dst'] && fieldMap['pd1.r' + i + '.dst'].value.trim()) || '';
+          var port = (fieldMap['pd1.r' + i + '.port'] && fieldMap['pd1.r' + i + '.port'].value.trim()) || '';
+          var act = (fieldMap['pd1.r' + i + '.action'] && fieldMap['pd1.r' + i + '.action'].value.trim()) || '';
+          var log = (fieldMap['pd1.r' + i + '.log'] && fieldMap['pd1.r' + i + '.log'].value.trim()) || '';
+          var rsn = (fieldMap['pd1.r' + i + '.reason'] && fieldMap['pd1.r' + i + '.reason'].value.trim()) || '';
+          if (src || dst || port || act || log || rsn) {
+            lines.push('#' + i + ' ' + (src || '?') + ' → ' + (dst || '?') + ' (' + (port || 'ANY') + ') ' + (act || '?') + ' LOG=' + (log || '?') + (rsn ? ' — ' + rsn : ''));
+          }
+        }
+        return lines;
+      }
+
+      function updatePD6IntegrationPreview() {
+        var grid = document.getElementById('pd6-preview-grid');
+        if (!grid) return;
+
+        var pd1Lines = getPD1SummaryLines();
+        var pd1Html = pd1Lines.length
+          ? '<ul>' + pd1Lines.map(function (l) { return '<li><code>' + escapeHtml(l) + '</code></li>'; }).join('') + '</ul>'
+          : '<p class="meta">PD1 tabulā vēl nav ievadītu noteikumu.</p>';
+
+        var pd2Users = [
+          { key: 'anna_k', label: 'anna.k' },
+          { key: 'markuss_p', label: 'markuss.p' },
+          { key: 'ilze_ex', label: 'ilze.ex' },
+          { key: 'adm_kristaps', label: 'adm_kristaps' },
+          { key: 'birojs_kase', label: 'birojs_kase' }
+        ];
+        var pd2Items = [];
+        pd2Users.forEach(function (u) {
+          var prio = fieldMap['pd2.' + u.key + '.prio'] ? fieldMap['pd2.' + u.key + '.prio'].value.trim() : '';
+          var fix = fieldMap['pd2.' + u.key + '.fix'] ? fieldMap['pd2.' + u.key + '.fix'].value.trim() : '';
+          if (prio || fix) {
+            pd2Items.push('<li><strong>' + escapeHtml(u.label) + '</strong>' + (prio ? ' [' + escapeHtml(prio) + ']' : '') + (fix ? ': ' + escapeHtml(fix) : '') + '</li>');
+          }
+        });
+        var pd2Html = pd2Items.length
+          ? '<ul>' + pd2Items.join('') + '</ul>'
+          : '<p class="meta">PD2 tabulā vēl nav ievadītu korekciju.</p>';
+
+        var posId = fieldMap['pd4.pos.id'] ? fieldMap['pd4.pos.id'].value.trim() : '';
+        var posCmd = fieldMap['pd4.pos.command'] ? fieldMap['pd4.pos.command'].value.trim() : '';
+        var negId = fieldMap['pd4.neg.id'] ? fieldMap['pd4.neg.id'].value.trim() : '';
+        var negCmd = fieldMap['pd4.neg.command'] ? fieldMap['pd4.neg.command'].value.trim() : '';
+        var pd4Items = [];
+        if (posId || posCmd) pd4Items.push('<li><strong>Pozitīvais (' + escapeHtml(posId || '—') + '):</strong> <code>' + escapeHtml(posCmd || '—') + '</code></li>');
+        if (negId || negCmd) pd4Items.push('<li><strong>Negatīvais (' + escapeHtml(negId || '—') + '):</strong> <code>' + escapeHtml(negCmd || '—') + '</code></li>');
+        var pd4Html = pd4Items.length
+          ? '<ul>' + pd4Items.join('') + '</ul>'
+          : '<p class="meta">PD4 testēšanas scenāriji vēl nav aizpildīti.</p>';
+
+        grid.innerHTML =
+          '<div class="preview-card"><h4>PD1 · Ugunsmūris</h4>' + pd1Html + '</div>' +
+          '<div class="preview-card"><h4>PD2 · Konti un korekcijas</h4>' + pd2Html + '</div>' +
+          '<div class="preview-card"><h4>PD4 · Testi</h4>' + pd4Html + '</div>';
+      }
+
+      function updateProgressAndPills() {
+        var total = 0;
+        var filled = 0;
+
+        fields.forEach(function (el) {
+          if (el.getAttribute('data-count-progress') === 'false') return;
+          total += 1;
+          if (el.value && el.value.trim() !== '') {
+            filled += 1;
+          }
+        });
+
+        var pct = total > 0 ? Math.round((filled / total) * 100) : 0;
+        if (progressFillEl) progressFillEl.style.width = pct + '%';
+        if (progressLabelEl) progressLabelEl.textContent = 'Aizpildīts: ' + pct + '%';
+
+        var sectionIds = ['scenarijs', 'pd1', 'pd2', 'pd3', 'pd4', 'pd5', 'pd6', 'pd7'];
+        sectionIds.forEach(function (sid) {
+          var sec = document.getElementById(sid);
+          var pill = document.querySelector('.pill-link[data-target="' + sid + '"]');
+          if (!sec || !pill) return;
+
+          var secFields = Array.prototype.slice.call(sec.querySelectorAll('[data-field]')).filter(function (el) {
+            return el.getAttribute('data-count-progress') !== 'false';
+          });
+          var secFilled = 0;
+          secFields.forEach(function (el) {
+            if (el.value && el.value.trim() !== '') secFilled += 1;
+          });
+
+          var state = 'empty';
+          if (secFilled > 0) {
+            var threshold = sid === 'pd3' ? 8 : Math.ceil(secFields.length * 0.55);
+            state = secFilled >= threshold ? 'done' : 'partial';
+          }
+          pill.setAttribute('data-state', state);
+        });
+      }
+
+      function refreshAllUI() {
+        fields.forEach(function (el) {
+          if (el.tagName === 'TEXTAREA') {
+            autoResizeTextarea(el);
+          }
+        });
+        updateSelectTints();
+        updateStretchDetailsState();
+        updatePD3TalliesAndPanels();
+        updatePD5ExtraRowsVisibility();
+        updatePD7RubricUI();
+        updatePD6IntegrationPreview();
+        updateProgressAndPills();
+      }
+
+      function buildExportState() {
+        var data = {};
+        fields.forEach(function (el) {
+          data[el.getAttribute('data-field')] = el.value;
+        });
+        return {
+          version: 1,
+          worksheet: 'krm-2-diena-pd1-pd7',
+          savedAt: new Date().toISOString(),
+          fields: data
+        };
+      }
+
+      function saveToLocalStorage() {
+        var payload = buildExportState();
+        var ok = safeSetStorage(STORAGE_KEY, JSON.stringify(payload));
+        if (!saveStatusEl) return;
+        if (ok) {
+          saveStatusEl.classList.remove('is-warn');
+          saveStatusEl.textContent = '✓ Saglabāts pārlūkā ' + formatTimeHHMM(new Date());
+        } else {
+          saveStatusEl.classList.add('is-warn');
+          saveStatusEl.textContent = '⚠ Pārlūka krātuve bloķēta — izmantojiet „Saglabāt .json”';
+        }
+      }
+
+      function resetAllFieldsToDefaults() {
+        fields.forEach(function (el) {
+          var def = el.getAttribute('data-default');
+          el.value = def !== null ? def : '';
+        });
+        document.querySelectorAll('tr.pd5-extra-row').forEach(function (row) {
+          row.classList.add('is-hidden');
+        });
+      }
+
+      function applyStateObject(parsed) {
+        if (!parsed || typeof parsed !== 'object' || !parsed.fields || typeof parsed.fields !== 'object') {
+          return false;
+        }
+        resetAllFieldsToDefaults();
+        Object.keys(parsed.fields).forEach(function (k) {
+          if (fieldMap[k] && typeof parsed.fields[k] === 'string') {
+            fieldMap[k].value = parsed.fields[k];
+          }
+        });
+        if (fieldMap['pd3.expert_packet'] && fieldMap['pd3.expert_packet'].value) {
+          switchPD3FindingsTab(fieldMap['pd3.expert_packet'].value);
+        }
+        refreshAllUI();
+        return true;
+      }
+
+      function loadFromLocalStorage() {
+        var raw = safeGetStorage(STORAGE_KEY);
+        if (!raw) {
+          if (!storageAvailable && saveStatusEl) {
+            saveStatusEl.classList.add('is-warn');
+            saveStatusEl.textContent = '⚠ Pārlūka krātuve bloķēta — izmantojiet „Saglabāt .json”';
+          }
+          return;
+        }
+        try {
+          var parsed = JSON.parse(raw);
+          if (applyStateObject(parsed) && saveStatusEl) {
+            var dt = parsed.savedAt ? new Date(parsed.savedAt) : new Date();
+            saveStatusEl.classList.remove('is-warn');
+            saveStatusEl.textContent = '✓ Ielādēts no pārlūka (' + formatTimeHHMM(dt) + ')';
+          }
+        } catch (e) {
+          // Ignore malformed localStorage payload
+        }
+      }
+
+      var saveTimer = null;
+      function scheduleSave() {
+        refreshAllUI();
+        window.clearTimeout(saveTimer);
+        saveTimer = window.setTimeout(saveToLocalStorage, 220);
+      }
+
+      fields.forEach(function (el) {
+        if (el.type === 'hidden') return;
+        var evtName = (el.tagName === 'SELECT' || el.type === 'date') ? 'change' : 'input';
+        el.addEventListener(evtName, scheduleSave);
+        if (el.tagName === 'TEXTAREA') {
+          el.addEventListener('input', function () {
+            autoResizeTextarea(el);
+          });
+        }
+      });
+
+      // PD1 row move buttons
+      document.querySelectorAll('#pd1-rules-table .btn-move').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var r = parseInt(btn.getAttribute('data-row'), 10);
+          var dir = btn.getAttribute('data-move');
+          var target = dir === 'up' ? r - 1 : r + 1;
+          if (target < 1 || target > 10) return;
+
+          ['src', 'dst', 'port', 'action', 'log', 'reason'].forEach(function (col) {
+            var a = fieldMap['pd1.r' + r + '.' + col];
+            var b = fieldMap['pd1.r' + target + '.' + col];
+            if (a && b) {
+              var tmp = a.value;
+              a.value = b.value;
+              b.value = tmp;
+            }
+          });
+          scheduleSave();
+        });
+      });
+
+      // PD3 stimulus filter & findings tabs
+      function switchPD3FindingsTab(pkt) {
+        document.querySelectorAll('#pd3-findings-tabs .tab-btn').forEach(function (btn) {
+          btn.classList.toggle('is-active', btn.getAttribute('data-pd3-tab') === pkt);
+        });
+        document.querySelectorAll('.pd3-tab-panel').forEach(function (panel) {
+          panel.classList.toggle('is-active', panel.getAttribute('data-pd3-panel') === pkt);
+        });
+      }
+
+      document.querySelectorAll('#pd3-stimulus-filter .tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-pd3-filter');
+          document.querySelectorAll('#pd3-stimulus-filter .tab-btn').forEach(function (b) {
+            b.classList.toggle('is-active', b === btn);
+          });
+          document.querySelectorAll('.packet-box').forEach(function (box) {
+            var pkt = box.getAttribute('data-packet');
+            box.classList.toggle('is-hidden', filter !== 'ALL' && pkt !== filter);
+          });
+        });
+      });
+
+      document.querySelectorAll('#pd3-findings-tabs .tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          switchPD3FindingsTab(btn.getAttribute('data-pd3-tab'));
+        });
+      });
+
+      if (fieldMap['pd3.expert_packet']) {
+        fieldMap['pd3.expert_packet'].addEventListener('change', function () {
+          var val = fieldMap['pd3.expert_packet'].value;
+          if (val === 'A' || val === 'B' || val === 'C') {
+            switchPD3FindingsTab(val);
+          }
+        });
+      }
+
+      // PD4 log quick-insert
+      document.querySelectorAll('[data-insert-log]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var which = btn.getAttribute('data-insert-log');
+          var text = btn.getAttribute('data-log-text') || '';
+          var targetField = fieldMap['pd4.' + which + '.log_evidence'];
+          if (!targetField) return;
+          var existing = targetField.value.trim();
+          if (!existing) {
+            targetField.value = text;
+          } else if (existing.indexOf(text) === -1) {
+            targetField.value = existing + '\n' + text;
+          }
+          autoResizeTextarea(targetField);
+          targetField.focus();
+          scheduleSave();
+        });
+      });
+
+      // PD5 add row
+      var btnPd5Add = document.getElementById('btn-pd5-add-row');
+      if (btnPd5Add) {
+        btnPd5Add.addEventListener('click', function () {
+          var nextHidden = document.querySelector('tr.pd5-extra-row.is-hidden');
+          if (nextHidden) {
+            nextHidden.classList.remove('is-hidden');
+          }
+          updatePD5ExtraRowsVisibility();
+        });
+      }
+
+      // PD6 copy from PD1
+      var btnCopyPd1 = document.getElementById('btn-copy-pd1');
+      if (btnCopyPd1) {
+        btnCopyPd1.addEventListener('click', function () {
+          var lines = getPD1SummaryLines();
+          if (!lines.length) {
+            window.alert('PD1 tabulā vēl nav ievadītu noteikumu.');
+            return;
+          }
+          var target = fieldMap['pd6.d1_summary'];
+          if (!target) return;
+          if (target.value.trim() !== '' && !window.confirm('Aizstāt pašreizējo D1 kopsavilkuma tekstu ar datiem no PD1 tabulas?')) {
+            return;
+          }
+          target.value = lines.join('\n');
+          autoResizeTextarea(target);
+          scheduleSave();
+        });
+      }
+
+      // PD7 interactive rubric cells
+      function toggleRubricCell(cell) {
+        var crit = cell.getAttribute('data-criterion');
+        var score = cell.getAttribute('data-score');
+        var hidden = fieldMap['pd7.crit' + crit];
+        if (!hidden) return;
+        hidden.value = (hidden.value === score) ? '' : score;
+        scheduleSave();
+      }
+
+      document.querySelectorAll('#pd7-rubric-table td.rubric-cell').forEach(function (cell) {
+        cell.addEventListener('click', function () {
+          toggleRubricCell(cell);
+        });
+        cell.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            toggleRubricCell(cell);
+          }
+        });
+      });
+
+      // Focus mode & reference drawer & pills
+      var focusBtn = document.getElementById('btn-focus-mode');
+      var refBtn = document.getElementById('btn-ref-drawer');
+      var refDrawer = document.getElementById('krm-ref-drawer');
+
+      function activateSectionPill(targetId) {
+        document.querySelectorAll('#section-pills .pill-link').forEach(function (p) {
+          p.classList.toggle('is-active', p.getAttribute('data-target') === targetId);
+        });
+        document.querySelectorAll('main.workbook > section.sheet').forEach(function (s) {
+          s.classList.toggle('is-focus-active', s.id === targetId);
+        });
+      }
+
+      document.querySelectorAll('#section-pills .pill-link').forEach(function (pill) {
+        pill.addEventListener('click', function (ev) {
+          var targetId = pill.getAttribute('data-target');
+          activateSectionPill(targetId);
+          if (document.body.classList.contains('focus-mode')) {
+            ev.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      if (focusBtn) {
+        focusBtn.addEventListener('click', function () {
+          var isOn = document.body.classList.toggle('focus-mode');
+          focusBtn.classList.toggle('is-on', isOn);
+          focusBtn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+          if (isOn) {
+            var activePill = document.querySelector('#section-pills .pill-link.is-active');
+            var sid = activePill ? activePill.getAttribute('data-target') : 'scenarijs';
+            activateSectionPill(sid);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      }
+
+      if (refBtn && refDrawer) {
+        refBtn.addEventListener('click', function () {
+          var open = refDrawer.classList.toggle('is-open');
+          refBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      // Slug & file download helper
+      function getFileSlug() {
+        var raw = (fieldMap['meta.participant'] && fieldMap['meta.participant'].value.trim()) || 'dalibnieks';
+        var slug = raw.toLowerCase()
+          .replace(/[ā]/g, 'a').replace(/[č]/g, 'c').replace(/[ē]/g, 'e').replace(/[ģ]/g, 'g')
+          .replace(/[ī]/g, 'i').replace(/[ķ]/g, 'k').replace(/[ļ]/g, 'l').replace(/[ņ]/g, 'n')
+          .replace(/[š]/g, 's').replace(/[ū]/g, 'u').replace(/[ž]/g, 'z')
+          .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        return slug || 'dalibnieks';
+      }
+
+      function triggerDownload(filename, mimeType, content) {
+        var blob = new Blob([content], { type: mimeType + ';charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      }
+
+      function mdCell(str) {
+        return String(str || '').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>');
+      }
+
+      function val(key) {
+        return fieldMap[key] ? fieldMap[key].value.trim() : '';
+      }
+
+      function buildMarkdown() {
+        var out = [];
+        out.push('# Kiberdrošības risinājumi I (2. diena) — Dalībnieka darba lapas (PD1–PD7)');
+        out.push('');
+        out.push('- **Dalībnieks / Komanda:** ' + (val('meta.participant') || '—'));
+        out.push('- **Izglītības iestāde:** ' + (val('meta.institution') || '—'));
+        out.push('- **Datums:** ' + (val('meta.date') || '—'));
+        out.push('- **Darba forma:** ' + (val('meta.mode') || '—'));
+        out.push('- **Eksportēts:** ' + new Date().toLocaleString('lv-LV'));
+        out.push('');
+
+        // PD1
+        out.push('## PD1 · Ugunsmūra noteikumu tabula un pakešu pārbaude');
+        out.push('');
+        out.push('| # | SRC | DST | PORT / PROTO | ACTION | LOG | PAMATOJUMS |');
+        out.push('| :-: | :--- | :--- | :--- | :--- | :--- | :--- |');
+        var pd1HasRows = false;
+        for (var i = 1; i <= 10; i++) {
+          var s = val('pd1.r' + i + '.src'), d = val('pd1.r' + i + '.dst'), p = val('pd1.r' + i + '.port');
+          var a = val('pd1.r' + i + '.action'), l = val('pd1.r' + i + '.log'), r = val('pd1.r' + i + '.reason');
+          if (s || d || p || a || l || r) {
+            pd1HasRows = true;
+            out.push('| ' + i + ' | ' + mdCell(s) + ' | ' + mdCell(d) + ' | ' + mdCell(p) + ' | ' + mdCell(a) + ' | ' + mdCell(l) + ' | ' + mdCell(r) + ' |');
+          }
+        }
+        if (!pd1HasRows) out.push('| — | — | — | — | — | — | Nav aizpildīts |');
+        out.push('');
+        out.push('### Pašpārbaude (4 testa paketes)');
+        out.push('| Testa pakete | Noteikums (#) | Rezultāts | Atbilst prasībām? |');
+        out.push('| :--- | :--- | :--- | :--- |');
+        var tLabels = [
+          '1. GUEST 10.0.40.7 → SRV 10.0.20.10:445',
+          '2. GUEST 10.0.40.7 → CERT.LV DNS:53/udp',
+          '3. DMZ_WAF 10.0.50.10 → SRV_WEB 10.0.20.20:8080',
+          '4. SRV 10.0.20.10 → apt mirror (WAN):443'
+        ];
+        for (var t = 1; t <= 4; t++) {
+          out.push('| ' + tLabels[t - 1] + ' | ' + (val('pd1.t' + t + '.rule') || '—') + ' | ' + (val('pd1.t' + t + '.result') || '—') + ' | ' + (val('pd1.t' + t + '.ok') || '—') + ' |');
+        }
+        if (val('pd1.stretch')) {
+          out.push('');
+          out.push('**Ātrākajiem (`ufw route`):**');
+          out.push('```bash');
+          out.push(val('pd1.stretch'));
+          out.push('```');
+        }
+        out.push('');
+
+        // PD2
+        out.push('## PD2 · „KRM” lietotāju piekļuves tiesību, LAPS un MFA izvērtēšana');
+        out.push('');
+        out.push('| Konts | Prioritāte (053) | Konstatētie pārkāpumi | Minimālā korekcija |');
+        out.push('| :--- | :--- | :--- | :--- |');
+        [
+          { k: 'anna_k', n: 'anna.k' },
+          { k: 'markuss_p', n: 'markuss.p' },
+          { k: 'ilze_ex', n: 'ilze.ex' },
+          { k: 'adm_kristaps', n: 'adm_kristaps' },
+          { k: 'birojs_kase', n: 'birojs_kase' }
+        ].forEach(function (u) {
+          out.push('| `' + u.n + '` | ' + mdCell(val('pd2.' + u.k + '.prio') || '—') + ' | ' + mdCell(val('pd2.' + u.k + '.issues') || '—') + ' | ' + mdCell(val('pd2.' + u.k + '.fix') || '—') + ' |');
+        });
+        if (val('pd2.stretch')) {
+          out.push('');
+          out.push('**Ātrākajiem (PowerShell 90d+):**');
+          out.push('```powershell');
+          out.push(val('pd2.stretch'));
+          out.push('```');
+        }
+        out.push('');
+
+        // PD3
+        out.push('## PD3 · Konfigurāciju revīzija (Jigsaw A / B / C)');
+        out.push('');
+        out.push('- **Ekspertu pakotne:** ' + (val('pd3.expert_packet') || '—'));
+        ['a', 'b', 'c'].forEach(function (pkt) {
+          var tags = [];
+          for (var x = 1; x <= 6; x++) {
+            var tv = val('pd3.tag.' + pkt + x);
+            if (tv) tags.push('[' + x + ']=' + (tv === 'bug' ? 'Kļūda' : 'Ēsma'));
+          }
+          var rowsMd = [];
+          for (var r = 1; r <= 4; r++) {
+            var it = val('pd3.' + pkt + '.r' + r + '.item');
+            var rk = val('pd3.' + pkt + '.r' + r + '.risk');
+            var pr = val('pd3.' + pkt + '.r' + r + '.prio');
+            var fx = val('pd3.' + pkt + '.r' + r + '.fix');
+            if (it || rk || pr || fx) {
+              rowsMd.push('| ' + mdCell(it) + ' | ' + mdCell(rk) + ' | ' + mdCell(pr) + ' | ' + mdCell(fx) + ' |');
+            }
+          }
+          var dec = val('pd3.' + pkt + '.decoys');
+          if (tags.length || rowsMd.length || dec) {
+            out.push('');
+            out.push('### Pakotne ' + pkt.toUpperCase());
+            if (tags.length) out.push('- **Atzīmētās rindas:** ' + tags.join(', '));
+            if (rowsMd.length) {
+              out.push('| Rinda / Konts | Drošības risks | Kritiskums | Minimālais labojums |');
+              out.push('| :--- | :--- | :--- | :--- |');
+              rowsMd.forEach(function (rm) { out.push(rm); });
+            }
+            if (dec) out.push('- **Korektās ēsmas:** ' + dec);
+          }
+        });
+        out.push('');
+
+        // PD4
+        out.push('## PD4 · Funkcionālā un drošības testēšanas scenāriju pāris');
+        out.push('');
+        out.push('- **Izvēlētais mērķis:** ' + (val('pd4.target') || '—'));
+        out.push('');
+        out.push('| Lauks | 1. Pozitīvais tests (Functional) | 2. Negatīvais tests (Security) |');
+        out.push('| :--- | :--- | :--- |');
+        out.push('| `id` | ' + mdCell(val('pd4.pos.id') || '—') + ' | ' + mdCell(val('pd4.neg.id') || '—') + ' |');
+        out.push('| `type` | Functional (Positive) | Security (Negative) |');
+        ['precondition', 'command', 'expected_output', 'log_evidence'].forEach(function (f) {
+          out.push('| `' + f + '` | ' + mdCell(val('pd4.pos.' + f) || '—') + ' | ' + mdCell(val('pd4.neg.' + f) || '—') + ' |');
+        });
+        if (val('pd4.pos.actual_output') || val('pd4.neg.actual_output') || val('pd4.pos.status') || val('pd4.neg.status')) {
+          ['actual_output', 'tester_and_date', 'status', 'remediation_if_fail'].forEach(function (f) {
+            out.push('| `' + f + '` | ' + mdCell(val('pd4.pos.' + f) || '—') + ' | ' + mdCell(val('pd4.neg.' + f) || '—') + ' |');
+          });
+        }
+        if (val('pd4.reject_question')) {
+          out.push('');
+          out.push('- **REJECT vs DROP:** ' + val('pd4.reject_question'));
+        }
+        out.push('');
+
+        // PD5
+        out.push('## PD5 · „KRM” kiberdrošības uzturēšanas kontrolsaraksts');
+        out.push('');
+        out.push('| Periods / Notikums | Uzdevums | Rīks / Avots | MK 397 | Izpildes pierādījums |');
+        out.push('| :--- | :--- | :--- | :--- | :--- |');
+        var pd5Any = false;
+        for (var k = 1; k <= 10; k++) {
+          var per = val('pd5.r' + k + '.period'), tsk = val('pd5.r' + k + '.task');
+          var tl = val('pd5.r' + k + '.tool'), mk = val('pd5.r' + k + '.mk397'), ev = val('pd5.r' + k + '.evidence');
+          if (tsk || tl || mk || ev) {
+            pd5Any = true;
+            out.push('| ' + mdCell(per) + ' | ' + mdCell(tsk) + ' | ' + mdCell(tl) + ' | ' + mdCell(mk) + ' | ' + mdCell(ev) + ' |');
+          }
+        }
+        if (!pd5Any) out.push('| — | Nav aizpildīts | — | — | — |');
+        out.push('');
+
+        // PD6
+        out.push('## PD6 · Kompleksais grupu darbs: „KRM” risinājuma integrācija');
+        out.push('');
+        out.push('- **Lomas:** (1) ' + (val('pd6.role1') || '—') + ' · (2) ' + (val('pd6.role2') || '—') + ' · (3) ' + (val('pd6.role3') || '—') + ' · (4) ' + (val('pd6.role4') || '—'));
+        if (val('pd6.d1_summary')) {
+          out.push('');
+          out.push('### D1 · Tīkla un WAF risinājums');
+          out.push('```text');
+          out.push(val('pd6.d1_summary'));
+          out.push('```');
+        }
+        out.push('');
+        out.push('### D2 · RBAC, LAPS un MFA matrica');
+        out.push('| Loma | Atļautās mapes / konti | MFA | Lokālais admins / LAPS |');
+        out.push('| :--- | :--- | :--- | :--- |');
+        [
+          { k: 'vadiba', n: 'Vadība (4)' },
+          { k: 'gramatvediba', n: 'Grāmatvedība (6)' },
+          { k: 'praktikants', n: 'Praktikants (1)' },
+          { k: 'it_admins', n: 'IT admins (2)' }
+        ].forEach(function (r) {
+          out.push('| ' + r.n + ' | ' + mdCell(val('pd6.d2.' + r.k + '.shares') || '—') + ' | ' + mdCell(val('pd6.d2.' + r.k + '.mfa') || '—') + ' | ' + mdCell(val('pd6.d2.' + r.k + '.laps') || '—') + ' |');
+        });
+        out.push('');
+        out.push('- **Politikas parametri:** `block_legacy_auth = ' + (val('pd6.pol.block_legacy_auth') || '—') + '`, `lockout_threshold = ' + (val('pd6.pol.lockout_threshold') || '—') + '`, `session_timeout_h = ' + (val('pd6.pol.session_timeout_h') || '—') + '`, `leaver_revoke_sla = ' + (val('pd6.pol.leaver_revoke_sla') || '—') + '`');
+        out.push('');
+        out.push('### D3 + D4 · Kļūdu izsekojamības un testēšanas matrica');
+        out.push('| Kļūda | Kritiskums | Labojums | Testa ID | Pārbaudes komanda | Gaidītais rezultāts + Žurnāls |');
+        out.push('| :--- | :--- | :--- | :--- | :--- | :--- |');
+        [
+          { k: 'fw1', label: 'FW-1' },
+          { k: 'fw2', label: 'FW-2' },
+          { k: 'waf1', label: 'WAF-1' },
+          { k: 'ad1', label: 'AD-1' },
+          { k: 'ad2', label: 'AD-2' },
+          { k: 'iam1', label: 'IAM-1' }
+        ].forEach(function (row) {
+          out.push('| `' + row.label + '` | ' + mdCell(val('pd6.d3.' + row.k + '.prio') || '—') + ' | ' + mdCell(val('pd6.d3.' + row.k + '.fix') || '—') + ' | ' + mdCell(val('pd6.d3.' + row.k + '.testid') || '—') + ' | ' + mdCell(val('pd6.d3.' + row.k + '.cmd') || '—') + ' | ' + mdCell(val('pd6.d3.' + row.k + '.expected') || '—') + ' |');
+        });
+        out.push('| *Funkc.* | — | `LAN → SRV:445` (`anna.k`) | ' + mdCell(val('pd6.d3.func1.testid')) + ' | ' + mdCell(val('pd6.d3.func1.cmd') || '—') + ' | ' + mdCell(val('pd6.d3.func1.expected') || '—') + ' |');
+        out.push('| *Funkc.* | — | `WAN → DMZ_WAF:443` | ' + mdCell(val('pd6.d3.func2.testid')) + ' | ' + mdCell(val('pd6.d3.func2.cmd') || '—') + ' | ' + mdCell(val('pd6.d3.func2.expected') || '—') + ' |');
+        out.push('');
+
+        // PD7
+        out.push('## PD7 · Vērtēšanas rubrika un aizstāvēšanas piezīmes');
+        out.push('');
+        var critSum = 0;
+        var critNames = ['1. Tīkls & WAF (D1)', '2. Identitāte (D2)', '3. Audits (D3)', '4. Testi & Q&A (D4/PD7)'];
+        for (var c = 1; c <= 4; c++) {
+          var sc = val('pd7.crit' + c);
+          if (sc !== '') critSum += parseInt(sc, 10) || 0;
+          out.push('- **' + critNames[c - 1] + ':** ' + (sc !== '' ? sc + ' / 2 punkti' : 'Nav novērtēts'));
+        }
+        out.push('- **Kopējais pašnovērtējums:** **' + critSum + ' / 8 punkti**');
+        if (val('pd7.notes')) {
+          out.push('');
+          out.push('**Aizstāvēšanas un Q&A piezīmes:**');
+          out.push(val('pd7.notes'));
+        }
+
+        return out.join('\n');
+      }
+
+      // Action buttons
+      document.getElementById('btn-export-md').addEventListener('click', function () {
+        triggerDownload('krm-darba-lapas-' + getFileSlug() + '.md', 'text/markdown', buildMarkdown());
+      });
+
+      document.getElementById('btn-export-json').addEventListener('click', function () {
+        triggerDownload('krm-darba-lapas-' + getFileSlug() + '.json', 'application/json', JSON.stringify(buildExportState(), null, 2));
+      });
+
+      var fileImportInput = document.getElementById('file-import-json');
+      document.getElementById('btn-import-json').addEventListener('click', function () {
+        fileImportInput.click();
+      });
+
+      fileImportInput.addEventListener('change', function () {
+        var file = fileImportInput.files && fileImportInput.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function () {
+          try {
+            var parsed = JSON.parse(String(reader.result || ''));
+            if (!applyStateObject(parsed)) {
+              window.alert('Nederīgs JSON darba lapu fails.');
+            } else {
+              saveToLocalStorage();
+            }
+          } catch (e) {
+            window.alert('Neizdevās nolasīt JSON failu: ' + e.message);
+          }
+          fileImportInput.value = '';
+        };
+        reader.readAsText(file, 'utf-8');
+      });
+
+      document.getElementById('btn-print').addEventListener('click', function () {
+        refreshAllUI();
+        window.print();
+      });
+
+      document.getElementById('btn-reset').addEventListener('click', function () {
+        if (!window.confirm('Vai tiešām notīrīt visus ievadītos datus un atiestatīt darba lapas?')) {
+          return;
+        }
+        resetAllFieldsToDefaults();
+        safeRemoveStorage(STORAGE_KEY);
+        refreshAllUI();
+        if (saveStatusEl) {
+          saveStatusEl.classList.remove('is-warn');
+          saveStatusEl.textContent = '✓ Darba lapas notīrītas';
+        }
+      });
+
+      // Initialize
+      loadFromLocalStorage();
+      refreshAllUI();
+
+      // ?audit=1 self-check
+      if (window.location.search.indexOf('audit=1') !== -1) {
+        var seen = Object.create(null);
+        var duplicates = [];
+        fields.forEach(function (el) {
+          var k = el.getAttribute('data-field');
+          if (seen[k]) duplicates.push(k);
+          seen[k] = true;
+        });
+        var textareas = Array.prototype.slice.call(document.querySelectorAll('textarea'));
+        var missingMirrors = textareas.filter(function (ta) {
+          return !(ta.nextElementSibling && ta.nextElementSibling.classList.contains('print-mirror'));
+        }).length;
+        var requiredSections = ['scenarijs', 'pd1', 'pd2', 'pd3', 'pd4', 'pd5', 'pd6', 'pd7'];
+        var missingSections = requiredSections.filter(function (id) { return !document.getElementById(id); });
+        var mdOk = false;
+        var jsonOk = false;
+        try {
+          mdOk = buildMarkdown().length > 200;
+          jsonOk = Object.keys(buildExportState().fields).length === fields.length;
+        } catch (e) {
+          mdOk = false;
+          jsonOk = false;
+        }
+
+        var report = document.createElement('div');
+        report.id = 'workbook-audit-report';
+        report.style.cssText = 'position:fixed;bottom:16px;left:16px;right:16px;background:#1F2933;color:#FFFFFF;border:3px solid #E53F30;border-radius:6px;padding:12px 16px;font:12.5px/1.45 "JetBrains Mono",monospace;z-index:9999;';
+        report.innerHTML =
+          '<strong>WORKBOOK SELF-AUDIT (?audit=1)</strong> | Fields: ' + fields.length +
+          ' | Duplicates: ' + duplicates.length +
+          ' | MissingMirrors: ' + missingMirrors +
+          ' | MissingSections: ' + missingSections.length +
+          ' | Serializers(JSON/MD): ' + (jsonOk ? 'OK' : 'FAIL') + '/' + (mdOk ? 'OK' : 'FAIL');
+        document.body.appendChild(report);
+      }
+    })();
+  </script>
+</body>
+</html>

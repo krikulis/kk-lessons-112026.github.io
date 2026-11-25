@@ -1,0 +1,24 @@
+<section class="layout-code" data-slide-id="015" data-topic="Tēma 1 (09:05–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 (09:05–09:45)</p>
+  <h2>Droša bāzlīnija pārvērš nostiprināšanu konkrētos <code>sshd</code> un <code>ufw</code> parametros</h2>
+  <pre><code class="language-ini" data-trim data-line-numbers="1-4|5-7|8-10">
+# /etc/ssh/sshd_config (bāzlīnija)
+PermitRootLogin no
+PasswordAuthentication no
+AllowUsers adm_janis@10.0.30.0/24
+MaxAuthTries 3
+# ufw bāzlīnija serverim
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow from 10.0.30.0/24 to any port 22 proto tcp
+ufw enable
+  </code></pre>
+  <ul>
+    <li>Noklusējuma iestatījumi optimizē ātru uzstādīšanu, atstājot liekus portus un servisus.</li>
+    <li>Atspējojiet <code>root</code> paroles pieteikšanos un ierobežojiet pārvaldību tikai <code>MGMT</code> apakštīklam.</li>
+    <li>Saglabājiet pārbaudīto konfigurācijas bāzlīniju versiju kontrolē (<code>Git</code>) nākotnes auditiem.</li>
+  </ul>
+  <aside class="notes">
+    Parādiet audzēkņiem, ka „droša konfigurācija” ir konkrētas, pārbaudāmas komandas Linux serverī. Nospiediet <code>↓</code> salīdzinājumam starp noklusējuma un nostiprinātu iekārtu.
+  </aside>
+</section>

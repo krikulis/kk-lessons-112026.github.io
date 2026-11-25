@@ -1,0 +1,16 @@
+<section class="layout-chart" data-slide-id="008" data-topic="Tēma 1 (09:05–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 (09:05–09:45)</p>
+  <h2>Tīkla segmentācija ar VLAN un DMZ ierobežo incidenta izplatīšanās rādiusu</h2>
+  <figure class="visual-slot" data-asset-type="inline-svg" data-asset-id="asset-008-network-segmentation-dmz">
+    <div class="svg-placeholder" data-svg-target="asset-008-network-segmentation-dmz">[SVG diagramma — Gate 3]</div>
+    <figcaption class="muted">Piecu VLAN zonu arhitektūra ar atdalītu DMZ publiskajiem servisiem un pilnībā izolētu viesu tīklu.</figcaption>
+  </figure>
+  <ul>
+    <li>Atdaliet darbstacijas (<code>LAN</code>), iekšējos serverus (<code>SRV</code>), pārvaldību (<code>MGMT</code>) un viesus (<code>GUEST</code>).</li>
+    <li>Publiskos tīmekļa servisus un WAF vienmēr izvietojiet atsevišķā <code>DMZ</code> zonā.</li>
+    <li>Visu starpzonu datu plūsmu filtrē centrālais ugunsmūris bez tiešiem apvedceļiem.</li>
+  </ul>
+  <aside class="notes">
+    Šo pašu 5 zonu topoloģiju ar DMZ izmantosim 2., 4., 5. un 7. tēmā — izskaidrojiet, kāpēc kompromitēts publiskais tīmekļa serveris <code>DMZ</code> zonā nedrīkst tieši sasniegt <code>SRV</code> vai <code>LAN</code>.
+  </aside>
+</section>

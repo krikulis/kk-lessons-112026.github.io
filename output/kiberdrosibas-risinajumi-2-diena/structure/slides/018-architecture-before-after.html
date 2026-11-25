@@ -1,0 +1,24 @@
+<section class="layout-code" data-slide-id="018" data-topic="Tēma 1 (09:05–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 (09:05–09:45)</p>
+  <h2>Pat vienkārša mazā biroja pārprojektēšana novērš kritiskākos ieviešanas riskus</h2>
+  <pre><code class="language-diff" data-trim data-line-numbers="1-5|6-10">
+- network: flat 192.168.1.0/24 (all devices shared)
+- wifi: single_ssid (staff + guests together)
+- privileges: all_users = local_admin
+- web_app: exposed directly on LAN server
+- auth: password_only, no MFA
++ network: VLAN 10 LAN | 20 SRV | 30 MGMT | 40 GUEST | 50 DMZ
++ dmz_waf: Nginx + ModSecurity (OWASP CRS) on DMZ
++ privileges: Windows LAPS + separate adm_* accounts
++ auth: FIDO2/TOTP MFA mandatory for all admins
++ logging: rsyslog/Wazuh central audit trail
+  </code></pre>
+  <ul>
+    <li>Pirms: plakans tīkls, viens Wi-Fi, lokālais admins visiem, serveris bez DMZ.</li>
+    <li>Pēc: 5 VLAN zonas ar DMZ/WAF, <code>OPNsense</code>/<code>ufw</code>, EDR un nodalīts <code>adm_*</code> konts.</li>
+    <li>Rezultāts: krietni mazāka uzbrukuma virsma bez lielām licenču izmaksām.</li>
+  </ul>
+  <aside class="notes">
+    Lielākā daļa drošības ieguvuma rodas no disciplinētas arhitektūras un konfigurācijas, nevis no dārga papildu aprīkojuma.
+  </aside>
+</section>

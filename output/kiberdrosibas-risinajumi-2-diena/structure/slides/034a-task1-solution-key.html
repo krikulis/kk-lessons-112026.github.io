@@ -1,0 +1,25 @@
+<section class="layout-code" data-slide-id="034a" data-topic="Tēma 2 — PD1 parauga risinājums (10:25–10:30)" data-parent-id="034" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 2 — PD1 parauga risinājums (10:25–10:30)</p>
+  <h2>PD1 parauga risinājums: 10 secīgi noteikumi bez ēnošanas ar DMZ/WAF, egress un <code>DENY ALL</code></h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-5|6-9|10">
+#   SRC        DST                 PORT/PROTO  ACT   LOG  PAMATOJUMS
+1   MGMT       SRV,DMZ             22/tcp      ALLOW YES  Tikai IT pārvaldība
+2   GUEST      LAN,SRV,MGMT,DMZ    ANY         DROP  YES  Pilna viesu izolācija
+3   WAN        DMZ_WAF             443/tcp     ALLOW YES  Publiskais portāls caur WAF
+4   DMZ_WAF    SRV_WEB             8080/tcp    ALLOW NO   Tikai WAF uz backend (pirms #5!)
+5   DMZ        LAN,SRV,MGMT        ANY         DROP  YES  DMZ izolācija pēc WAF izņēmuma
+6   LAN        SRV                 445/tcp     ALLOW NO   Darbinieku failu serveris
+7   LAN,GUEST  WAN                 443/tcp     ALLOW NO   Tīmekļa HTTPS piekļuve
+8   LAN,GUEST  WAN(CERT.LV)        53/udp,tcp  ALLOW NO   DNS ugunsmūris (bez ēnošanas)
+9   SRV        WAN(Updates)        443/tcp     ALLOW YES  Izejošie drošības atjauninājumi
+10  ANY        ANY                 ANY         DROP  YES  Noklusējuma aizliegums
+  </code></pre>
+  <ul>
+    <li>1.–5. rinda: <code>DMZ_WAF→SRV_WEB:8080</code> (#4) obligāti pirms <code>DMZ→Internal DROP</code> (#5).</li>
+    <li>6.–9. rinda: <code>CERT.LV DNS</code> (#8) ved uz <code>WAN</code> (nevis bloķēto <code>SRV</code>); #9 atļauj <code>SRV</code> ielāpus.</li>
+    <li>10. rinda: eksplicīts <code>ANY→ANY : DROP + LOG</code> visam neparedzētajam trafikam.</li>
+  </ul>
+  <aside class="notes">
+    Izsekojiet 4 testa plūsmas cauri šai tabulai no augšas uz leju, uzsverot, kāpēc nav neviena ēnota noteikuma un kāpēc <code>SRV</code> ielāpi strādā arī 6. tēmā.
+  </aside>
+</section>

@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="093a" data-topic="Tēma 7 — PD6 1. nodevums (Atsauce)" data-parent-id="093" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 7 — PD6 1. nodevums (Atsauce)</p>
+  <h2>1. nodevums: pielāgojiet PD1 ugunsmūra tabulu un slēdziet <code>FW-1</code>, <code>FW-2</code> un <code>WAF-1</code></h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Pārnesiet <code>PD1</code> 6 zonu tabulu (<code>OPNsense</code>, <code>CERT.LV DNS</code>, <code>SRV</code> ielāpu egress, <code>DENY ALL + LOG</code>).</li>
+        <li>Pārbaudiet, ka slēgts <code>FW-1</code> (<code>WAN→3389</code>), izolēts <code>FW-2</code> (<code>GUEST</code>) un aktīvs <code>WAF-1</code> (<code>SecRuleEngine On</code>).</li>
+        <li>Pārliecinieties, ka <code>DMZ_WAF→SRV_WEB:8080</code> stāv pirms <code>DMZ→Internal DROP</code>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>1. nodevuma (Ugunsmūris + WAF) kontrolpunkti</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-green">
+          <span class="vis-badge">OBLIGĀTI JĀIEKĻAUJ</span>
+          <p><code>WAN→WAF:443</code> · <code>WAF→SRV_WEB:8080</code> pirms <code>DMZ DROP</code> · <code>SRV</code> ielāpu egress · <code>DENY ALL + LOG</code></p>
+        </div>
+        <div class="vis-box vis-red">
+          <span class="vis-badge">BIEŽĀKĀS KĻŪDAS</span>
+          <p>Ēnots <code>GUEST</code> DNS · aizmirsts <code>SRV→WAN:443</code> · <code>ModSecurity DetectionOnly</code></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Atsauces slaids Tīkla arhitekta lomai — izmantojiet un pārbaudiet savu <code>PD1</code> tabulu!
+  </aside>
+</section>

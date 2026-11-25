@@ -1,0 +1,25 @@
+<section class="layout-code" data-slide-id="045" data-topic="Tēma 3 (11:00–11:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 3 (11:00–11:25)</p>
+  <h2>Pieteikšanās ierobežošana un SSH atslēgas aptur automatizētu paroļu minēšanu</h2>
+  <pre><code class="language-ini" data-trim data-line-numbers="1-5|6-10">
+# /etc/ssh/sshd_config
+PubkeyAuthentication yes
+PasswordAuthentication no
+PermitRootLogin no
+ClientAliveInterval 300
+ClientAliveCountMax 2
+# /etc/fail2ban/jail.local
+[sshd]
+enabled = true
+maxretry = 5
+bantime = 15m
+  </code></pre>
+  <ul>
+    <li>Iestatiet īslaicīgu konta bloķēšanu pēc 5 neveiksmīgiem mēģinājumiem (<code>fail2ban</code> / AD Lockout).</li>
+    <li>Linux serveros atslēdziet paroļu pieteikšanos, pieprasot tikai <code>ed25519</code> SSH atslēgas.</li>
+    <li>Ierobežojiet neaktīvu sesiju ilgumu (<code>ClientAliveInterval</code>), lai pamesti termināļi aizvērtos.</li>
+  </ul>
+  <aside class="notes">
+    Izskaidrojiet atšķirību starp brutālo spēku pret vienu kontu un „password spraying” (1 populāra parole pret 100 kontiem), ko palīdz pamanīt centralizēta žurnālu uzraudzība.
+  </aside>
+</section>

@@ -1,0 +1,16 @@
+<section class="layout-chart" data-slide-id="081" data-topic="Tēma 6 (14:00–14:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 6 (14:00–14:25)</p>
+  <h2>3-2-1-1 kopiju princips pasargā datus un konfigurācijas arī pret izspiedējvīrusiem</h2>
+  <figure class="visual-slot" data-asset-type="inline-svg" data-asset-id="asset-081-backup-321-rule">
+    <div class="svg-placeholder" data-svg-target="asset-081-backup-321-rule">[SVG diagramma — Gate 3]</div>
+    <figcaption class="muted">3-2-1-1 princips ar nemaināmu vai bezsaistes kopiju garantē atjaunošanos arī pēc izspiedējvīrusa uzbrukuma.</figcaption>
+  </figure>
+  <ul>
+    <li>Veidojiet kopijas gan biznesa datiem, gan šifrētiem iekārtu konfigurāciju eksportiem (<code>OPNsense</code>, AD, WAF).</li>
+    <li><code>3</code> kopijas uz <code>2</code> dažādiem nesējiem, vismaz <code>1</code> ārpus ēkas (<code>offsite</code>) un <code>1</code> izolēta (<code>offline</code>/<code>immutable</code>).</li>
+    <li>Tikai tīklā pieslēgta NAS kopija bez izolācijas tiek šifrēta reizē ar pamatserveri.</li>
+  </ul>
+  <aside class="notes">
+    Uzsveriet abi: (1) ja nodeg skolas ugunsmūris, svaigs šifrēts konfigurācijas eksports ļauj to atjaunot 15 minūtēs; (2) mūsdienu izspiedējvīrusi apzināti šifrē tīklā redzamās NAS kopijas — tāpēc nepieciešama nemaināma (<code>immutable</code>) vai bezsaistes kopija!
+  </aside>
+</section>

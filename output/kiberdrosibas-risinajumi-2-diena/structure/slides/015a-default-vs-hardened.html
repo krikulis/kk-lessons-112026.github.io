@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="015a" data-topic="Tēma 1 — Pielikums (09:05–09:45)" data-parent-id="015" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 1 — Pielikums (09:05–09:45)</p>
+  <h2>Sistēmas nostiprināšana sistemātiski likvidē noklusējuma konfigurācijas caurumus</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Noklusējuma iekārta: atvērti lieki porti, standarta konts, nešifrēti protokoli (<code>Telnet</code>/<code>HTTP</code>).</li>
+        <li>Nostiprināta iekārta: tikai <code>SSH</code>/<code>HTTPS</code>, mainīti akreditācijas dati, ieslēgta žurnalēšana.</li>
+        <li><code>CIS Benchmarks</code> un <code>Lynis</code> sniedz bezmaksas kontrolsarakstus tehnikuma laboratorijas darbiem.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Iekārtas stāvoklis pirms un pēc nostiprināšanas</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-red">
+          <span class="vis-badge">NOKLUSĒJUMA (BĪSTAMA)</span>
+          <p>Atvērts <code>Telnet/HTTP</code> · <code>admin:admin</code> · lieki servisi · žurnāli izslēgti</p>
+        </div>
+        <div class="vis-box vis-green">
+          <span class="vis-badge">NOSTIPRINĀTA (CIS + LYNIS)</span>
+          <p>Tikai <code>SSH/HTTPS</code> no <code>MGMT</code> · atslēgas + MFA · <code>ufw deny</code> · aktīvs audits</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Pieminiet bezmaksas rīku <code>lynis audit system</code>, kas Ubuntu/Debian laboratorijā 60 sekundēs uzrāda nostiprināšanas nepilnības un dod „Hardening Index” punktu skaitu.
+  </aside>
+</section>

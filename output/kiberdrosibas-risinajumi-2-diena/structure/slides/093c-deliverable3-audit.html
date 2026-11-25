@@ -1,0 +1,28 @@
+<section class="layout-split" data-slide-id="093c" data-topic="Tēma 7 — PD6 3. nodevums (Izsekojamības veidne)" data-parent-id="093" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 7 — PD6 3. nodevums (Izsekojamības veidne)</p>
+  <h2>3. nodevums: prioritizējiet visas 6 mantotās kļūdas pēc 053. skalas un sasaistiet ar testiem</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Ierakstiet visas <strong>6 kļūdas</strong> (<code>FW-1</code>, <code>FW-2</code>, <code>WAF-1</code>, <code>AD-1</code>, <code>AD-2</code>, <code>IAM-1</code>) izsekojamības matricā.</li>
+        <li>Izmantojiet tikai 053. slaida 3 līmeņu skalu (<code>Kritisks</code> / <code>Vidējs</code> / <code>Zems</code> + VPN leaver noteikums).</li>
+        <li>Katrai kļūdai piesaistiet konkrētu labojumu (D1/D2) un pārbaudes testa ID (D4).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Izsekojamības matrica (aizpildīt PD6 lapā)</h3>
+      <table class="vis-table">
+        <thead><tr><th>Kļūda (092)</th><th>Kritiskums (053)</th><th>Labojums (D1/D2)</th><th>Testa ID (D4)</th></tr></thead>
+        <tbody>
+          <tr><td><code>FW-1</code> / <code>FW-2</code></td><td><code>[Kritisks / Vidējs]</code></td><td><code>[D1 noteikums #]</code></td><td><code>[TC-03 / TC-04]</code></td></tr>
+          <tr><td><code>WAF-1</code></td><td><code>[Kritisks / Vidējs]</code></td><td><code>[D1 ModSec ...]</code></td><td><code>[TC-05]</code></td></tr>
+          <tr><td><code>AD-1</code> / <code>AD-2</code></td><td><code>[Kritisks / Vidējs]</code></td><td><code>[D2 LAPS / AD]</code></td><td><code>[TC-06 / TC-07]</code></td></tr>
+          <tr><td><code>IAM-1</code></td><td><code>[Kritisks / Vidējs]</code></td><td><code>[D2 MFA / Lock]</code></td><td><code>[TC-08]</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Tukšā izsekojamības veidne Auditora lomai. Uzsveriet: lietojam tikai 053. skalas 3 līmeņus (<code>Kritisks</code> / <code>Vidējs</code> / <code>Zems</code> — bez „Augsts”!). Pilnā prioritizācijas atslēga atrodas pasniedzēja atslēgā.
+  </aside>
+</section>

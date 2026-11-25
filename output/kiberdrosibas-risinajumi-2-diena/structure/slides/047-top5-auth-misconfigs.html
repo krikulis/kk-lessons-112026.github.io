@@ -1,0 +1,23 @@
+<section class="layout-code" data-slide-id="047" data-topic="Tēma 3 (11:00–11:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 3 (11:00–11:25)</p>
+  <h2>Piecas atkārtotas identitātes kļūdas rada augstākos piekļuves riskus</h2>
+  <pre><code class="language-powershell" data-trim data-line-numbers="1-3|4-9">
+# PowerShell AD kontu ātrais audits
+Get-ADUser -Filter * -Properties LastLogonDate,Enabled,MemberOf |
+  Select Name,Enabled,LastLogonDate
+# KONSTATĒTIE RISKI IZVAIDĒ:
+# janis.bijušais | Enabled: True | LastLogon: 184d | Domain Admins  [KRITISKS]
+# praktikants01  | Enabled: True | LastLogon: 1d   | Domain Admins  [KRITISKS]
+# adm_it         | Enabled: True | MFA: False      | Domain Admins  [KRITISKS]
+# birojs_kopigs  | Enabled: True | Shared: True    | Finance_RW     [VIDĒJS]
+# svc_backup     | Enabled: True | Interactive:Yes | Backup Ops     [VIDĒJS]
+  </code></pre>
+  <ul>
+    <li>Administratori bez MFA, aktīvi bijušo darbinieku konti un praktikanti ar admina tiesībām.</li>
+    <li>Koplietoti konti, atļauts <code>Legacy Auth</code> un neierobežoti pieslēgšanās mēģinājumi.</li>
+    <li>Šīs piecas kļūdas meklēsim tūlītējā 2. praktiskajā uzdevumā un 4. tēmas revīzijā.</li>
+  </ul>
+  <aside class="notes">
+    Parādiet, kā ar vienu īsu PowerShell komandu Active Directory vidē var atrast neaktīvus vai pārmērīgi priviliģētus kontus.
+  </aside>
+</section>

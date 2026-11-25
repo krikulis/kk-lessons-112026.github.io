@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="063" data-topic="Tēma 5 (13:15–13:40)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 5 (13:15–13:40)</p>
+  <h2>Katram drošības noteikumam izstrādā gan pozitīvo, gan negatīvo testa gadījumu</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Pozitīvais tests: <code>LAN</code> lietotājs atver <code>SMB/445</code> vai <code>DMZ</code> lietotājs saņem <code>HTTP 200</code>.</li>
+        <li>Negatīvais tests: <code>GUEST</code> tiek bloķēts uz <code>SMB/445</code>, vai WAF atgriež <code>HTTP 403</code>.</li>
+        <li>Pāru pieeja novērš situāciju, kad labojums salauž darbu vai atstāj caurumu.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pāru testēšanas princips katram noteikumam</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-green">
+          <span class="vis-badge">POZITĪVAIS TESTS (MUST SUCCEED)</span>
+          <p><code>LAN</code> darbinieks atver <code>SRV:445</code> koplietojumu → Pieeja darbojas bez aiztures</p>
+        </div>
+        <div class="vis-box vis-red">
+          <span class="vis-badge">NEGATĪVAIS TESTS (MUST FAIL & LOG)</span>
+          <p><code>GUEST</code> ierīce mēģina <code>SRV:445</code> → Savienojums noraidīts + <code>[UFW BLOCK]</code> žurnālā</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Ļoti skaidrs vērtēšanas kritērijs skolā: katrā laboratorijas darbā audzēknis nodod vismaz vienu pozitīvu un vienu negatīvu pārbaudes gadījumu ar pierādījumu.
+  </aside>
+</section>

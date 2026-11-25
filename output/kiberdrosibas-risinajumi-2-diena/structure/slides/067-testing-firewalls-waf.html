@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="067" data-topic="Tēma 5 (13:15–13:40)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 5 (13:15–13:40)</p>
+  <h2>Ugunsmūra un WAF testēšana pārbauda portu izolāciju un HTTP uzbrukumu bloķēšanu</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Veiciet tīkla testu no reālās avota zonas (<code>GUEST</code> vai <code>LAN</code>), nevis admina datora.</li>
+        <li>Pārbaudiet portus ar <code>Test-NetConnection</code>, <code>nc -zv</code> vai mērķētu <code>nmap -Pn -p</code>.</li>
+        <li>Pārbaudiet WAF ar nekaitīgu <code>curl</code> testa vaicājumu, sagaidot <code>HTTP 403 Forbidden</code>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Tīkla un WAF testēšanas komandu pāris (↓ 067a)</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-violet">
+          <span class="vis-badge">TĪKLA PORTU VERIFIKĀCIJA</span>
+          <p><code>nc -zv 10.0.20.10 445</code> vai <code>Test-NetConnection</code> no mērķa VLAN zonas</p>
+        </div>
+        <div class="vis-box vis-red">
+          <span class="vis-badge">WAF BLOĶĒŠANAS VERIFIKĀCIJA</span>
+          <p><code>curl -I "https://dmz/?id=1' OR '1'='1"</code> → sagaida <code>HTTP 403</code> + <code>modsec_audit.log</code></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Nospiediet <code>↓</code> (<code>067a</code>), lai parādītu 9 kopējamas laboratorijas komandas, kuras pedagogi var uzreiz iekļaut mācību uzdevumos!
+  </aside>
+</section>

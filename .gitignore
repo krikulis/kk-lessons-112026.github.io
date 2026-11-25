@@ -1,0 +1,16 @@
+# Instructor-only answer keys (never publish to a public GitHub repository)
+**/pasniedzeja-atslega.html
+
+# GitHub Pages staged build output
+_site/
+
+# Microsoft Office lock and temporary files
+~$*
+*.tmp
+
+# OS & editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.log

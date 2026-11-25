@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="024" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Tīmekļa lietotņu ugunsmūris (WAF) bloķē uzbrukumus, kas slēpjas atļautajā HTTPS trafikā</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Tīkla ugunsmūris atļauj <code>HTTPS/443</code>, bet neredz ļaunprātīgus vaicājumus tīmekļa lietotnes iekšienē.</li>
+        <li>WAF filtrē lietojumslāņa draudus: SQL injekcijas (<code>SQLi</code>), <code>XSS</code>, ceļa šķērsošanu un botus.</li>
+        <li>WAF darbojas kā „virtuālais ielāps”, bet neaizstāj drošu koda izstrādi.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Tīkla ugunsmūris pret WAF uz 443. porta</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-violet">
+          <span class="vis-badge">TĪKLA UGUNSMŪRIS (L3/L4)</span>
+          <p>Pārbauda IP, zonu un atļauj <code>TCP/443</code> — neredz šifrētā HTTP pieprasījuma saturu</p>
+        </div>
+        <div class="vis-box vis-red">
+          <span class="vis-badge">TĪMEKĻA WAF (L7 HTTP/HTTPS)</span>
+          <p>Analizē URL, galvenes un ķermeni ar <code>OWASP CRS</code>; bloķē <code>SQLi</code> un <code>XSS</code> ar <code>403</code></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Uzsveriet, ka perimetra ugunsmūris aizsargā tīklu, bet WAF aizsargā konkrētu tīmekļa lietotni vai API pret OWASP Top 10 tipa pieprasījumiem.
+  </aside>
+</section>

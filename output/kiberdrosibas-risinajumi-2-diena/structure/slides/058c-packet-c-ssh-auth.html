@@ -1,0 +1,21 @@
+<section class="layout-code" data-slide-id="058c" data-topic="Tēma 4 — PD3 Pakotne C (12:00–12:15)" data-parent-id="058" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 4 — PD3 Pakotne C (12:00–12:15)</p>
+  <h2>Pakotne C: atrodiet 4 kļūdainas rindas un 2 korektas ēsmas <code>sshd</code>/IAM politikā</h2>
+  <pre><code class="language-ini" data-trim data-line-numbers="1-8">
+# Pakotne C — KRM SSH &amp; Mākoņa IAM (4 kļūdainas rindas + 2 korektas ēsmas)
+[1] PermitRootLogin yes
+[2] PubkeyAuthentication yes
+[3] mfa_admins: false
+[4] block_legacy_auth: true
+[5] lockout_threshold: 0
+[6] session_timeout_hours: 720
+  </code></pre>
+  <ul>
+    <li>Salīdziniet visus 6 iestatījumus ar bāzlīniju: atrodiet 4 kļūdas un 2 korektas ēsmas.</li>
+    <li>Izvērtējiet SSH pieteikšanās tiesības, mākoņa autentifikāciju, bloķēšanas slieksni un sesijas ilgumu.</li>
+    <li>Pamatojiet, kāpēc 2 korektās ēsmas nevajag mainīt, un pierakstiet 4 labojumus.</li>
+  </ul>
+  <aside class="notes">
+    4 kļūdainas rindas Pakotnē C: <code>[1]</code> <code>PermitRootLogin yes</code> (Kritisks); <code>[3]</code> <code>mfa_admins: false</code> (Kritisks); <code>[5]</code> <code>lockout_threshold: 0</code> (Vidējs); <code>[6]</code> <code>session_timeout_hours: 720</code> (Vidējs). 2 korektās ēsmas: <code>[2]</code> <code>PubkeyAuthentication yes</code> un <code>[4]</code> <code>block_legacy_auth: true</code>.
+  </aside>
+</section>

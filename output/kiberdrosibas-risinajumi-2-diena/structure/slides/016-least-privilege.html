@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="016" data-topic="Tēma 1 (09:05–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 (09:05–09:45)</p>
+  <h2>Minimālo tiesību princips ierobežo kaitējumu konta kompromitēšanas gadījumā</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Piešķiriet lietotājam, programmai un servisam tikai uzdevumam nepieciešamās tiesības.</li>
+        <li>Kompromitēts konts dod uzbrucējam tieši šī konta pilnvaras — ne mazāk, ne vairāk.</li>
+        <li>Papildu tiesības piešķiriet terminēti (<code>Just-in-Time</code>), nevis pastāvīgi „katram gadījumam”.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Bojājumu rādiuss konta uzlaušanas brīdī</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-red">
+          <span class="vis-badge">PĀRMĒRĪGAS TIESĪBAS</span>
+          <p>Lietotājs = Lokālais admins → Izspiedējvīruss atslēdz EDR un šifrē tīkla mapes</p>
+        </div>
+        <div class="vis-box vis-green">
+          <span class="vis-badge">MINIMĀLĀS TIESĪBAS (PoLP)</span>
+          <p>Standarta konts + <code>JIT</code> pacelšana → Incidents paliek izolēts vienā profilā</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Minimālās tiesības attiecas arī uz tīkla savienojumiem (tikai konkrēts ports) un servisiem (<code>nginx</code> nedarbojas kā <code>root</code> lietotājs).
+  </aside>
+</section>

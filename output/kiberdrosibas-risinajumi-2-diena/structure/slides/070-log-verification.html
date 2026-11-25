@@ -1,0 +1,20 @@
+<section class="layout-code" data-slide-id="070" data-topic="Tēma 5 (13:15–13:40)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 5 (13:15–13:40)</p>
+  <h2>Drošības pārbaude ir pabeigta tikai tad, kad bloķētais mēģinājums redzams žurnālos</h2>
+  <pre><code class="language-log" data-trim data-line-numbers="1-10">
+# /var/log/ufw.log (GUEST -&gt; SRV:445 bloķēts)
+Nov 24 13:22:10 fw01 kernel: [UFW BLOCK] SRC=10.0.40.15 DST=10.0.20.10 PROTO=TCP DPT=445
+# /var/log/nginx/modsec_audit.log (WAF SQLi bloķēts)
+Nov 24 13:23:04 waf01 nginx: ModSecurity: Access denied with code 403 (id "942100")
+# /var/log/auth.log (SSH paroļu mēģinājums noraidīts)
+Nov 24 13:24:11 srv01 sshd[4821]: Failed publickey for invalid user root from 10.0.10.22
+  </code></pre>
+  <ul>
+    <li>Ja uzbrukums tika bloķēts, bet žurnāls klusē, organizācija neredz uzbrukumu sēriju.</li>
+    <li>Pārbaudiet laika zīmogu, avota IP, lietotājvārdu, mērķa portu un darbību (<code>BLOCK</code>/<code>403</code>/<code>Failed</code>).</li>
+    <li>Konkrēta žurnāla rinda ir spēcīgākais objektīvais pierādījums testa dokumentācijā.</li>
+  </ul>
+  <aside class="notes">
+    Parādiet audzēkņiem, kā lasīt visas trīs reālo žurnālu rindas (<code>ufw</code>, <code>ModSecurity</code> CRS noteikuma ID <code>942100</code>, un <code>sshd</code>): kas, kad, no kurienes un ar kādu iznākumu.
+  </aside>
+</section>

@@ -1,0 +1,27 @@
+<section class="layout-split" data-slide-id="026" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Ienākošās, izejošās un starpzonu plūsmas jāfiltrē pret iekļūšanu un datu noplūdi</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Ienākošā (<code>Inbound</code>) un starpzonu (<code>East-West</code>) filtrēšana izolē serverus no ārējiem un viesu draudiem.</li>
+        <li>Izejošā (<code>Egress</code>) filtrēšana aptur ļaunprogrammatūras saziņu ar vadības serveriem (C2).</li>
+        <li>Serveru zonai (<code>SRV</code>) atļaujiet tikai nepieciešamos atjauninājumu avotus, nevis visu internetu.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Trīs obligātie filtrēšanas virzieni</h3>
+      <table class="vis-table">
+        <thead><tr><th>Virziens</th><th>Plūsma</th><th>Galvenais mērķis</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Inbound</strong></td><td><code>WAN → DMZ</code></td><td>Aizsargāt publiskos servisus</td></tr>
+          <tr><td><strong>East-West</strong></td><td><code>GUEST / DMZ x→ SRV</code></td><td>Apturēt sānu kustību tīklā</td></tr>
+          <tr><td><strong>Egress</strong></td><td><code>SRV → WAN</code> (ierobežots)</td><td>Bloķēt C2 un datu noplūdi</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Iesācēji parasti domā tikai par <code>WAN -&gt; LAN</code>, taču starpzonu un izejošā (<code>Egress</code>) filtrēšana ir izšķiroša pret izspiedējvīrusiem un datu izzagšanu.
+  </aside>
+</section>

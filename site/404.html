@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lapa nav atrasta — 404 | Kiberdrošības risinājumi I</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231F2933'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='13' y='5' width='6' height='6' fill='%23E53F30' opacity='.5'/%3E%3Crect x='21' y='5' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='5' y='13' width='6' height='6' fill='%23E53F30' opacity='.5'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='21' y='13' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='5' y='21' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='13' y='21' width='6' height='6' fill='%23E53F30'/%3E%3Crect x='21' y='21' width='6' height='6' fill='%235B34AD'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bda-dark: #1F2933;
+      --bda-red: #E53F30;
+      --bda-red-dark: #C92819;
+      --bda-surface: #F9F9F9;
+      --bda-border: #CBD5E1;
+      --bda-muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF;
+      color: var(--bda-dark);
+      font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+    }
+    .bda-topbar {
+      background: var(--bda-dark);
+      color: #FFFFFF;
+      border-bottom: 3px solid var(--bda-red);
+      padding: 12px 28px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+    }
+    .card {
+      max-width: 560px;
+      width: 100%;
+      background: var(--bda-surface);
+      border: 1px solid var(--bda-border);
+      border-left: 6px solid var(--bda-red);
+      padding: 32px;
+    }
+    .code {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--bda-red-dark);
+      margin: 0 0 10px 0;
+    }
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    p {
+      margin: 0 0 22px 0;
+      font-size: 15.5px;
+      color: var(--bda-muted);
+      line-height: 1.5;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--bda-red-dark);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 11px 20px;
+    }
+    .btn:hover {
+      background: #A81F12;
+    }
+  </style>
+</head>
+<body>
+  <header class="bda-topbar">Kiberdrošības risinājumi I · Mācību materiāli</header>
+  <main>
+    <div class="card">
+      <div class="code">404</div>
+      <h1>Lapa nav atrasta</h1>
+      <p>Pieprasītā adrese neeksistē vai materiāls nav paredzēts publiskai piekļuvei. Atgriezieties sākumlapā, lai atvērtu 2. dienas prezentāciju vai dalībnieku darba lapas.</p>
+      <a id="home-link" class="btn" href="./">Atgriezties sākumlapā</a>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var link = document.getElementById('home-link');
+      if (!link) return;
+      var parts = window.location.pathname.split('/').filter(Boolean);
+      var isGithubProjectPage =
+        window.location.hostname.endsWith('.github.io') &&
+        parts.length > 0 &&
+        parts[0] !== 'kiberdrosibas-risinajumi-2-diena';
+      link.setAttribute('href', isGithubProjectPage ? '/' + parts[0] + '/' : '/');
+    })();
+  </script>
+</body>
+</html>

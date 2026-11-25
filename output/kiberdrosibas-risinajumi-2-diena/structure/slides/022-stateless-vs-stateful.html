@@ -1,0 +1,27 @@
+<section class="layout-split" data-slide-id="022" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Stāvokļa ugunsmūris seko aktīvajiem savienojumiem un automātiski atļauj derīgas atbildes</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Bezstāvokļa (<code>stateless</code>) filtrs pārbauda katru paketi izolēti bez sesijas konteksta.</li>
+        <li>Stāvokļa (<code>stateful</code>) ugunsmūris uztur savienojumu tabulu (<code>NEW</code>, <code>ESTABLISHED</code>, <code>RELATED</code>).</li>
+        <li>Stāvokļa tabula novērš nepieciešamību manuāli atvērt augsto portu diapazonus atbildēm.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Bezstāvokļa un stāvokļa filtrēšana</h3>
+      <table class="vis-table">
+        <thead><tr><th> Pazīme</th><th>Stateless ACL</th><th>Stateful FW</th></tr></thead>
+        <tbody>
+          <tr><td>Konteksts</td><td>Katra pakete atsevišķi</td><td>Sesiju tabula (<code>STATE</code>)</td></tr>
+          <tr><td>Atbildes trafika</td><td>Jāatver augstie porti</td><td>Atļauj <code>ESTABLISHED</code></td></tr>
+          <tr><td>Drošības līmenis</td><td>Zemāks (tīkla maršrutētāji)</td><td>Augsts (<code>OPNsense/ufw</code>)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Atbildiet uz klasisku audzēkņu jautājumu: atļaujot <code>LAN -&gt; WAN:443</code>, pretējs atbildes noteikums nav jāraksta, jo stāvokļa tabula atpazīst esošo sesiju.
+  </aside>
+</section>

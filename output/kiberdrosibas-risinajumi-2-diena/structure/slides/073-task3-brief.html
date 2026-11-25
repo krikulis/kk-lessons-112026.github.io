@@ -1,0 +1,16 @@
+<section class="layout-kpi" data-slide-id="073" data-topic="Tēma 5 — PD4: Testēšanas scenāriju pāris (13:40–13:55)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 5 — PD4: Testēšanas scenāriju pāris (13:40–13:55)</p>
+  <h2>PD4: izstrādājiet funkcionālo un drošības testu pāri ar reāliem žurnāla pierādījumiem</h2>
+  <div class="kpi-block">
+    <div class="kpi-value">20 min · 2 testi + žurnāli</div>
+    <p class="kpi-context muted">13:40–14:00 · 6 projektēšanas lauki + sagatavotie žurnāli (↓ veidlapa)</p>
+  </div>
+  <ul>
+    <li>„KRM” mērķis: (A) <code>GUEST</code>/<code>SMB</code> vai WAF <code>403</code> bloks, vai (B) <code>adm_kristaps</code> MFA pieslēgšanās.</li>
+    <li>Sagatavojiet 1 pozitīvo (<code>Functional</code>) un 1 negatīvo (<code>Security</code>) testu, piesaistot PD4 darba lapas žurnālus.</li>
+    <li>Laiks: <code>13:40–13:55</code> (15 min izstrāde) + <code>13:55–14:00</code> (5 min pāru pārbaude).</li>
+  </ul>
+  <aside class="notes">
+    Nospiediet <code>↓</code> (<code>073a</code>); dalībnieki izmanto PD4 darba lapas sagatavotos žurnāla izrakstus (<code>OPNsense filterlog</code>, <code>modsec_audit.log</code>, <code>Event 4625</code>). Izvēles dzīvais demo (<code>098a</code> <code>docker-compose</code>): palaidiet <code>curl</code> pret WAF <code>DetectionOnly</code> (<code>200</code>) un tad <code>On</code> (<code>403</code>). Papildu jautājums: ko mainītu <code>expected_output</code>, ja noteikums būtu <code>REJECT</code>, nevis <code>DROP</code>? Klasē: 1.–2. kursam dodiet daļēji aizpildītu komandu, 3.–4. kursam — izpilde Docker/VM vidē.
+  </aside>
+</section>

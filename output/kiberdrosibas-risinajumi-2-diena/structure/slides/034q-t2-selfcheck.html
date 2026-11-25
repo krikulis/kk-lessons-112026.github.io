@@ -1,0 +1,33 @@
+<section class="layout-split" data-slide-id="034q" data-topic="Tēma 2 — Paškontrole (10:28–10:30)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 — Paškontrole (10:28–10:30)</p>
+  <h2>Paškontrole (2. tēma): pārbaudiet ugunsmūra secību, stāvokli un WAF lomu</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>1. Kas notiek, ja <code>ALLOW 10.0.0.0/16</code> atrodas virs <code>DROP GUEST 10.0.40.0/24</code>?</li>
+        <li>2. Kāpēc atļauts <code>443/tcp</code> ports ugunsmūrī neaptur SQL injekciju portālā?</li>
+        <li>3. Vai <code>stateful</code> ugunsmūrī jāraksta atsevišķs atbildes noteikums no <code>WAN</code> uz <code>LAN</code>?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pārbaudiet sevi (atbildes atklājas ar →)</h3>
+      <div class="vis-vs vis-quiz">
+        <div class="vis-box vis-red fragment fade-up">
+          <span class="vis-badge">1. ATBILDE · NOTEIKUMU ĒNOŠANA</span>
+          <p>Plašāks <code>/16</code> noteikums apstrādā paketi pirmais (<code>first-match</code>), un <code>GUEST</code> aizliegums nekad neizpildās!</p>
+        </div>
+        <div class="vis-box vis-violet fragment fade-up">
+          <span class="vis-badge">2. ATBILDE · L4 PRET L7 WAF</span>
+          <p>L3/L4 ugunsmūris redz tikai atļauto 443. portu; HTTP pieprasīuma saturu analizē <code>ModSecurity</code> WAF (L7).</p>
+        </div>
+        <div class="vis-box vis-green fragment fade-up">
+          <span class="vis-badge">3. ATBILDE · STATEFUL TABULA</span>
+          <p>Nē — stāvokļa tabula automātiski ielaiž <code>ESTABLISHED/RELATED</code> atbildes paketes atļautajai sesijai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    2 minūšu paškontrole pēc PD1 kopsavilkuma (vai kā iesildīšanās plkst. 11:00 pēc kafijas pauzes). Nostiprina noteikumu ēnošanu, WAF slāni un stateful atbilžu loģiku.
+  </aside>
+</section>

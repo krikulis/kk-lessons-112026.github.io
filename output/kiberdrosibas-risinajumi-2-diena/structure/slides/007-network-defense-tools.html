@@ -1,0 +1,29 @@
+<section class="layout-split" data-slide-id="007" data-topic="Tēma 1 (09:05–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 (09:05–09:45)</p>
+  <h2>Tīkla drošības risinājumi kontrolē piekļuvi, filtrē plūsmas un atklāj anomālijas</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Ugunsmūri nosaka atļautās un bloķētās savienojumu plūsmas starp tīkla zonām.</li>
+        <li>IDS/IPS analizē trafiku, lai pamanītu vai bloķētu zināmas uzbrukumu pazīmes.</li>
+        <li>VPN un tīkla piekļuves kontrole (NAC) nodrošina šifrētu un verificētu pieslēgšanos.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Preventīvā un detektējošā kontrole</h3>
+      <div class="vis-vs">
+        <div class="vis-box vis-red">
+          <span class="vis-badge">PREVENTĪVIE (BLOĶĒ)</span>
+          <p><code>OPNsense</code> / <code>ufw</code> · IPS · <code>ModSecurity</code> WAF · WireGuard VPN · 802.1X NAC</p>
+        </div>
+        <div class="vis-box vis-violet">
+          <span class="vis-badge">DETEKTĒJOŠIE (ATKLĀJ)</span>
+          <p>Suricata IDS · NetFlow plūsmu analīze · CERT.LV DNS žurnāli · <code>Wazuh</code> SIEM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Uzsveriet atšķirību starp preventīvu rīku (bloķē) un detektējošu rīku (brīdina) — abiem jādarbojas kopā.
+  </aside>
+</section>

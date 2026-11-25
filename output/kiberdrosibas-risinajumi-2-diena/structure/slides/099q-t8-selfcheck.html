@@ -1,0 +1,20 @@
+<section class="layout-code" data-slide-id="099q" data-topic="Tēma 8 — Paškontrole (16:11–16:13)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 8 — Paškontrole (16:11–16:13)</p>
+  <h2>Paškontrole (8. tēma): kā novērtēt audzēkņa darba patieso izpratni MI laikmetā</h2>
+  <pre><code class="language-yaml" data-trim data-line-numbers="1-6">
+# Audzēkņa iesniegtais laboratorijas darba fragments:
+waf_config: "SecRuleEngine DetectionOnly"
+test_proof: "ping 10.0.20.10 -> 0% packet loss"
+oral_check: "60 sek. izlozēts auditora jautājums"
+lab_stack:  "Docker Compose: juice-shop + modsecurity-crs"
+rubric:     "4 kritēriji x 0..2 punkti (maks. 8 p.)"
+  </code></pre>
+  <ul>
+    <li>1. Kāpēc <code>ping</code> nepierāda <code>SMB</code> bloku? <span class="fragment fade-up quiz-ans">→ Jātestē <code>445/tcp</code> un <code>DROP</code> žurnāls.</span></li>
+    <li>2. Ko atklāj 60 sekunžu mutiskais jautājums? <span class="fragment fade-up quiz-ans">→ Atšķir MI kopēšanu no izpratnes.</span></li>
+    <li>3. Kurā režīmā WAF reāli aptur uzbrukumu? <span class="fragment fade-up quiz-ans">→ Tikai <code>SecRuleEngine On</code> (ar <code>403</code>).</span></li>
+  </ul>
+  <aside class="notes">
+    Noslēdzošā metodiskā paškontrole pirms atgriezeniskās saites slaida (100). Apvieno dienas galveno mācību atziņu: MI var uzģenerēt konfigurāciju, bet tehniķa kvalifikāciju pierāda pareizs režīms, portu un žurnālu verifikācija un mutiska aizstāvēšana.
+  </aside>
+</section>

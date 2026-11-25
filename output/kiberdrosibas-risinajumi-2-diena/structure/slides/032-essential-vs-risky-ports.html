@@ -1,0 +1,16 @@
+<section class="layout-chart" data-slide-id="032" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Kritiskie pārvaldības un failu porti nekad nedrīkst būt atvērti internetam</h2>
+  <figure class="visual-slot" data-asset-type="inline-svg" data-asset-id="asset-032-essential-vs-risky-ports">
+    <div class="svg-placeholder" data-svg-target="asset-032-essential-vs-risky-ports">[SVG diagramma — Gate 3]</div>
+    <figcaption class="muted">Portu riska klasifikācija: pārvaldības un failu koplietošanas portus nekad neatver tiešai piekļuvei no interneta.</figcaption>
+  </figure>
+  <ul>
+    <li>Darba plūsmām: <code>HTTPS/443</code>, kontrolēts <code>DNS/53</code> (uz CERT.LV/iekšējo DNS) un <code>NTP/123</code>.</li>
+    <li>Pārvaldība (<code>SSH/22</code>, <code>RDP/3389</code>): tikai no <code>MGMT</code> tīkla vai caur VPN ar MFA.</li>
+    <li><code>SMB/445</code> un datubāzes (<code>3306</code>/<code>5432</code>) pieder tikai iekšējam <code>SRV</code>; publiskam <code>443</code> — <code>DMZ</code> + WAF.</li>
+  </ul>
+  <aside class="notes">
+    Nospiediet <code>↓</code>, lai 1 minūtē parādītu atsevišķa Linux datubāzes servera (<code>srv-db01</code>) <code>ufw</code> bāzes skriptu bez <code>PD1</code> perimetra tabulas priekšā pateikšanas.
+  </aside>
+</section>

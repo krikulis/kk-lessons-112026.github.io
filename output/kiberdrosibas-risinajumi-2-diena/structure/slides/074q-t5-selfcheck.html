@@ -1,0 +1,33 @@
+<section class="layout-split" data-slide-id="074q" data-topic="Tēma 5 — Paškontrole (13:58–14:00)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 5 — Paškontrole (13:58–14:00)</p>
+  <h2>Paškontrole (5. tēma): pārbaudiet pozitīvos, negatīvos testus un žurnālu pierādījumus</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>1. Ar ko terminālī atšķiras ugunsmūra <code>DROP</code> rezultāts no <code>REJECT</code> rezultāta?</li>
+        <li>2. Kāpēc negatīvajā testā nepietiek tikai ar <code>Timeout</code> vai <code>HTTP 403</code> ekrānā?</li>
+        <li>3. Kuru kontu drīkst izmantot <code>5×</code> nepareizas paroles konta bloķēšanas testam?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pārbaudiet sevi (atbildes atklājas ar →)</h3>
+      <div class="vis-vs vis-quiz">
+        <div class="vis-box vis-violet fragment fade-up">
+          <span class="vis-badge">1. ATBILDE · TIMEOUT PRET REFUSED</span>
+          <p><code>DROP</code> klusējot nomet paketi (<code>Connection timed out</code>), bet <code>REJECT</code> uzreiz atbild ar <code>Connection refused</code>.</p>
+        </div>
+        <div class="vis-box vis-green fragment fade-up">
+          <span class="vis-badge">2. ATBILDE · ŽURNĀLA PIERĀDĪJUMS</span>
+          <p>Jāpārbauda žurnāls (<code>filterlog</code>, <code>modsec_audit.log</code>, <code>Event 4625</code>), lai pierādītu, ka bloku veica mūsu kontrole.</p>
+        </div>
+        <div class="vis-box vis-red fragment fade-up">
+          <span class="vis-badge">3. ATBILDE · TIKAI TESTA KONTS</span>
+          <p>Tikai atsevišķu testa kontu saskaņotā logā — nekad netestējiet bloķēšanu ar aktīvo administratora kontu!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Nostiprina trīs 5. tēmas praktiskos pīlārus pirms pārejas uz 6. tēmu par uzturēšanu un drošības atjauninājumiem.
+  </aside>
+</section>

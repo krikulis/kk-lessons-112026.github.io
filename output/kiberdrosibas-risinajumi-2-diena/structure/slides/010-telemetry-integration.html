@@ -1,0 +1,16 @@
+<section class="layout-chart" data-slide-id="010" data-topic="Tēma 1 (09:05–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 (09:05–09:45)</p>
+  <h2>Centralizēta žurnalēšana savieno tīkla un galiekārtu notikumus vienā ainā</h2>
+  <figure class="visual-slot" data-asset-type="inline-svg" data-asset-id="asset-010-telemetry-integration">
+    <div class="svg-placeholder" data-svg-target="asset-010-telemetry-integration">[SVG diagramma — Gate 3]</div>
+    <figcaption class="muted">Laika sinhronizācija (NTP) un centralizēta žurnālu vākšana ļauj korelēt notikumus visā infrastruktūrā.</figcaption>
+  </figure>
+  <ul>
+    <li>Izolēti žurnāli atsevišķās iekārtās apgrūtina ātru incidenta cēloņa noteikšanu.</li>
+    <li>Centralizēta žurnālu savākšana (<code>rsyslog</code> / <code>Wazuh SIEM</code>) saglabā pierādījumus pēc kompromitēšanas.</li>
+    <li>Sinhronizēts laiks (<code>NTP</code>) ir obligāts priekšnosacījums precīzai notikumu korelācijai.</li>
+  </ul>
+  <aside class="notes">
+    Uzsveriet NTP laika sinhronizāciju — maza detaļa, ko tehniķi bieži aizmirst, bet bez kuras žurnālu salīdzināšana starp ugunsmūri, WAF un AD serveri ir neiespējama.
+  </aside>
+</section>

@@ -1,0 +1,22 @@
+<section class="layout-code" data-slide-id="058a" data-topic="Tēma 4 — PD3 Pakotne A (12:00–12:15)" data-parent-id="058" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 4 — PD3 Pakotne A (12:00–12:15)</p>
+  <h2>Pakotne A: atrodiet 4 kļūdainas rindas un 2 korektas ēsmas <code>ufw</code>/WAF konfigurācijā</h2>
+  <pre><code class="language-ini" data-trim data-line-numbers="1-9">
+# Pakotne A — KRM DMZ / Perimetrs (4 kļūdainas rindas + 2 korektas ēsmas)
+[1] 22/tcp       ALLOW IN    Anywhere             # SSH uz DMZ serveri
+[2] 8080/tcp     ALLOW IN    Anywhere             # SRV_WEB lietotnes ports
+[3] 443/tcp      ALLOW IN    Anywhere             # Publiskais HTTPS uz DMZ WAF
+# [4] Default incoming: allow; logging: off
+# Pakotne A — DMZ Web WAF (modsecurity.conf)
+[5] SecRuleEngine DetectionOnly
+[6] SecAuditEngine RelevantOnly
+  </code></pre>
+  <ul>
+    <li>Salīdziniet visas 6 rindas ar „KRM” arhitektūru: atrodiet 4 kļūdas un 2 ēsmas.</li>
+    <li>Pārbaudiet ārēji atvērtos portus, noklusējuma politiku un <code>ModSecurity</code> darba iestatījumus.</li>
+    <li>Katrai no 4 kļūdām fiksējiet rindu, risku, kritiskumu (<code>053</code>) un precīzu labojumu.</li>
+  </ul>
+  <aside class="notes">
+    4 kļūdas Pakotnē A: <code>[1]</code> <code>WAN→22</code> (Kritisks); <code>[2]</code> <code>8080/tcp Anywhere</code> apiet WAF uz backend (Kritisks); <code>[4]</code> <code>Default allow</code> bez žurnāla (Kritisks); <code>[5]</code> <code>SecRuleEngine DetectionOnly</code> (Vidējs). 2 korektas ēsmas: <code>[3]</code> publiskais <code>443/tcp</code> uz WAF un <code>[6]</code> <code>SecAuditEngine RelevantOnly</code>.
+  </aside>
+</section>

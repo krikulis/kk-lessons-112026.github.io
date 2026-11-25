@@ -1,0 +1,23 @@
+<section class="layout-code" data-slide-id="093b" data-topic="Tēma 7 — PD6 2. nodevums (Tukšā veidne)" data-parent-id="093" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 7 — PD6 2. nodevums (Tukšā veidne)</p>
+  <h2>2. nodevums: aizpildiet RBAC, LAPS un MFA veidni, slēdzot <code>AD-1</code>, <code>AD-2</code> un <code>IAM-1</code></h2>
+  <pre><code class="language-yaml" data-trim data-line-numbers="1-6|7-10">
+# 2. nodevums — „KRM” RBAC un IAM tukšā veidne (balstīta uz PD2)
+roles:
+  vadiba:       { shares: [___], mfa: ___, local_admin: ___ }
+  gramatvediba: { shares: [___], mfa: ___, local_admin: ___ }
+  praktikants:  { shares: [___], mfa: ___, local_admin: ___ }
+  it_admin:     { accounts: [___, ___], mfa: ___, laps: ___ }
+auth_policy:
+  block_legacy_auth: ___          # lock_threshold: ___ | session_h: ___
+  leaver_revoke_sla: "___"        # AD-2: ilze.ex rīcība?
+  </code></pre>
+  <ul>
+    <li>Aizpildiet tukšo RBAC matricu 4 lomām, pārnesot un salāgojot <code>PD2</code> lēmumus.</li>
+    <li>Nosakiet <code>Windows LAPS</code> (<code>AD-1</code>), <code>ilze.ex</code> bloķēšanu (<code>AD-2</code>) un <code>adm_kristaps</code> <code>FIDO2</code> MFA (<code>IAM-1</code>).</li>
+    <li>Definējiet <code>Legacy Auth</code> aizliegumu, bloķēšanas slieksni un aiziešanas (leaver) SLA.</li>
+  </ul>
+  <aside class="notes">
+    Tukšā veidne Piekļuves administratora lomai (bez priekšā pateiktas atbildes — pilnā atslēga atrodas pasniedzēja atslēgā).
+  </aside>
+</section>

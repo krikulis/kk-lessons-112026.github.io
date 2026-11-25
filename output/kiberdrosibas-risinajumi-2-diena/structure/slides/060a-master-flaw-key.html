@@ -1,0 +1,27 @@
+<section class="layout-split" data-slide-id="060a" data-topic="Tēma 4 — PD3 pilnā atslēga (12:25–12:30)" data-parent-id="060" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 4 — PD3 pilnā atslēga (12:25–12:30)</p>
+  <h2>Pilnā revīzijas atslēga: 12 kļūdainas rindas (4+4+4) un 6 ēsmas pakotnēs A, B un C</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Pakotne A (4): <code>WAN→22</code>, <code>8080</code> apiet WAF, <code>Default allow</code>, WAF <code>DetectionOnly</code> (ēsmas: <code>443</code>, <code>AuditRel</code>).</li>
+        <li>Pakotne B (4): <code>ilze.ex</code> VPN, <code>adm_kristaps</code> bez MFA, <code>svc_backup</code>, <code>helpdesk</code> (ēsmas: <code>liga.b</code>, <code>janis.m</code>).</li>
+        <li>Pakotne C (4): <code>PermitRootLogin yes</code>, <code>mfa_admins: false</code>, <code>lockout: 0</code>, <code>720h</code> (ēsmas: <code>Pubkey</code>, <code>block_legacy</code>).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>PD3 kopsavilkuma atslēga (12 kļūdas + 6 ēsmas)</h3>
+      <table class="vis-table">
+        <thead><tr><th>Pakotne</th><th>4 kļūdainās rindas / konti</th><th>Korektās ēsmas</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A (Tīkls/WAF)</strong></td><td><code>[1] 22</code>, <code>[2] 8080</code>, <code>[4] Def allow</code>, <code>[5] DetectOnly</code></td><td><code>[3] 443/WAF</code>, <code>[6] AuditRel</code></td></tr>
+          <tr><td><strong>B (AD konti)</strong></td><td><code>ilze.ex</code>, <code>adm_kristaps</code>, <code>svc_backup</code>, <code>helpdesk</code></td><td><code>liga.b</code>, <code>janis.m</code></td></tr>
+          <tr><td><strong>C (SSH/IAM)</strong></td><td><code>[1] Root</code>, <code>[3] NoMFA</code>, <code>[5] Lock0</code>, <code>[6] 720h</code></td><td><code>[2] Pubkey</code>, <code>[4] BlockLeg</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Pilnā rindu-pa-rindai atslēga ar komandām un 053. skalas vērtējumiem atrodama arī pasniedzēja atslēgas izdrukā.
+  </aside>
+</section>

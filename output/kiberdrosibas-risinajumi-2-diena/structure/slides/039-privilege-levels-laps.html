@@ -1,0 +1,28 @@
+<section class="layout-split" data-slide-id="039" data-topic="Tēma 3 (11:00–11:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 3 (11:00–11:25)</p>
+  <h2>Piekļuves līmeņu hierarhija un Windows LAPS aptur horizontālo izplatīšanos</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Standarta lietotājs strādā ar failiem, bet neinstalē programmas bez apstiprinājuma.</li>
+        <li>Vienāda lokālā administratora parole visās darbstacijās ļauj uzbrucējam pārņemt visu klasi.</li>
+        <li><strong>Windows LAPS</strong> automātiski uztur unikālu, rotētu lokālā admina paroli katram datoram.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>4 privilēģiju līmeņi un LAPS efekts</h3>
+      <table class="vis-table">
+        <thead><tr><th>Līmenis</th><th>Pilnvaru tvērums</th><th>Aizsardzība</th></tr></thead>
+        <tbody>
+          <tr><td>4. Domēna admins</td><td>Visa organizācijas AD vide</td><td>Atsevišķs konts + FIDO2</td></tr>
+          <tr><td>3. Lokālais admins</td><td>Tikai 1 darbstacija</td><td><strong>Windows LAPS</strong> unikāla parole</td></tr>
+          <tr><td>2. Standarta liet.</td><td>Ikdienas darba faili un lietotnes</td><td>Noklusējuma līmenis visiem</td></tr>
+          <tr><td>1. Viesis / Kiosks</td><td>Tikai internets / publisks ekrāns</td><td>Pilna tīkla izolācija</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Skolās datorklasēs un mazos uzņēmumos vienāda klonēta lokālā administratora parole ir viens no biežākajiem kritiskajiem caurumiem. Windows LAPS ir iebūvēts mūsdienu Windows Server/11 bez papildu maksas!
+  </aside>
+</section>

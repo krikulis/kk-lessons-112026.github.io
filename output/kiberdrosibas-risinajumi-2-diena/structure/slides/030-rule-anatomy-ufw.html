@@ -1,0 +1,21 @@
+<section class="layout-code" data-slide-id="030" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Pilnvērtīgs ugunsmūra noteikums definē sešus parametrus, žurnalēšanu un pamatojumu</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1-3|4-6|7-9">
+# Sintakse: ufw [action] [log] from &lt;SRC&gt; to &lt;DST&gt; port &lt;P&gt; proto &lt;T&gt; comment '&lt;ID&gt;'
+ufw allow log from 10.0.30.0/24 to 10.0.20.10 port 22 proto tcp \
+    comment 'IT-MGMT-SSH-tikai-adminiem'
+ufw deny log from 10.0.40.0/24 to 10.0.0.0/16 \
+    comment 'GUEST-izolacija-no-iekseja-tikla'
+ufw allow from 10.0.10.0/24 to 10.0.20.10 port 445 proto tcp \
+    comment 'LAN-piekluve-failu-serverim'
+  </code></pre>
+  <ul>
+    <li>Norādiet precīzu avotu (<code>Src</code>), mērķi (<code>Dst</code>), protokolu (<code>TCP/UDP</code>) un portu.</li>
+    <li>Izvēlieties darbību (<code>ALLOW</code>/<code>DENY</code>/<code>REJECT</code>) un ieslēdziet žurnalēšanu (<code>log</code>).</li>
+    <li>Pievienojiet <code>comment</code> ar biznesa pamatojumu un īpašnieku nākotnes auditiem.</li>
+  </ul>
+  <aside class="notes">
+    Parādiet, cik lasāma ir <code>ufw</code> komanda un ka tās pašas 6 kolonnas precīzi atbilst <code>OPNsense</code>/<code>pfSense</code> grafiskajai saskarnei. Bez komentāra pēc gada neviens vairs nezina, vai vecu portu drīkst dzēst.
+  </aside>
+</section>

@@ -1,0 +1,23 @@
+<section class="layout-code" data-slide-id="093d" data-topic="Tēma 7 — PD6 4. nodevums (Testēšanas veidne)" data-parent-id="093" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 7 — PD6 4. nodevums (Testēšanas veidne)</p>
+  <h2>4. nodevums: sagatavojiet atsevišķus testus visām 6 kļūdām + 2 funkcionālās pārbaudes</h2>
+  <pre><code class="language-text" data-trim data-line-numbers="1-2|3-9">
+ID    | TIPS     | KĻŪDA | KOMANDA / DARBĪBA             | GAIDĪTAIS + ŽURNĀLS
+TC-01 | Funkc.   | —     | LAN→SRV:445 (Test-NetConn.)   | TcpTestSucceeded + Event 4624
+TC-02 | Funkc.   | —     | [Publiskā portāla pārbaude?]  | [Kods + kurš žurnāls?]
+TC-03 | Drošības | FW-1  | [Komanda pret FW-1?]          | [Rezultāts + žurnāls?]
+TC-04 | Drošības | FW-2  | [PD4 pārnesums pret FW-2?]    | [Rezultāts + žurnāls?]
+TC-05 | Drošības | WAF-1 | [Komanda pret WAF-1?]         | [Rezultāts + žurnāls?]
+TC-06 | Drošības | AD-1  | [Darbība pret AD-1?]          | [Rezultāts + žurnāls?]
+TC-07 | Drošības | AD-2  | [Darbība pret AD-2?]          | [Rezultāts + žurnāls?]
+TC-08 | Drošības | IAM-1 | [Darbība pret IAM-1?]         | [Rezultāts + žurnāls?]
+  </code></pre>
+  <ul>
+    <li>Viens tests = viena pārbaude (neapvienojiet <code>GUEST</code> un <code>WAF</code>!): 2 funkcionālie + 6 drošības testi.</li>
+    <li>Pārnesiet <code>PD4</code> testu pāri un aizpildiet tukšās rindas visām <strong>6 mantotajām kļūdām</strong>.</li>
+    <li>Norādiet konkrētu komandu (<code>nc</code>, <code>curl</code>, AD/LAPS/MFA) un žurnāla pierādījumu!</li>
+  </ul>
+  <aside class="notes">
+    Tukšā veidne Testēšanas vadītāja lomai (ar 1 parauga rindu <code>TC-01</code>). Pilnā 8 testu atslēga (<code>TC-01</code>..<code>TC-08</code>) atrodas pasniedzēja atslēgā. Pārbaudiet, vai grupas neaizmirst <code>FW-1</code> (RDP/3389) un <code>AD-1</code> (LAPS)!
+  </aside>
+</section>

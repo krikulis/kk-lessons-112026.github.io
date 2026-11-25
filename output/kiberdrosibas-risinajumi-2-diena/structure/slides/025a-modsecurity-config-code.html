@@ -1,0 +1,22 @@
+<section class="layout-code" data-slide-id="025a" data-topic="Tēma 2 — Pielikums (09:45–10:10)" data-parent-id="025" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 2 — Pielikums (09:45–10:10)</p>
+  <h2>Sešas <code>ModSecurity</code> konfigurācijas rindas ieslēdz OWASP CRS aizsardzību laboratorijā</h2>
+  <pre><code class="language-apache" data-trim data-line-numbers="1-3|4-6|7-8">
+# /etc/nginx/modsec/modsecurity.conf
+SecRuleEngine On
+SecRequestBodyAccess On
+SecAuditEngine RelevantOnly
+SecAuditLog /var/log/nginx/modsec_audit.log
+SecDefaultAction "phase:1,log,auditlog,deny,status:403"
+Include /etc/nginx/modsec/crs-setup.conf
+Include /etc/nginx/modsec/rules/*.conf
+  </code></pre>
+  <ul>
+    <li><code>SecRuleEngine On</code> pārslēdz WAF no novērošanas uz aktīvu uzbrukumu bloķēšanu.</li>
+    <li><code>SecAuditLog</code> saglabā bloķēto HTTP pieprasījumu detaļas incidentu izmeklēšanai.</li>
+    <li><code>OWASP CRS</code> nodrošina bezmaksas, kopienas uzturētas SQLi un XSS noteikumu kopas.</li>
+  </ul>
+  <aside class="notes">
+    Pievērsiet uzmanību <code>SecRuleEngine On</code> — ja ražošanā tas paliek <code>DetectionOnly</code>, WAF tikai raksta žurnālus un neko nebloķē (tieši šo kļūdu redzēsim 4. tēmas Pakotnē A!).
+  </aside>
+</section>

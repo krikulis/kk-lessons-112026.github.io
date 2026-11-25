@@ -1,0 +1,23 @@
+<section class="layout-code" data-slide-id="032a" data-topic="Tēma 2 — Pielikums (09:45–10:10)" data-parent-id="032" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 2 — Pielikums (09:45–10:10)</p>
+  <h2>Septiņas <code>ufw</code> komandas nostiprina atsevišķu Linux serveri bez ēnošanas</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1-3|4-7|8-9">
+# Paraugs vienam Linux DB serverim (srv-db01 — hosta līmenis)
+ufw default deny incoming
+ufw default deny outgoing
+ufw allow out 53/udp comment 'DNS vaicajumi'
+ufw allow out 443/tcp comment 'OS drosibas ielapi'
+ufw allow from 10.0.30.0/24 to any port 22 proto tcp comment 'MGMT SSH'
+ufw deny log from 10.0.50.0/24 to any port 5432 proto tcp comment 'Bloket DMZ'
+ufw allow from 10.0.20.20 to any port 5432 proto tcp comment 'Tikai App->DB'
+ufw enable
+  </code></pre>
+  <ul>
+    <li>Noklusējuma aizliegums abos virzienos prasa skaidri definēt arī izejošos ielāpus.</li>
+    <li>Specifisko aizliegumu vienmēr novieto virs plašākas atļaujas, novēršot noteikumu ēnošanu.</li>
+    <li>Tūlītējā <code>PD1</code> uzdevumā šo pašu secības loģiku lietosiet 6 zonu perimetram!</li>
+  </ul>
+  <aside class="notes">
+    Hosta līmeņa <code>ufw</code> sintakses un secības paraugs vienam DB serverim — apzināti neatklāj <code>PD1</code> 6 zonu perimetra tabulas risinājumu!
+  </aside>
+</section>

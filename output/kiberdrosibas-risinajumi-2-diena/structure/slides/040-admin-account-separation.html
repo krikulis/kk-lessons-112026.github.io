@@ -1,0 +1,23 @@
+<section class="layout-code" data-slide-id="040" data-topic="Tēma 3 (11:00–11:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 3 (11:00–11:25)</p>
+  <h2>Administratīvais konts nekad nedrīkst tikt izmantots e-pastam un pārlūkošanai</h2>
+  <pre><code class="language-powershell" data-trim data-line-numbers="1-4|5-9">
+# Standarta darba konts (e-pasts, pārlūks, Office)
+New-ADUser -Name "Janis Ozols" -SamAccountName "janis.ozols"
+Add-ADGroupMember -Identity "grp_it_staff" -Members "janis.ozols"
+
+# Nodalīts pārvaldības konts (bez e-pasta, tikai MGMT/MFA)
+New-ADUser -Name "ADM Janis Ozols" -SamAccountName "adm.jozols"
+Add-ADGroupMember -Identity "Domain Admins" -Members "adm.jozols"
+Add-ADGroupMember -Identity "Protected Users" -Members "adm.jozols"
+Set-ADUser -Identity "adm.jozols" -AccountNotDelegated $true
+  </code></pre>
+  <ul>
+    <li>Katram IT speciālistam ir standarta darba konts un atsevišķs <code>adm_*</code> pārvaldības konts.</li>
+    <li>Administratīvajam kontam atslēgts e-pasts un pievienota <code>Protected Users</code> grupa.</li>
+    <li>Paaugstinātas tiesības izmanto tikai konkrētajai pārvaldības darbībai.</li>
+  </ul>
+  <aside class="notes">
+    Ja IT administrators atver pikšķerēšanas saiti ar <code>janis.ozols</code>, uzbrucējs nedabū domēna administratora sesiju. Nospiediet <code>↓</code> Windows LAPS PowerShell komandu piemēram.
+  </aside>
+</section>

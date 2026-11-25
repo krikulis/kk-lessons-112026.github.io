@@ -1,0 +1,25 @@
+<section class="layout-code" data-slide-id="073a" data-topic="Tēma 5 — PD4 veidlapa (13:40–13:55)" data-parent-id="073" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 5 — PD4 veidlapa (13:40–13:55)</p>
+  <h2>Aizpildiet sešus projektēšanas laukus — pārējos četrus fiksē testa izpildes brīdī</h2>
+  <pre><code class="language-yaml" data-trim data-line-numbers="1-6|7-11">
+# 6 obligātie projektēšanas lauki (aizpildīt PD4 laikā):
+id: TC-[FW/WAF/IAM]-[01]
+type: "[Functional (Positive) | Security (Negative)]"
+precondition: "[Avota zona / testa konts / sākuma stāvoklis]"
+command: "[Precīza komanda: nc | Test-NetConnection | curl | AD]"
+expected_output: "[Konkrēts kods: 200 OK | 403 Forbidden | Timeout]"
+log_evidence: "[Izraksts no PD4 lapas: OPNsense | modsec | Event 4625]"
+# 4 izpildes lauki (aizpilda testēšanas brīdī):
+actual_output: "[Faktiskais rezultāts]"
+tester_and_date: "[Vārds, YYYY-MM-DD HH:MM]"
+status: "[PASS | FAIL]"   # remediation_if_fail: "[Labojums/rollback]"
+  </code></pre>
+  <ul>
+    <li>6 obligātie lauki pirms testa: <code>id</code>, <code>type</code>, <code>precondition</code>, <code>command</code>, <code>expected_output</code>, <code>log_evidence</code>.</li>
+    <li>Piesaistiet reālo žurnāla rindu no PD4 darba lapas (<code>OPNsense filterlog</code>, <code>modsec</code>, <code>Event 4625</code>).</li>
+    <li>Izpildes 4 laukus aizpilda, reāli palaižot testu laboratorijā vai ražošanas logā.</li>
+  </ul>
+  <aside class="notes">
+    Turiet šo veidlapu ekrānā <code>13:40–13:55</code>. Uzsveriet atšķirību starp 6 projektēšanas un 4 izpildes laukiem.
+  </aside>
+</section>

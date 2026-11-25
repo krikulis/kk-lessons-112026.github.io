@@ -1,0 +1,23 @@
+<section class="layout-code" data-slide-id="084" data-topic="Tēma 6 (14:00–14:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 6 (14:00–14:25)</p>
+  <h2>Konfigurāciju versiju kontrole (<code>Git</code> / <code>Oxidized</code>) uzreiz atklāj nesankcionētas novirzes</h2>
+  <pre><code class="language-diff" data-trim data-line-numbers="1-9|5-7">
+$ git diff origin/main -- fw01/ufw.rules waf01/modsecurity.conf
+--- a/fw01/ufw.rules
++++ b/fw01/ufw.rules
+ [1] 22/tcp   ALLOW IN  10.0.30.0/24
++[2] 3389/tcp ALLOW IN  Anywhere        # &lt;-- NESANKCIONĒTA NOVIRZE!
+--- a/waf01/modsecurity.conf
++++ b/waf01/modsecurity.conf
+-SecRuleEngine On
++SecRuleEngine DetectionOnly            # &lt;-- PAGAIDU TESTS PALICIS!
+  </code></pre>
+  <ul>
+    <li>Glabājiet serveru un tīkla iekārtu bāzes konfigurācijas privātā <code>Git</code> repozitorijā (<code>Oxidized</code>/<code>RANCID</code>).</li>
+    <li>Regulāra <code>git diff</code> pārbaude sekundēs atklāj ārpus izmaiņu kontroles pievienotu portu vai noteikumu.</li>
+    <li>Secinājumus no novirzēm un incidentiem iestrādā atjauninātā bāzlīnijā nepārtrauktai pilnveidei.</li>
+  </ul>
+  <aside class="notes">
+    Šis <code>git diff</code> piemērs audzēkņiem parasti rada „aha!” momentu — ar jau zināmu izstrādātāju rīku var automātiski sargāt tīkla un serveru konfigurācijas! Nospiediet <code>↓</code> standarta pret ārkārtas izmaiņu salīdzinājumam.
+  </aside>
+</section>

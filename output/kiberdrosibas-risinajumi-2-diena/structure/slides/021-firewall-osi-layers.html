@@ -1,0 +1,16 @@
+<section class="layout-chart" data-slide-id="021" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Ugunsmūra filtrēšanas dziļums nosaka, vai tas redz paketes, lietotnes vai HTTP saturu</h2>
+  <figure class="visual-slot" data-asset-type="inline-svg" data-asset-id="asset-021-firewall-osi-layers">
+    <div class="svg-placeholder" data-svg-target="asset-021-firewall-osi-layers">[SVG diagramma — Gate 3]</div>
+    <figcaption class="muted">Filtrēšanas līmeņi: L3/L4 kontrolē portus, NGFW atpazīst lietotnes, bet WAF analizē HTTP saturu.</figcaption>
+  </figure>
+  <ul>
+    <li>Tīkla un transporta slānis (L3/L4) filtrē pēc IP adresēm, protokoliem un portiem.</li>
+    <li>NGFW (L4–L7) atpazīst tīkla lietotnes, draudu parakstus un šifrēto plūsmu kontekstu.</li>
+    <li>WAF (L7 HTTP/HTTPS) analizē tīmekļa pieprasījumu URL, galvenes, sīkfailus un parametrus.</li>
+  </ul>
+  <aside class="notes">
+    Sasaistiet OSI modeli ar praksi: tīkla ugunsmūris atver 443. portu tīmekļa serverim, bet tikai WAF redz, vai šajā atļautajā 443. porta plūsmā slēpjas SQL injekcija.
+  </aside>
+</section>

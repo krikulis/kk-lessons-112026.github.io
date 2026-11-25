@@ -1,0 +1,24 @@
+<section class="layout-code" data-slide-id="066" data-topic="Tēma 5 (13:15–13:40)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 5 (13:15–13:40)</p>
+  <h2>Atkārtojams testēšanas scenārijs sastāv no sešiem obligātiem dokumentācijas laukiem</h2>
+  <pre><code class="language-yaml" data-trim data-line-numbers="1-4|5-7|8-10">
+id: TC-SEC-01
+type: Security (Negative)
+precondition: "Klienta ierīce atrodas GUEST VLAN (10.0.40.0/24)"
+target: "Failu serveris SRV (10.0.20.10:445)"
+steps:
+  - "Izpildīt: nc -zv -w 3 10.0.20.10 445"
+  - "Pārbaudīt ugunsmūra žurnālu /var/log/ufw.log"
+expected: "Savienojums noraidīts (Timeout) + [UFW BLOCK] ieraksts"
+evidence: "Komandas izvade + ufw.log rinda ar laika zīmogu"
+status: PASS | FAIL
+  </code></pre>
+  <ul>
+    <li>Identifikators (<code>ID</code>), pārbaudes tips (<code>Functional</code>/<code>Security</code>) un priekšnosacījumi (zona, testa konts).</li>
+    <li>Precīzas komandas vai soļi, kurus cits tehniķis spēj atkārtot identiski.</li>
+    <li>Izmērāms gaidāmais rezultāts, faktiskais statuss (<code>PASS</code>/<code>FAIL</code>) un žurnāla pierādījums.</li>
+  </ul>
+  <aside class="notes">
+    Atkārtojamība ir atslēgas vārds: ja pēc trim mēnešiem testu izpilda cits kolēģis, rezultātam jābūt viennozīmīgi salīdzināmam.
+  </aside>
+</section>

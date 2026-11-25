@@ -1,0 +1,28 @@
+<section class="layout-split" data-slide-id="011" data-topic="Tēma 1 (09:05–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 (09:05–09:45)</p>
+  <h2>Nevar droši aizsargāt infrastruktūru, kuras ierīces un servisi nav inventarizēti</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Pirms ieviešanas izveidojiet IKT resursu katalogu: serveri, darbstacijas, tīkls un mākonis.</li>
+        <li>Dokumentējiet biznesam kritiskos protokolus, portus, OS versijas un atbildīgos īpašniekus.</li>
+        <li>Nezināmas „ēnu IT” ierīces kļūst par nekontrolētiem ieejas punktiem tīklā.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>IKT aktīvu reģistra minimums</h3>
+      <table class="vis-table">
+        <thead><tr><th>Aktīvs</th><th>Zona / IP</th><th>Kritiskums</th><th>Īpašnieks</th></tr></thead>
+        <tbody>
+          <tr><td><code>srv-files</code></td><td>VLAN 20 · <code>.20.10</code></td><td>Augsts</td><td>IT nodaļa</td></tr>
+          <tr><td><code>web-portal</code></td><td>DMZ 50 · <code>.50.10</code></td><td>Augsts</td><td>Mācību daļa</td></tr>
+          <tr><td><code>dc-ad01</code></td><td>SRV 20 · <code>.20.5</code></td><td>Kritisks</td><td>IT admins</td></tr>
+          <tr><td><code>ap-guest</code></td><td>VLAN 40 · <code>.40.2</code></td><td>Zems</td><td>Tīkla tehniķis</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Pirmais solis drošības projektā nav iegādāties rīku, bet izveidot precīzu IKT resursu katalogu — to tieši pieprasa arī Latvijas MK noteikumi Nr. 397!
+  </aside>
+</section>

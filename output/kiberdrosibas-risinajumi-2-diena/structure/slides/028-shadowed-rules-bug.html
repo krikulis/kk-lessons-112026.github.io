@@ -1,0 +1,22 @@
+<section class="layout-code" data-slide-id="028" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Viens plašs atļaujas noteikums pilnībā apklusina zemākos aizliegumus</h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1-8|2|3|6-8">
+# KĻŪDA: 2. rinda ēno 3. rindas aizliegumu!
+[ 1] 22/tcp     ALLOW IN    10.0.30.0/24   # MGMT SSH
+[ 2] Anywhere   ALLOW IN    10.0.0.0/16    # PĀRĀK PLAŠS!
+[ 3] 445/tcp    DENY IN     10.0.40.0/24   # NEKAD NEIZPILDĀS
+# LABOJUMS: specifiskais DENY pirms atļaujas
+[ 1] 22/tcp     ALLOW IN    10.0.30.0/24   # MGMT SSH
+[ 2] 445/tcp    DENY IN     10.0.40.0/24   # GUEST BLOĶĒTS
+[ 3] 445/tcp    ALLOW IN    10.0.10.0/24   # Tikai LAN
+  </code></pre>
+  <ul>
+    <li>Zemāk 2. rinda (<code>ALLOW ANY</code>) padara 3. rindu (<code>DENY GUEST</code>) nesasniedzamu.</li>
+    <li>Šādu kļūdu sauc par ēnoto noteikumu (<code>shadowed rule</code>).</li>
+    <li>Labojums: ar <code>ufw insert 1</code> pārvietojiet specifisko <code>DENY</code> virs plašākā <code>ALLOW</code>.</li>
+  </ul>
+  <aside class="notes">
+    Tiešs tilts uz 4. tēmas revīziju: virspusēji šķiet, ka viesu bloks tabulā ir, taču faktiski tas nekad neizpildās.
+  </aside>
+</section>

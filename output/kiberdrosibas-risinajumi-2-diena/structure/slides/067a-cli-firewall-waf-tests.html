@@ -1,0 +1,24 @@
+<section class="layout-code" data-slide-id="067a" data-topic="Tēma 5 — Pielikums (13:15–13:40)" data-parent-id="067" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 5 — Pielikums (13:15–13:40)</p>
+  <h2>Gatavas laboratorijas pārbaudes komandas: <code>nc</code>, <code>Test-NetConnection</code>, <code>nmap</code> un WAF <code>curl</code></h2>
+  <pre><code class="language-bash" data-trim data-line-numbers="1-4|5-7|8-10">
+# 1. Linux (no GUEST testa VM) — jābeidzas ar Timeout
+nc -zv -w 3 10.0.20.10 445
+# 2. Windows (no LAN darbstacijas) — TcpTestSucceeded : True
+Test-NetConnection -ComputerName 10.0.20.10 -Port 445
+# 3. Mērķēta portu pārbaude testa tīklā (tikai atļautā tvērumā!)
+nmap -Pn -p 22,80,443,445,3389 10.0.20.10
+# 4. WAF testi pret savu DMZ testa serveri
+curl -s -o /dev/null -w "%{http_code}\n" https://portal.lab.local/
+curl -s -o /dev/null -w "%{http_code}\n" \
+     "https://portal.lab.local/?id=1'%20OR%20'1'='1"  # Sagaidāms: 403
+  </code></pre>
+  <ul>
+    <li>Linux un Windows komandas pārbauda portu pieejamību bez lieka trokšņa.</li>
+    <li>WAF pozitīvais tests atgriež <code>200 OK</code>, bet SQLi testa vektors — <code>403 Forbidden</code>.</li>
+    <li>Komandu izvade kopā ar servera žurnālu veido pilnu pierādījumu.</li>
+  </ul>
+  <aside class="notes">
+    Parādiet audzēkņiem WAF testa eleganci: parasts pieprasījums atgriež <code>200</code>, bet nekaitīga sintakses zonde <code>?id=1' OR '1'='1</code> pret pašu laboratorijas serveri atgriež <code>403</code> un ierakstu <code>modsec_audit.log</code>!
+  </aside>
+</section>

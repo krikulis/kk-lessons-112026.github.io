@@ -1,0 +1,23 @@
+<section class="layout-code" data-slide-id="080" data-topic="Tēma 6 (14:00–14:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 6 (14:00–14:25)</p>
+  <h2>Automātiski brīdinājumi par kritiskiem notikumiem aizstāj manuālu žurnālu lasīšanu</h2>
+  <pre><code class="language-yaml" data-trim data-line-numbers="1-3|4-6|7-9">
+# Wazuh / rsyslog brīdinājumu bāzlīnija mazai IT komandai
+alert_identity:
+  - event_id: 4728   # Jauns lietotājs pievienots Domain Admins
+alert_bruteforce:
+  - source: fail2ban # &gt;= 5 bloķētas SSH/VPN IP 10 minūtēs
+  - source: modsec   # &gt;= 10 HTTP 403 SQLi/XSS bloki 5 minūtēs
+alert_integrity:
+  - fim_watch: ["/etc/ufw/user.rules", "/etc/nginx/modsec/modsecurity.conf"]
+  - notify: "security-alerts@organizacija.lv (tūlītēji)"
+  </code></pre>
+  <ul>
+    <li>Iestatiet brīdinājumus par <code>SSH</code>/AD brutālo spēku, jaunu adminu pievienošanu un ugunsmūra izmaiņām.</li>
+    <li>Sekojiet arī WAF <code>403</code> pīķiem un DNS ugunsmūra bloķēto domēnu pieprasījumiem.</li>
+    <li>Pārbaudiet žurnālu servera brīvo diska vietu un MK Nr. 397 glabāšanas prasības.</li>
+  </ul>
+  <aside class="notes">
+    Mazās organizācijās nav 24/7 SOC komandas, tāpēc 5–6 precīzi <code>Wazuh</code> vai <code>Syslog</code> e-pasta brīdinājumi sniedz milzīgu agrīnās atklāšanas vērtību.
+  </aside>
+</section>

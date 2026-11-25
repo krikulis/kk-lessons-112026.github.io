@@ -1,0 +1,26 @@
+<section class="layout-code" data-slide-id="049a" data-topic="Tēma 3 — PD2 parauga labojumi (11:40–11:45)" data-parent-id="049" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 3 — PD2 parauga labojumi (11:40–11:45)</p>
+  <h2>Visus piecus „KRM” kontu pārkāpumus AD vidē novērš izpildāmas PowerShell komandas</h2>
+  <pre><code class="language-powershell" data-trim data-line-numbers="1-3|4-6|7-10">
+# 1. Bloķēt bijušo darbinieci, noņemt VPN un atsaukt sesijas (&lt;1h SLA)
+Disable-ADAccount -Identity "ilze.ex"
+Remove-ADGroupMember -Identity "VPN_Users" -Members "ilze.ex" -Confirm:$false
+Revoke-MgUserSignInSession -UserId "ilze.ex@krm.lv"
+# 2. Samazināt praktikanta un grāmatvedes liekās tiesības
+Remove-ADGroupMember -Identity "Domain Admins" -Members "markuss.p" -Confirm:$false
+Add-ADGroupMember -Identity "grp_it_readonly" -Members "markuss.p"
+Remove-ADGroupMember -Identity "IT_RW" -Members "anna.k" -Confirm:$false
+# 3. Izveidot individuālus kontus ar paroli un atspējot koplietoto
+$pw = Read-Host -AsSecureString "Pagaidu parole"
+New-ADUser -Name "Kase D1" -SamAccountName "kase.d1" -AccountPassword $pw -Enabled $true
+Disable-ADAccount -Identity "birojs_kase"
+  </code></pre>
+  <ul>
+    <li><code>ilze.ex</code> tiek atspējota, izņemta no <code>VPN_Users</code> un atsaukta aktīvā mākoņa sesija.</li>
+    <li><code>markuss.p</code> noņem <code>Domain Admins</code> un pievieno <code>grp_it_readonly</code>; <code>anna.k</code> noņem <code>IT_RW</code>.</li>
+    <li><code>birojs_kase</code> atspējo pēc individuālu kontu izveides ar obligāto <code>-AccountPassword</code>.</li>
+  </ul>
+  <aside class="notes">
+    Papildu uzdevums ātrākajiem: <code>Get-ADUser -Filter 'Enabled -eq $true' -Properties LastLogonDate | Where-Object {$_.LastLogonDate -lt (Get-Date).AddDays(-90)}</code>.
+  </aside>
+</section>

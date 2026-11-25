@@ -1,0 +1,28 @@
+<section class="layout-split" data-slide-id="033" data-topic="Tēma 2 — PD1: Ugunsmūra noteikumu tabula (10:10–10:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 — PD1: Ugunsmūra noteikumu tabula (10:10–10:25)</p>
+  <h2>PD1: izstrādājiet „KRM” biroja secīgo ugunsmūra noteikumu tabulu un pārbaudiet plūsmas</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li><code>OPNsense</code> (stateful): <code>LAN</code>, <code>SRV</code> (<code>SRV_WEB:8080</code>), <code>MGMT</code>, <code>GUEST</code>, <code>DMZ</code> (<code>WAF:443</code>), <code>WAN</code> (<code>CERT.LV DNS</code>).</li>
+        <li>Atļaujiet: <code>LAN→SRV:445</code>, <code>LAN/GUEST→WAN:443,53</code>, <code>SRV→WAN:443</code> (ielāpi), <code>MGMT→22</code>, <code>WAN→WAF→SRV_WEB</code>.</li>
+        <li>Aizpildiet darba lapas 7 kolonnu tabulu ar <code>DENY ALL + LOG</code> un 4 pakešu pārbaudi (15 min).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>PD1 prasības un 4 pakešu pašpārbaude</h3>
+      <table class="vis-table">
+        <thead><tr><th>Avots</th><th>Atļautais mērķis</th><th>Pašpārbaudes plūsma</th></tr></thead>
+        <tbody>
+          <tr><td><code>MGMT .30.0/24</code></td><td><code>SRV/DMZ :22</code></td><td><code>GUEST → SRV:445</code> → <strong>DROP</strong></td></tr>
+          <tr><td><code>LAN .10.0/24</code></td><td><code>SRV:445</code>, <code>WAN:443/53</code></td><td><code>GUEST → CERT.LV:53</code> → <strong>ALLOW</strong></td></tr>
+          <tr><td><code>GUEST .40.0/24</code></td><td>Tikai <code>WAN:443/53</code></td><td><code>DMZ_WAF → SRV_WEB:8080</code> → <strong>ALLOW</strong></td></tr>
+          <tr><td><code>WAN / SRV</code></td><td><code>WAN→WAF:443</code>; <code>SRV→WAN:443</code></td><td><code>SRV → apt:443</code> → <strong>ALLOW</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Atstājiet šo slaidu ekrānā <code>10:10–10:25</code>; dalībnieki strādā drukātajā PD1 tukšajā 7 kolonnu tabulā (<code># | SRC | DST | PORT/PROTO | ACTION | LOG | PAMATOJUMS</code>). Atgādiniet: ugunsmūris ir stateful (atbildes trafiks atļauts automātiski). Ātrākajiem: pierakstiet 2 <code>ufw route</code> komandas. Klasē: 1.–2. kursam dodiet 4 zonas, 3.–4. kursam pievienojiet <code>DMZ_WAF→SRV_WEB</code> un <code>SRV</code> egress.
+  </aside>
+</section>

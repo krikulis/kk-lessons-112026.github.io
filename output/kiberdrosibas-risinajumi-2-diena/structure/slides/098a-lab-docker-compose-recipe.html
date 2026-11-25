@@ -1,0 +1,25 @@
+<section class="layout-code" data-slide-id="098a" data-topic="Tēma 8 — Laboratorijas recepte (16:06–16:09)" data-parent-id="098" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 8 — Laboratorijas recepte (16:06–16:09)</p>
+  <h2>Desmit rindu <code>docker-compose.yml</code> recepte palaiž gatavu WAF mācību laboratoriju</h2>
+  <pre><code class="language-yaml" data-trim data-line-numbers="1-5|6-11">
+services:
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    expose: ["3000"]
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    ports: ["8080:8080"]
+    environment:
+      - BACKEND=http://juice-shop:3000
+      - MODSEC_RULE_ENGINE=On          # Maini uz DetectionOnly revīzijas darbam!
+      - PARANOIA=1
+  </code></pre>
+  <ul>
+    <li><code>bkimminich/juice-shop</code> nodrošina drošu, apzināti ievainojamu mācību tīmekļa lietotni.</li>
+    <li><code>owasp/modsecurity-crs:nginx</code> darbojas kā reversais starpniekserveris ar <code>OWASP CRS</code> aizsardzību.</li>
+    <li>Audzēkņi salīdzina <code>DetectionOnly</code> pret <code>On</code> un pierāda <code>HTTP 403</code> žurnālos!</li>
+  </ul>
+  <aside class="notes">
+    Ar vienu komandu <code>docker compose up -d</code> skolotājs iegūst darba vidi gan 2. tēmas WAF demonstrācijai, gan 4. tēmas kļūdu analīzei (<code>DetectionOnly</code>), gan 5. tēmas <code>curl</code> testiem!
+  </aside>
+</section>

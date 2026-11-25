@@ -1,0 +1,24 @@
+<section class="layout-code" data-slide-id="055" data-topic="Tēma 4 — PD3 treniņš (11:53–11:57)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 4 — PD3 treniņš (11:53–11:57)</p>
+  <h2>Kopīgais treniņš: atrodiet četras kļūdas (un vienu korektu rindu) <code>ufw</code> un <code>sshd</code> fragmentā</h2>
+  <pre><code class="language-ini" data-trim data-line-numbers="1-10|2|3-4|8-9|10">
+# ufw status numbered
+[1] 3389/tcp      ALLOW IN    Anywhere
+[2] Anywhere      ALLOW IN    10.0.0.0/16
+[3] 445/tcp       DENY IN     10.0.40.0/24
+[4] Anywhere      DENY IN     Anywhere
+# /etc/ssh/sshd_config
+Port 22
+PermitRootLogin yes
+PasswordAuthentication yes
+MaxAuthTries 3
+  </code></pre>
+  <ul>
+    <li>Izvērtējiet visas 10 rindas: kuras 4 rada risku un kura 1 ir droša ēsma?</li>
+    <li>Katrai atrastajai kļūdai nosauciet kritiskumu (<code>053</code> skala) un minimālo labojumu.</li>
+    <li class="fragment fade-up">Atslēga: kļūdas <code>[1]</code>, <code>[2]→[3]</code>, <code>PermitRootLogin</code>, <code>PasswordAuthentication</code>; ēsma — <code>MaxAuthTries 3</code>.</li>
+  </ul>
+  <aside class="notes">
+    Parādiet vispirms bez rindu izcēluma un bez atslēgas punkta 2 minūtes, tad klikšķiniet cauri: 4 kļūdas (<code>3389</code>, <code>[2]</code> ēno <code>[3]</code>, <code>PermitRootLogin yes</code>, <code>PasswordAuthentication yes</code>) + 1 korekta rinda (<code>MaxAuthTries 3</code>). Nospiediet <code>↓</code> papildu 1 minūtes piekļuves matricas treniņam.
+  </aside>
+</section>

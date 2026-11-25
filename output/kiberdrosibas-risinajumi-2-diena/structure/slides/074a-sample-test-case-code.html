@@ -1,0 +1,24 @@
+<section class="layout-code" data-slide-id="074a" data-topic="Tēma 5 — PD4 parauga scenārijs (13:55–14:00)" data-parent-id="074" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 5 — PD4 parauga scenārijs (13:55–14:00)</p>
+  <h2>Parauga testa gadījums <code>TC-FW-02</code> pierāda <code>GUEST</code> bloku uz <code>SMB/445</code> ar <code>nc</code> un <code>OPNsense</code></h2>
+  <pre><code class="language-yaml" data-trim data-line-numbers="1-6|7-10">
+id: TC-FW-02
+type: Security (Negative)
+precondition: "Testa VM GUEST VLAN (10.0.40.55); SMB/445 aktīvs uz SRV (10.0.20.10)"
+command: "nc -zv -w 3 10.0.20.10 445"
+expected_output: "Connection timed out (exit 1; ja REJECT -> Connection refused)"
+log_evidence: "OPNsense filterlog: block,in,vlan40,tcp,10.0.40.55,10.0.20.10,445"
+actual_output: "Timeout pēc 3s; OPNsense filterlog fiksēts block"
+tester_and_date: "K. Kūlis, 2026-11-24 13:45"
+status: PASS
+notes: "Izpildīt kopā ar pozitīvo TC-FW-01 no LAN (10.0.10.x); uz SRV arī ufw.log"
+  </code></pre>
+  <ul>
+    <li>Skaidri norādīts avots (<code>GUEST VM 10.0.40.55</code>), komanda un 3 sekunžu noildze (<code>DROP</code> → <code>timed out</code>).</li>
+    <li><code>PASS</code> nosacījums apvieno komandas rezultātu un centrālā <code>OPNsense filterlog</code> ierakstu.</li>
+    <li>Ja noteikums būtu <code>REJECT</code>, gaidītais rezultāts būtu tūlītējs <code>Connection refused</code>.</li>
+  </ul>
+  <aside class="notes">
+    Parauga atsauce, ko pedagogi var tieši iekļaut laboratorijas darbu instrukcijās un izmantot <code>PD6</code> 4. nodevumā.
+  </aside>
+</section>

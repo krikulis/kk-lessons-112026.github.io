@@ -1,0 +1,33 @@
+<section class="layout-split" data-slide-id="019q" data-topic="Tēma 1 — Paškontrole (09:42–09:45)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 1 — Paškontrole (09:42–09:45)</p>
+  <h2>Paškontrole (1. tēma): pārbaudiet arhitektūras, DMZ un ieviešanas lēmumus</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>1. Kur izvietot publisku portālu, lai tā uzlaušana neapdraudētu iekšējo <code>SRV</code>?</li>
+        <li>2. Kāpēc jaunu EDR vai WAF vispirms ieslēdz <code>audit-only</code> pilotgrupā?</li>
+        <li>3. Kāpēc IT speciālistam ikdienas e-pastam nedrīkst izmantot domēna admina kontu?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pārbaudiet sevi (atbildes atklājas ar →)</h3>
+      <div class="vis-vs vis-quiz">
+        <div class="vis-box vis-green fragment fade-up">
+          <span class="vis-badge">1. ATBILDE · DMZ IZOLĀCIJA</span>
+          <p>Izolētā <code>DMZ</code> zonā aiz reversā starpniekservera (WAF), bloķējot tiešus savienojumus no <code>DMZ</code> uz <code>LAN</code> un <code>AD</code>.</p>
+        </div>
+        <div class="vis-box vis-violet fragment fade-up">
+          <span class="vis-badge">2. ATBILDE · AUDIT-ONLY POSMS</span>
+          <p>Lai bez biznesa dīkstāves pamanītu viltus bloķējumus un savietojamības konfliktus pirms stingras bloķēšanas.</p>
+        </div>
+        <div class="vis-box vis-amber fragment fade-up">
+          <span class="vis-badge">3. ATBILDE · MINIMĀLĀS TIESĪBAS</span>
+          <p>Pikšķerēšanas gadījumā uzbrucējs iegūst atvērtās sesijas pilnvaras — nodalīts konts ierobežo bojājumu rādiusu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Uzdodiet katru jautājumu mutiski zālei (15–20 sek. pārdomām) un ar bultiņu pa labi (<code>→</code>) atklājiet pareizo atbildi. Nostiprina DMZ segmentāciju, pakāpenisku ieviešanu un minimālo tiesību principu pirms 2. tēmas.
+  </aside>
+</section>

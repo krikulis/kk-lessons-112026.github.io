@@ -1,0 +1,27 @@
+<section class="layout-split" data-slide-id="082" data-topic="Tēma 6 (14:00–14:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 6 (14:00–14:25)</p>
+  <h2>Nepārbaudīta rezerves kopija ir pieņēmums — regulāri trenējiet datu atjaunošanu</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Reizi mēnesī vai ceturksnī veiciet kontrolētu failu un konfigurācijas atjaunošanas testu.</li>
+        <li>Fiksējiet faktisko atjaunošanas laiku (<code>RTO</code>) un pieļaujamo datu zuduma logu (<code>RPO</code>).</li>
+        <li>Dokumentējiet rezultātu, lai krīzes brīdī procedūra būtu zināma katram tehniķim.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Atjaunošanas mērķrādītāji un treniņš</h3>
+      <table class="vis-table">
+        <thead><tr><th>Rādītājs</th><th>Būtība</th><th>Tipisks mērķis</th></tr></thead>
+        <tbody>
+          <tr><td><strong>RPO</strong> (Datu zudums)</td><td>Cik senus datus drīkst zaudēt?</td><td>≤ 24 stundas (iknakts kopija)</td></tr>
+          <tr><td><strong>RTO</strong> (Atjaunošana)</td><td>Cik ātri sistēmai jāatsāk darbs?</td><td>≤ 2–4 stundas kritiskiem serv.</td></tr>
+          <tr><td><strong>Restore Drill</strong></td><td>Praktisks atjaunošanas treniņš</td><td>1× ceturksnī izolētā testa VM</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Iegaumējama formula audzēkņiem: „Ja neesi testējis atjaunošanu no kopijas, tev nav rezerves kopijas — tev ir tikai aizņemta diska vieta.”
+  </aside>
+</section>

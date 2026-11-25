@@ -1,0 +1,30 @@
+<section class="layout-split" data-slide-id="058b" data-topic="Tēma 4 — PD3 Pakotne B (12:00–12:15)" data-parent-id="058" data-orientation="vertical">
+  <p class="muted slide-kicker">Tēma 4 — PD3 Pakotne B (12:00–12:15)</p>
+  <h2>Pakotne B: atrodiet 4 kļūdainus kontus un 2 korektas ēsmas „KRM” AD eksportā</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Izvērtējiet visus <strong>6 „KRM” AD kontus</strong>: grupas, MFA, interaktīvo logon un pēdējo pieslēgšanos.</li>
+        <li>Pamatoti atdaliet 4 riskantos kontus no 2 korekti konfigurētajām ēsmām.</li>
+        <li>Katram pārkāpumam piešķiriet kritiskumu (<code>053</code> skala) un precīzu AD labojumu.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pakotne B — „KRM” 6 AD konti (4 kļūdas + 2 ēsmas)</h3>
+      <table class="vis-table">
+        <thead><tr><th>Konts</th><th>Amats / Grupas</th><th>MFA / Logon</th><th>Pēdējā piesl.</th></tr></thead>
+        <tbody>
+          <tr><td><code>ilze.ex</code></td><td>Bij. grāmatv. · <code>VPN_Users</code></td><td>MFA: Jā</td><td>160 dienas</td></tr>
+          <tr><td><code>adm_kristaps</code></td><td>IT admins · <code>Domain Admins</code></td><td>MFA: Nē</td><td>Šodien</td></tr>
+          <tr><td><code>svc_backup</code></td><td>Serviss · <code>Domain Admins</code></td><td>Interactive: Jā</td><td>Vakar</td></tr>
+          <tr><td><code>helpdesk</code></td><td>Koplietots (4 cilv.) · <code>IT_RW</code></td><td>MFA: Nē</td><td>Šodien</td></tr>
+          <tr><td><code>liga.b</code></td><td>Grāmatvede · <code>Finance_RW</code></td><td>MFA: Jā</td><td>Šodien</td></tr>
+          <tr><td><code>janis.m</code></td><td>Koordinators · <code>Public_RW</code></td><td>MFA: Jā</td><td>Vakar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    4 kļūdaini konti Pakotnē B: (1) <code>ilze.ex</code> bijusī darbiniece ar aktīvu <code>VPN</code> (Kritisks — pārrakstīšanas noteikums); (2) <code>adm_kristaps</code> <code>Domain Admins</code> bez MFA (Kritisks); (3) <code>svc_backup</code> ar <code>Domain Admins</code> + <code>Interactive: Jā</code> (Kritisks); (4) koplietots <code>helpdesk</code> bez MFA (Vidējs). 2 korektās ēsmas: <code>liga.b</code> un <code>janis.m</code>.
+  </aside>
+</section>

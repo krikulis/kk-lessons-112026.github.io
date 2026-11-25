@@ -1,0 +1,27 @@
+<section class="layout-split" data-slide-id="031" data-topic="Tēma 2 (09:45–10:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 2 (09:45–10:10)</p>
+  <h2>Izvēle starp <code>DROP</code> un <code>REJECT</code> ietekmē ārējo slēpšanos un iekšējo diagnostiku</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li><code>DROP</code> (<code>ufw deny</code>) klusi izmet paketi bez atbildes, palēninot ārējo skenēšanu.</li>
+        <li><code>REJECT</code> nosūta atteikumu, paātrinot kļūdu diagnostiku iekšējā tīklā.</li>
+        <li>Vadlīnija: <code>DROP</code> uz ārējā perimetra (<code>WAN</code>), <code>REJECT</code> vai <code>DROP</code> iekšējās zonās.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Darbību ietekme uz drošību un diagnostiku</h3>
+      <table class="vis-table">
+        <thead><tr><th>Darbība</th><th>Atbilde sūtītājam</th><th>Kur lietot?</th></tr></thead>
+        <tbody>
+          <tr><td><code>ALLOW</code></td><td>Savienojums atvērts</td><td>Pamatotām biznesa plūsmām</td></tr>
+          <tr><td><code>DROP</code></td><td>Klusums (Timeout)</td><td>Uz <code>WAN</code> perimetra</td></tr>
+          <tr><td><code>REJECT</code></td><td>Tūlītējs <code>RST/ICMP</code></td><td>Iekšējos <code>LAN</code> segmentos</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Labs jautājums audzēkņiem: kāpēc iekšējā birojā <code>DROP</code> reizēm rada „aplikācija iekaras uz 60 sekundēm” sūdzības, bet <code>REJECT</code> uzreiz ziņo par liegumu?
+  </aside>
+</section>

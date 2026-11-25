@@ -1,0 +1,21 @@
+<section class="layout-code" data-slide-id="092" data-topic="Tēma 7 — PD6 mantotās kļūdas (15:00–15:10)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 7 — PD6 mantotās kļūdas (15:00–15:10)</p>
+  <h2>Esošajā „KRM” konfigurācijā mantotas sešas bīstamas drošības nepilnības</h2>
+  <pre><code class="language-ini" data-trim data-line-numbers="1-7">
+# Mantotais „KRM” stāvoklis — 6 kļūdas revīzijai un testēšanai
+[FW-1]  3389/tcp  ALLOW IN  Anywhere            # RDP no interneta
+[FW-2]  Anywhere  ALLOW IN  10.0.40.0/24        # GUEST redz SRV un LAN
+[WAF-1] SecRuleEngine DetectionOnly             # Publiskais portāls nav bloķēts
+[AD-1]  Group "Local Admins": ALL_STAFF (no LAPS)
+[AD-2]  User "ilze.ex" (bijušā grāmatvede): Enabled=True, VPN_Users, LastLogon=160d
+[IAM-1] adm_kristaps VPN &amp; M365: MFA=False, LegacyAuth=Allow, Lockout=0
+  </code></pre>
+  <ul>
+    <li>Tīkls un WAF: <code>FW-1</code> (<code>WAN→3389</code>), <code>FW-2</code> (<code>GUEST</code> bez izolācijas), <code>WAF-1</code> (<code>DetectionOnly</code>).</li>
+    <li>Identitāte: <code>AD-1</code> (<code>ALL_STAFF</code> lokālie admini bez LAPS), <code>AD-2</code> (bijusī <code>ilze.ex</code> 160d + VPN).</li>
+    <li>Autentifikācija: <code>IAM-1</code> (<code>adm_kristaps</code> bez MFA, <code>LegacyAuth=Allow</code>, <code>Lockout=0</code>).</li>
+  </ul>
+  <aside class="notes">
+    Visas <strong>6</strong> kļūdas jānovērš 1. un 2. nodevumā un <strong>katrai</strong> jāpievieno savs testa ID 4. nodevuma izsekojamības matricā!
+  </aside>
+</section>

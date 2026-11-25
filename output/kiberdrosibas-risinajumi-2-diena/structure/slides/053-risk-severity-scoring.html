@@ -1,0 +1,27 @@
+<section class="layout-split" data-slide-id="053" data-topic="Tēma 4 (11:45–12:00)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 4 (11:45–12:00)</p>
+  <h2>Vienota trīs līmeņu riska skala nodrošina, ka kritiskākās kļūdas labo vispirms</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li><code>Kritisks</code> (&lt;24h): tieša ārēja piekļuve, admins bez MFA vai bijušais darbinieks ar <code>VPN</code>/mākoni.</li>
+        <li><code>Vidējs</code> (šonedēļ): iekšēja piekļuve, ēnots noteikums, WAF <code>DetectionOnly</code>, iekšējs <code>90d+</code> konts, nav LAPS.</li>
+        <li><code>Zems</code> (mēneša apkopē): komentāru, žurnalēšanas vai konfigurācijas higiēnas trūkumi.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Vienotā prioritizācijas skala (PD2 · PD3 · PD6)</h3>
+      <table class="vis-table">
+        <thead><tr><th>Līmenis</th><th>Piemērs + pārrakstīšanas noteikums</th><th>Reakcijas laiks</th></tr></thead>
+        <tbody>
+          <tr><td><strong>KRITISKS</strong></td><td><code>WAN→RDP/SSH</code>; admins bez MFA; <strong>bij. darbinieks ar VPN</strong></td><td>Nekavējoties (&lt; 24 h)</td></tr>
+          <tr><td><strong>VIDĒJS</strong></td><td>Ēnots noteikums; WAF <code>DetectionOnly</code>; iekš. konts <code>90d+</code>; nav LAPS</td><td>Šīs nedēļas laikā</td></tr>
+          <tr><td><strong>ZEMS</strong></td><td>Trūkst komentāra; lieks brīdinājums</td><td>Plānotā ikmēneša apkopē</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Šo pašu 3 līmeņu skalu (<code>Kritisks</code> / <code>Vidējs</code> / <code>Zems</code>) izmantojam visā dienā (nav atsevišķa „Augsts” līmeņa). Pārrakstīšanas noteikums: iekšējs neaktīvs konts <code>90d+</code> ir <code>Vidējs</code>, bet bijušā darbinieka aktīvs konts ar <code>VPN</code> vai mākoņa piekļuvi vienmēr ir <code>Kritisks</code>!
+  </aside>
+</section>

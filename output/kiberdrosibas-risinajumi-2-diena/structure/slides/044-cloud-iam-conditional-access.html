@@ -1,0 +1,27 @@
+<section class="layout-split" data-slide-id="044" data-topic="Tēma 3 (11:00–11:25)" data-orientation="horizontal">
+  <p class="muted slide-kicker">Tēma 3 (11:00–11:25)</p>
+  <h2>Mākoņa SSO un nosacītā piekļuve aizsargā skolas un uzņēmuma mākoņservisus</h2>
+  <div class="split-grid">
+    <div class="card">
+      <ul>
+        <li>Vienotā pieteikšanās (<code>SSO</code> — Entra ID / Google Workspace) centralizē kontu pārvaldību un atsaukšanu.</li>
+        <li>Nosacītā piekļuve (<code>Conditional Access</code>) bloķē pieteikšanos no neatļautām valstīm vai nepārvaldītām ierīcēm.</li>
+        <li>Obligāti atslēdziet novecojušos protokolus (<code>Legacy Auth</code>: IMAP/POP/SMTP), kas apiet MFA.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Kritiskās mākoņa (Entra / M365) politikas</h3>
+      <table class="vis-table">
+        <thead><tr><th>Kontrole</th><th>Iestatījums</th><th>Mērķis</th></tr></thead>
+        <tbody>
+          <tr><td>Legacy Auth</td><td><strong>Block</strong> (IMAP/POP3/SMTP)</td><td>Apturēt MFA apiešanu</td></tr>
+          <tr><td>Geo / Device</td><td>Tikai LV/ES + atbilstoša ierīce</td><td>Bloķēt svešus pieslēgumus</td></tr>
+          <tr><td>Admin Session</td><td>Max 4 h + re-auth bez sīkfaila</td><td>Ierobežot marķiera zādzību</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    Lielākā daļa Latvijas skolu un MVU izmanto Microsoft 365 vai Google Workspace — viena neatslēgta <code>Legacy Auth</code> politika spēj pilnībā apiet ieslēgtu MFA!
+  </aside>
+</section>
