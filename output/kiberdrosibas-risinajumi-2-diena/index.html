@@ -325,8 +325,33 @@
       border-color: transparent;
     }
 
+    .reveal section.layout-kpi .materials-access {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      max-width: 1060px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .reveal section.layout-kpi .materials-qr {
+      flex: 0 0 164px;
+    }
+
+    .reveal section.layout-kpi .materials-qr img {
+      display: block;
+      width: 164px;
+      height: 164px;
+      max-width: none;
+      margin: 0;
+      background: #FFFFFF;
+      image-rendering: pixelated;
+    }
+
     .reveal section.layout-kpi .materials-link {
-      margin: 20px 0 0;
+      margin: 0;
       font-size: 20px;
       line-height: 1.4;
       position: relative;
@@ -343,7 +368,7 @@
       color: #FFFFFF;
     }
 
-    .reveal section.layout-kpi .materials-link a:focus-visible {
+    .reveal section.layout-kpi .materials-access a:focus-visible {
       outline: 2px solid currentColor;
       outline-offset: 4px;
     }
@@ -802,9 +827,14 @@
     <li>Mērķis: pilnveidot pedagogu prasmes risinājumu ieviešanā, uzturēšanā un novērtēšanā.</li>
     <li>Pasniedzējs: Kristaps Kūlis · Projekts Nr. 4.2.2.3/1/24/I/001.</li>
   </ul>
-  <p class="materials-link">Slaidi un darba lapas:<br />
-    <a href="https://krikulis.github.io/kk-lessons-112026.github.io/" target="_blank" rel="noopener">https://krikulis.github.io/kk-lessons-112026.github.io/</a>
-  </p>
+  <div class="materials-access">
+    <p class="materials-link">Slaidi un darba lapas:<br />
+      <a href="https://krikulis.github.io/kk-lessons-112026.github.io/" target="_blank" rel="noopener">https://krikulis.github.io/kk-lessons-112026.github.io/</a>
+    </p>
+    <a class="materials-qr" href="https://krikulis.github.io/kk-lessons-112026.github.io/" target="_blank" rel="noopener">
+      <img src="data:image/png;base64,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" width="164" height="164" alt="QR kods uz slaidu un darba lapu izvēlni" />
+    </a>
+  </div>
   <aside class="notes">
     Sveicināti semināra otrajā dienā! Šodien iziesim pilnu kiberdrošības risinājumu ciklu no arhitektūras līdz uzturēšanai un kompleksam grupu projektam, izmantojot reālu laboratorijas sintaksi.
   </aside>

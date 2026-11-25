@@ -31,7 +31,7 @@
                        "layout":  ".layout-kpi",
                        "dataSource":  "`plans.docx`",
                        "requiredAssets":  [
-
+                                              "embedded-png:materials-menu-qr"
                                           ],
                        "vertical":  [
 
